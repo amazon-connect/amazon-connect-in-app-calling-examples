@@ -1,0 +1,910 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6A9788B32BAA16640038DD43 /* CallKitConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9788B02BAA16640038DD43 /* CallKitConfiguration.swift */; };
+		6A9788B42BAA16640038DD43 /* CallKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9788B12BAA16640038DD43 /* CallKitManager.swift */; };
+		6A9788B52BAA16640038DD43 /* CallKitCallController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9788B22BAA16640038DD43 /* CallKitCallController.swift */; };
+		D8439B5B2BB6340500FE5C78 /* DefaultCallController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8439B5A2BB6340500FE5C78 /* DefaultCallController.swift */; };
+		D8439B5D2BB6341900FE5C78 /* CallController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8439B5C2BB6341900FE5C78 /* CallController.swift */; };
+		D877DF772AE0739F00EFD231 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D877DF762AE0739F00EFD231 /* SceneDelegate.swift */; };
+		D89AD7632AD8794E007D0A08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD7622AD8794E007D0A08 /* AppDelegate.swift */; };
+		D89AD76C2AD8794F007D0A08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D89AD76B2AD8794F007D0A08 /* Assets.xcassets */; };
+		D89AD76F2AD8794F007D0A08 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D89AD76D2AD8794F007D0A08 /* LaunchScreen.storyboard */; };
+		D89AD77F2AD87D0A007D0A08 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D89AD77E2AD87D0A007D0A08 /* Main.storyboard */; };
+		D89AD7812AD87D34007D0A08 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD7802AD87D34007D0A08 /* MainViewController.swift */; };
+		D89AD7852AD87E9F007D0A08 /* InAppCallingConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD7832AD87E9F007D0A08 /* InAppCallingConfiguration.swift */; };
+		D89AD7862AD87E9F007D0A08 /* InAppCalling.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD7842AD87E9F007D0A08 /* InAppCalling.swift */; };
+		D89AD7922AD87EC2007D0A08 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD7912AD87EC2007D0A08 /* Config.swift */; };
+		D89AD7972AD87F5F007D0A08 /* CallViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD7942AD87F5E007D0A08 /* CallViewModel.swift */; };
+		D89AD7982AD87F5F007D0A08 /* CallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD7952AD87F5F007D0A08 /* CallViewController.swift */; };
+		D89AD7992AD87F5F007D0A08 /* CallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D89AD7962AD87F5F007D0A08 /* CallViewController.xib */; };
+		D89AD79E2AD88023007D0A08 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD79C2AD88023007D0A08 /* TitleView.swift */; };
+		D89AD79F2AD88023007D0A08 /* TitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D89AD79D2AD88023007D0A08 /* TitleView.xib */; };
+		D89AD7A22AD880C3007D0A08 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD7A12AD880C3007D0A08 /* UIViewExtension.swift */; };
+		D89AD7A42AD880C8007D0A08 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD7A32AD880C8007D0A08 /* UIViewControllerExtension.swift */; };
+		D89AD7A62AD880E0007D0A08 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD7A52AD880E0007D0A08 /* UIColorExtension.swift */; };
+		D89AD7B02AD88115007D0A08 /* NSErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD7A82AD88114007D0A08 /* NSErrorExtension.swift */; };
+		D89AD7B12AD88115007D0A08 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD7A92AD88114007D0A08 /* Errors.swift */; };
+		D89AD7B42AD88115007D0A08 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD7AC2AD88114007D0A08 /* StringExtension.swift */; };
+		D89AD7B52AD88115007D0A08 /* BundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD7AD2AD88115007D0A08 /* BundleExtension.swift */; };
+		D89AD7B62AD88115007D0A08 /* DeviceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD7AE2AD88115007D0A08 /* DeviceHelper.swift */; };
+		D89AD7BD2AD88194007D0A08 /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD7B92AD88193007D0A08 /* HttpClient.swift */; };
+		D89AD7C42AD881C9007D0A08 /* DTMFView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D89AD7C22AD881C9007D0A08 /* DTMFView.xib */; };
+		D89AD7C52AD881C9007D0A08 /* DTMFView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD7C32AD881C9007D0A08 /* DTMFView.swift */; };
+		D89AD7D32AD88AB0007D0A08 /* CallObserverWeakReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD7D02AD88AB0007D0A08 /* CallObserverWeakReference.swift */; };
+		D89AD7D42AD88AB0007D0A08 /* CallObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD7D12AD88AB0007D0A08 /* CallObserver.swift */; };
+		D89AD7D72AD88AB9007D0A08 /* CallManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD7D62AD88AB9007D0A08 /* CallManager.swift */; };
+		D89AD7D82AD88AB9007D0A08 /* CallState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD7D52AD88AB9007D0A08 /* CallState.swift */; };
+		D89AD7EA2AD88AE9007D0A08 /* MeetingSessionConfigurationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD7E62AD88AE9007D0A08 /* MeetingSessionConfigurationExtension.swift */; };
+		D89AD7EF2AD88B25007D0A08 /* CallStateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD7ED2AD88B25007D0A08 /* CallStateStore.swift */; };
+		D89AD7FF2AD88B65007D0A08 /* CallNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD7FD2AD88B65007D0A08 /* CallNotificationCenter.swift */; };
+		D89AD8052AD88B84007D0A08 /* ParcitipantConnectionCredentialsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD8022AD88B83007D0A08 /* ParcitipantConnectionCredentialsProvider.swift */; };
+		D89AD8062AD88B84007D0A08 /* DTMFSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD8032AD88B84007D0A08 /* DTMFSender.swift */; };
+		D89AD8192AD88BBC007D0A08 /* CreateWebrtcContactRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD8152AD88BBB007D0A08 /* CreateWebrtcContactRequest.swift */; };
+		D89AD81A2AD88BBC007D0A08 /* CreateParticipantConnectionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD8162AD88BBC007D0A08 /* CreateParticipantConnectionResponse.swift */; };
+		D89AD81B2AD88BBC007D0A08 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD8172AD88BBC007D0A08 /* ApiClient.swift */; };
+		D89AD81C2AD88BBC007D0A08 /* CreateWebrtcContactResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD8182AD88BBC007D0A08 /* CreateWebrtcContactResponse.swift */; };
+		D89AD8212AD88BC7007D0A08 /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD81F2AD88BC7007D0A08 /* ServiceProvider.swift */; };
+		D89AD8242AD88BE0007D0A08 /* BackgroundBlurState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD8232AD88BE0007D0A08 /* BackgroundBlurState.swift */; };
+		D89AD8262AD88BE3007D0A08 /* VideoTileStateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD8252AD88BE3007D0A08 /* VideoTileStateType.swift */; };
+		D89AD8412AD88C63007D0A08 /* BgBlurPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD83E2AD88C63007D0A08 /* BgBlurPicker.swift */; };
+		D89AD8422AD88C63007D0A08 /* BgBlurPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = D89AD83F2AD88C63007D0A08 /* BgBlurPicker.xib */; };
+		D89AD8432AD88C63007D0A08 /* BgBlurPickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD8402AD88C63007D0A08 /* BgBlurPickerViewModel.swift */; };
+		D89AD8472AD88C73007D0A08 /* BgBlurPrefCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD8452AD88C73007D0A08 /* BgBlurPrefCell.swift */; };
+		D89AD8482AD88C73007D0A08 /* BgBlurPrefCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D89AD8462AD88C73007D0A08 /* BgBlurPrefCell.xib */; };
+		D89AD84D2AD88C80007D0A08 /* PrefViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD84A2AD88C7F007D0A08 /* PrefViewController.swift */; };
+		D89AD84E2AD88C80007D0A08 /* PrefViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D89AD84B2AD88C7F007D0A08 /* PrefViewController.xib */; };
+		D89AD84F2AD88C80007D0A08 /* PrefViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD84C2AD88C80007D0A08 /* PrefViewModel.swift */; };
+		D89AD8532AD88C8C007D0A08 /* VoiceFocusPrefCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D89AD8512AD88C8C007D0A08 /* VoiceFocusPrefCell.xib */; };
+		D89AD8542AD88C8C007D0A08 /* VoiceFocusPrefCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD8522AD88C8C007D0A08 /* VoiceFocusPrefCell.swift */; };
+		D89AD85D2AD88CC9007D0A08 /* ActionPanelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD8572AD88CC8007D0A08 /* ActionPanelViewModel.swift */; };
+		D89AD85E2AD88CC9007D0A08 /* ActionPanelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD8582AD88CC8007D0A08 /* ActionPanelCell.swift */; };
+		D89AD85F2AD88CC9007D0A08 /* ActionPanelAudioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD8592AD88CC8007D0A08 /* ActionPanelAudioCell.swift */; };
+		D89AD8602AD88CC9007D0A08 /* ActionPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD85A2AD88CC9007D0A08 /* ActionPanelView.swift */; };
+		D89AD8612AD88CC9007D0A08 /* ActionPanelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D89AD85B2AD88CC9007D0A08 /* ActionPanelCell.xib */; };
+		D89AD8622AD88CC9007D0A08 /* ActionPanelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D89AD85C2AD88CC9007D0A08 /* ActionPanelView.xib */; };
+		D89AD8672AD88CDC007D0A08 /* CallInlineErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD8642AD88CDC007D0A08 /* CallInlineErrorView.swift */; };
+		D89AD8682AD88CDC007D0A08 /* CallInlineErrorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD8652AD88CDC007D0A08 /* CallInlineErrorViewModel.swift */; };
+		D89AD8692AD88CDC007D0A08 /* CallInlineErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D89AD8662AD88CDC007D0A08 /* CallInlineErrorView.xib */; };
+		D89AD86D2AD88CF1007D0A08 /* ControlButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = D89AD86B2AD88CF1007D0A08 /* ControlButton.xib */; };
+		D89AD86E2AD88CF1007D0A08 /* ControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD86C2AD88CF1007D0A08 /* ControlButton.swift */; };
+		D89AD8712AD88CFE007D0A08 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD8702AD88CFE007D0A08 /* PaddingLabel.swift */; };
+		D89AD8762AD88D0D007D0A08 /* VideoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD8732AD88D0C007D0A08 /* VideoViewModel.swift */; };
+		D89AD8772AD88D0D007D0A08 /* VideoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D89AD8742AD88D0C007D0A08 /* VideoView.xib */; };
+		D89AD8782AD88D0D007D0A08 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD8752AD88D0D007D0A08 /* VideoView.swift */; };
+		F8B155A708702DCD5DBAFF95 /* Pods_AmazonConnectInAppCallingIOSSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7E9237D9F7578FC9AC0BD69 /* Pods_AmazonConnectInAppCallingIOSSample.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		242EE672C3389640B1124F25 /* Pods-AmazonConnectInAppCallingIOSSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AmazonConnectInAppCallingIOSSample.debug.xcconfig"; path = "Target Support Files/Pods-AmazonConnectInAppCallingIOSSample/Pods-AmazonConnectInAppCallingIOSSample.debug.xcconfig"; sourceTree = "<group>"; };
+		6A9788B02BAA16640038DD43 /* CallKitConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallKitConfiguration.swift; sourceTree = "<group>"; };
+		6A9788B12BAA16640038DD43 /* CallKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallKitManager.swift; sourceTree = "<group>"; };
+		6A9788B22BAA16640038DD43 /* CallKitCallController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallKitCallController.swift; sourceTree = "<group>"; };
+		A1A6AB2AAA65E8F2071EDB58 /* Pods-AmazonConnectInAppCallingIOSSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AmazonConnectInAppCallingIOSSample.release.xcconfig"; path = "Target Support Files/Pods-AmazonConnectInAppCallingIOSSample/Pods-AmazonConnectInAppCallingIOSSample.release.xcconfig"; sourceTree = "<group>"; };
+		C7E9237D9F7578FC9AC0BD69 /* Pods_AmazonConnectInAppCallingIOSSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AmazonConnectInAppCallingIOSSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8439B5A2BB6340500FE5C78 /* DefaultCallController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCallController.swift; sourceTree = "<group>"; };
+		D8439B5C2BB6341900FE5C78 /* CallController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallController.swift; sourceTree = "<group>"; };
+		D877DF762AE0739F00EFD231 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		D89AD75F2AD8794E007D0A08 /* AmazonConnectInAppCallingIOSSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AmazonConnectInAppCallingIOSSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D89AD7622AD8794E007D0A08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D89AD76B2AD8794F007D0A08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D89AD76E2AD8794F007D0A08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D89AD7702AD8794F007D0A08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D89AD77E2AD87D0A007D0A08 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		D89AD7802AD87D34007D0A08 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		D89AD7832AD87E9F007D0A08 /* InAppCallingConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppCallingConfiguration.swift; sourceTree = "<group>"; };
+		D89AD7842AD87E9F007D0A08 /* InAppCalling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppCalling.swift; sourceTree = "<group>"; };
+		D89AD7912AD87EC2007D0A08 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		D89AD7942AD87F5E007D0A08 /* CallViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallViewModel.swift; sourceTree = "<group>"; };
+		D89AD7952AD87F5F007D0A08 /* CallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallViewController.swift; sourceTree = "<group>"; };
+		D89AD7962AD87F5F007D0A08 /* CallViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CallViewController.xib; sourceTree = "<group>"; };
+		D89AD79C2AD88023007D0A08 /* TitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
+		D89AD79D2AD88023007D0A08 /* TitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleView.xib; sourceTree = "<group>"; };
+		D89AD7A12AD880C3007D0A08 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		D89AD7A32AD880C8007D0A08 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		D89AD7A52AD880E0007D0A08 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		D89AD7A82AD88114007D0A08 /* NSErrorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSErrorExtension.swift; sourceTree = "<group>"; };
+		D89AD7A92AD88114007D0A08 /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		D89AD7AC2AD88114007D0A08 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		D89AD7AD2AD88115007D0A08 /* BundleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BundleExtension.swift; sourceTree = "<group>"; };
+		D89AD7AE2AD88115007D0A08 /* DeviceHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceHelper.swift; sourceTree = "<group>"; };
+		D89AD7B92AD88193007D0A08 /* HttpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
+		D89AD7C22AD881C9007D0A08 /* DTMFView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DTMFView.xib; sourceTree = "<group>"; };
+		D89AD7C32AD881C9007D0A08 /* DTMFView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTMFView.swift; sourceTree = "<group>"; };
+		D89AD7D02AD88AB0007D0A08 /* CallObserverWeakReference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallObserverWeakReference.swift; sourceTree = "<group>"; };
+		D89AD7D12AD88AB0007D0A08 /* CallObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallObserver.swift; sourceTree = "<group>"; };
+		D89AD7D52AD88AB9007D0A08 /* CallState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallState.swift; sourceTree = "<group>"; };
+		D89AD7D62AD88AB9007D0A08 /* CallManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallManager.swift; sourceTree = "<group>"; };
+		D89AD7E62AD88AE9007D0A08 /* MeetingSessionConfigurationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingSessionConfigurationExtension.swift; sourceTree = "<group>"; };
+		D89AD7ED2AD88B25007D0A08 /* CallStateStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallStateStore.swift; sourceTree = "<group>"; };
+		D89AD7FD2AD88B65007D0A08 /* CallNotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallNotificationCenter.swift; sourceTree = "<group>"; };
+		D89AD8022AD88B83007D0A08 /* ParcitipantConnectionCredentialsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParcitipantConnectionCredentialsProvider.swift; sourceTree = "<group>"; };
+		D89AD8032AD88B84007D0A08 /* DTMFSender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTMFSender.swift; sourceTree = "<group>"; };
+		D89AD8152AD88BBB007D0A08 /* CreateWebrtcContactRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateWebrtcContactRequest.swift; sourceTree = "<group>"; };
+		D89AD8162AD88BBC007D0A08 /* CreateParticipantConnectionResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateParticipantConnectionResponse.swift; sourceTree = "<group>"; };
+		D89AD8172AD88BBC007D0A08 /* ApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
+		D89AD8182AD88BBC007D0A08 /* CreateWebrtcContactResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateWebrtcContactResponse.swift; sourceTree = "<group>"; };
+		D89AD81F2AD88BC7007D0A08 /* ServiceProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceProvider.swift; sourceTree = "<group>"; };
+		D89AD8232AD88BE0007D0A08 /* BackgroundBlurState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundBlurState.swift; sourceTree = "<group>"; };
+		D89AD8252AD88BE3007D0A08 /* VideoTileStateType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTileStateType.swift; sourceTree = "<group>"; };
+		D89AD83E2AD88C63007D0A08 /* BgBlurPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BgBlurPicker.swift; sourceTree = "<group>"; };
+		D89AD83F2AD88C63007D0A08 /* BgBlurPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BgBlurPicker.xib; sourceTree = "<group>"; };
+		D89AD8402AD88C63007D0A08 /* BgBlurPickerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BgBlurPickerViewModel.swift; sourceTree = "<group>"; };
+		D89AD8452AD88C73007D0A08 /* BgBlurPrefCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BgBlurPrefCell.swift; sourceTree = "<group>"; };
+		D89AD8462AD88C73007D0A08 /* BgBlurPrefCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BgBlurPrefCell.xib; sourceTree = "<group>"; };
+		D89AD84A2AD88C7F007D0A08 /* PrefViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrefViewController.swift; sourceTree = "<group>"; };
+		D89AD84B2AD88C7F007D0A08 /* PrefViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PrefViewController.xib; sourceTree = "<group>"; };
+		D89AD84C2AD88C80007D0A08 /* PrefViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrefViewModel.swift; sourceTree = "<group>"; };
+		D89AD8512AD88C8C007D0A08 /* VoiceFocusPrefCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VoiceFocusPrefCell.xib; sourceTree = "<group>"; };
+		D89AD8522AD88C8C007D0A08 /* VoiceFocusPrefCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoiceFocusPrefCell.swift; sourceTree = "<group>"; };
+		D89AD8572AD88CC8007D0A08 /* ActionPanelViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionPanelViewModel.swift; sourceTree = "<group>"; };
+		D89AD8582AD88CC8007D0A08 /* ActionPanelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionPanelCell.swift; sourceTree = "<group>"; };
+		D89AD8592AD88CC8007D0A08 /* ActionPanelAudioCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionPanelAudioCell.swift; sourceTree = "<group>"; };
+		D89AD85A2AD88CC9007D0A08 /* ActionPanelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionPanelView.swift; sourceTree = "<group>"; };
+		D89AD85B2AD88CC9007D0A08 /* ActionPanelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionPanelCell.xib; sourceTree = "<group>"; };
+		D89AD85C2AD88CC9007D0A08 /* ActionPanelView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionPanelView.xib; sourceTree = "<group>"; };
+		D89AD8642AD88CDC007D0A08 /* CallInlineErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallInlineErrorView.swift; sourceTree = "<group>"; };
+		D89AD8652AD88CDC007D0A08 /* CallInlineErrorViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallInlineErrorViewModel.swift; sourceTree = "<group>"; };
+		D89AD8662AD88CDC007D0A08 /* CallInlineErrorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CallInlineErrorView.xib; sourceTree = "<group>"; };
+		D89AD86B2AD88CF1007D0A08 /* ControlButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ControlButton.xib; sourceTree = "<group>"; };
+		D89AD86C2AD88CF1007D0A08 /* ControlButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlButton.swift; sourceTree = "<group>"; };
+		D89AD8702AD88CFE007D0A08 /* PaddingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
+		D89AD8732AD88D0C007D0A08 /* VideoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoViewModel.swift; sourceTree = "<group>"; };
+		D89AD8742AD88D0C007D0A08 /* VideoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoView.xib; sourceTree = "<group>"; };
+		D89AD8752AD88D0D007D0A08 /* VideoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D89AD75C2AD8794E007D0A08 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F8B155A708702DCD5DBAFF95 /* Pods_AmazonConnectInAppCallingIOSSample.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		176041EE98537CB0F04546E2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				242EE672C3389640B1124F25 /* Pods-AmazonConnectInAppCallingIOSSample.debug.xcconfig */,
+				A1A6AB2AAA65E8F2071EDB58 /* Pods-AmazonConnectInAppCallingIOSSample.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		2B16B97CD583A9F767F8D432 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C7E9237D9F7578FC9AC0BD69 /* Pods_AmazonConnectInAppCallingIOSSample.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6A9788AF2BAA16640038DD43 /* CallController */ = {
+			isa = PBXGroup;
+			children = (
+				6A9788B02BAA16640038DD43 /* CallKitConfiguration.swift */,
+				6A9788B12BAA16640038DD43 /* CallKitManager.swift */,
+				6A9788B22BAA16640038DD43 /* CallKitCallController.swift */,
+				D8439B5A2BB6340500FE5C78 /* DefaultCallController.swift */,
+				D8439B5C2BB6341900FE5C78 /* CallController.swift */,
+			);
+			path = CallController;
+			sourceTree = "<group>";
+		};
+		D89AD7562AD8794E007D0A08 = {
+			isa = PBXGroup;
+			children = (
+				D89AD7612AD8794E007D0A08 /* AmazonConnectInAppCallingIOSSample */,
+				D89AD7602AD8794E007D0A08 /* Products */,
+				176041EE98537CB0F04546E2 /* Pods */,
+				2B16B97CD583A9F767F8D432 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		D89AD7602AD8794E007D0A08 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D89AD75F2AD8794E007D0A08 /* AmazonConnectInAppCallingIOSSample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D89AD7612AD8794E007D0A08 /* AmazonConnectInAppCallingIOSSample */ = {
+			isa = PBXGroup;
+			children = (
+				D89AD7CC2AD882C9007D0A08 /* InAppCallingComponent */,
+				D89AD7622AD8794E007D0A08 /* AppDelegate.swift */,
+				D89AD7912AD87EC2007D0A08 /* Config.swift */,
+				D89AD7802AD87D34007D0A08 /* MainViewController.swift */,
+				D89AD77E2AD87D0A007D0A08 /* Main.storyboard */,
+				D89AD76D2AD8794F007D0A08 /* LaunchScreen.storyboard */,
+				D89AD76B2AD8794F007D0A08 /* Assets.xcassets */,
+				D89AD7702AD8794F007D0A08 /* Info.plist */,
+				D877DF762AE0739F00EFD231 /* SceneDelegate.swift */,
+			);
+			path = AmazonConnectInAppCallingIOSSample;
+			sourceTree = "<group>";
+		};
+		D89AD7932AD87F3E007D0A08 /* CallViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D89AD7952AD87F5F007D0A08 /* CallViewController.swift */,
+				D89AD7962AD87F5F007D0A08 /* CallViewController.xib */,
+				D89AD7942AD87F5E007D0A08 /* CallViewModel.swift */,
+			);
+			path = CallViewController;
+			sourceTree = "<group>";
+		};
+		D89AD79B2AD88017007D0A08 /* TitleView */ = {
+			isa = PBXGroup;
+			children = (
+				D89AD79C2AD88023007D0A08 /* TitleView.swift */,
+				D89AD79D2AD88023007D0A08 /* TitleView.xib */,
+			);
+			path = TitleView;
+			sourceTree = "<group>";
+		};
+		D89AD7A02AD880AB007D0A08 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				D89AD7A52AD880E0007D0A08 /* UIColorExtension.swift */,
+				D89AD7A32AD880C8007D0A08 /* UIViewControllerExtension.swift */,
+				D89AD7A12AD880C3007D0A08 /* UIViewExtension.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		D89AD7A72AD8810B007D0A08 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				D89AD7B92AD88193007D0A08 /* HttpClient.swift */,
+				D89AD7AD2AD88115007D0A08 /* BundleExtension.swift */,
+				D89AD7AE2AD88115007D0A08 /* DeviceHelper.swift */,
+				D89AD7A92AD88114007D0A08 /* Errors.swift */,
+				D89AD7A82AD88114007D0A08 /* NSErrorExtension.swift */,
+				D89AD7AC2AD88114007D0A08 /* StringExtension.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		D89AD7C12AD881C1007D0A08 /* DTMF */ = {
+			isa = PBXGroup;
+			children = (
+				D89AD7C32AD881C9007D0A08 /* DTMFView.swift */,
+				D89AD7C22AD881C9007D0A08 /* DTMFView.xib */,
+			);
+			path = DTMF;
+			sourceTree = "<group>";
+		};
+		D89AD7CC2AD882C9007D0A08 /* InAppCallingComponent */ = {
+			isa = PBXGroup;
+			children = (
+				D89AD7842AD87E9F007D0A08 /* InAppCalling.swift */,
+				D89AD7832AD87E9F007D0A08 /* InAppCallingConfiguration.swift */,
+				D89AD83B2AD88C3D007D0A08 /* UI */,
+				D89AD7CD2AD88A91007D0A08 /* Services */,
+				D89AD7A72AD8810B007D0A08 /* Utils */,
+			);
+			path = InAppCallingComponent;
+			sourceTree = "<group>";
+		};
+		D89AD7CD2AD88A91007D0A08 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D89AD81D2AD88BBE007D0A08 /* ServiceProvider */,
+				D89AD8142AD88BAC007D0A08 /* Api */,
+				D89AD8002AD88B7A007D0A08 /* DTMFSender */,
+				D89AD7CE2AD88AA7007D0A08 /* Call */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		D89AD7CE2AD88AA7007D0A08 /* Call */ = {
+			isa = PBXGroup;
+			children = (
+				6A9788AF2BAA16640038DD43 /* CallController */,
+				D89AD7FB2AD88B5A007D0A08 /* CallNotification */,
+				D89AD7EB2AD88B1E007D0A08 /* CallStateStore */,
+				D89AD7D62AD88AB9007D0A08 /* CallManager.swift */,
+				D89AD7E62AD88AE9007D0A08 /* MeetingSessionConfigurationExtension.swift */,
+			);
+			path = Call;
+			sourceTree = "<group>";
+		};
+		D89AD7EB2AD88B1E007D0A08 /* CallStateStore */ = {
+			isa = PBXGroup;
+			children = (
+				D89AD8232AD88BE0007D0A08 /* BackgroundBlurState.swift */,
+				D89AD8252AD88BE3007D0A08 /* VideoTileStateType.swift */,
+				D89AD7D52AD88AB9007D0A08 /* CallState.swift */,
+				D89AD7ED2AD88B25007D0A08 /* CallStateStore.swift */,
+			);
+			path = CallStateStore;
+			sourceTree = "<group>";
+		};
+		D89AD7FB2AD88B5A007D0A08 /* CallNotification */ = {
+			isa = PBXGroup;
+			children = (
+				D89AD7FD2AD88B65007D0A08 /* CallNotificationCenter.swift */,
+				D89AD7D12AD88AB0007D0A08 /* CallObserver.swift */,
+				D89AD7D02AD88AB0007D0A08 /* CallObserverWeakReference.swift */,
+			);
+			path = CallNotification;
+			sourceTree = "<group>";
+		};
+		D89AD8002AD88B7A007D0A08 /* DTMFSender */ = {
+			isa = PBXGroup;
+			children = (
+				D89AD8032AD88B84007D0A08 /* DTMFSender.swift */,
+				D89AD8022AD88B83007D0A08 /* ParcitipantConnectionCredentialsProvider.swift */,
+			);
+			path = DTMFSender;
+			sourceTree = "<group>";
+		};
+		D89AD8142AD88BAC007D0A08 /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				D89AD8172AD88BBC007D0A08 /* ApiClient.swift */,
+				D89AD8162AD88BBC007D0A08 /* CreateParticipantConnectionResponse.swift */,
+				D89AD8152AD88BBB007D0A08 /* CreateWebrtcContactRequest.swift */,
+				D89AD8182AD88BBC007D0A08 /* CreateWebrtcContactResponse.swift */,
+			);
+			path = Api;
+			sourceTree = "<group>";
+		};
+		D89AD81D2AD88BBE007D0A08 /* ServiceProvider */ = {
+			isa = PBXGroup;
+			children = (
+				D89AD81F2AD88BC7007D0A08 /* ServiceProvider.swift */,
+			);
+			path = ServiceProvider;
+			sourceTree = "<group>";
+		};
+		D89AD83B2AD88C3D007D0A08 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				D89AD8562AD88CAF007D0A08 /* Call */,
+				D89AD7C12AD881C1007D0A08 /* DTMF */,
+				D89AD83C2AD88C54007D0A08 /* Preferences */,
+				D89AD86F2AD88CF8007D0A08 /* Shared */,
+				D89AD7A02AD880AB007D0A08 /* Utils */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		D89AD83C2AD88C54007D0A08 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				D89AD8502AD88C86007D0A08 /* VoiceFocusPrefCell */,
+				D89AD8492AD88C79007D0A08 /* PrefViewController */,
+				D89AD8442AD88C6C007D0A08 /* BgBlurPrefCell */,
+				D89AD83D2AD88C5D007D0A08 /* BgBlurPicker */,
+			);
+			path = Preferences;
+			sourceTree = "<group>";
+		};
+		D89AD83D2AD88C5D007D0A08 /* BgBlurPicker */ = {
+			isa = PBXGroup;
+			children = (
+				D89AD83E2AD88C63007D0A08 /* BgBlurPicker.swift */,
+				D89AD83F2AD88C63007D0A08 /* BgBlurPicker.xib */,
+				D89AD8402AD88C63007D0A08 /* BgBlurPickerViewModel.swift */,
+			);
+			path = BgBlurPicker;
+			sourceTree = "<group>";
+		};
+		D89AD8442AD88C6C007D0A08 /* BgBlurPrefCell */ = {
+			isa = PBXGroup;
+			children = (
+				D89AD8452AD88C73007D0A08 /* BgBlurPrefCell.swift */,
+				D89AD8462AD88C73007D0A08 /* BgBlurPrefCell.xib */,
+			);
+			path = BgBlurPrefCell;
+			sourceTree = "<group>";
+		};
+		D89AD8492AD88C79007D0A08 /* PrefViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D89AD84A2AD88C7F007D0A08 /* PrefViewController.swift */,
+				D89AD84B2AD88C7F007D0A08 /* PrefViewController.xib */,
+				D89AD84C2AD88C80007D0A08 /* PrefViewModel.swift */,
+			);
+			path = PrefViewController;
+			sourceTree = "<group>";
+		};
+		D89AD8502AD88C86007D0A08 /* VoiceFocusPrefCell */ = {
+			isa = PBXGroup;
+			children = (
+				D89AD8522AD88C8C007D0A08 /* VoiceFocusPrefCell.swift */,
+				D89AD8512AD88C8C007D0A08 /* VoiceFocusPrefCell.xib */,
+			);
+			path = VoiceFocusPrefCell;
+			sourceTree = "<group>";
+		};
+		D89AD8552AD88C9D007D0A08 /* ActionPanel */ = {
+			isa = PBXGroup;
+			children = (
+				D89AD8592AD88CC8007D0A08 /* ActionPanelAudioCell.swift */,
+				D89AD8582AD88CC8007D0A08 /* ActionPanelCell.swift */,
+				D89AD85B2AD88CC9007D0A08 /* ActionPanelCell.xib */,
+				D89AD85A2AD88CC9007D0A08 /* ActionPanelView.swift */,
+				D89AD85C2AD88CC9007D0A08 /* ActionPanelView.xib */,
+				D89AD8572AD88CC8007D0A08 /* ActionPanelViewModel.swift */,
+			);
+			path = ActionPanel;
+			sourceTree = "<group>";
+		};
+		D89AD8562AD88CAF007D0A08 /* Call */ = {
+			isa = PBXGroup;
+			children = (
+				D89AD7932AD87F3E007D0A08 /* CallViewController */,
+				D89AD8722AD88D03007D0A08 /* VideoView */,
+				D89AD86A2AD88CE6007D0A08 /* ControlButton */,
+				D89AD8632AD88CD2007D0A08 /* CallInlineErrorView */,
+				D89AD8552AD88C9D007D0A08 /* ActionPanel */,
+			);
+			path = Call;
+			sourceTree = "<group>";
+		};
+		D89AD8632AD88CD2007D0A08 /* CallInlineErrorView */ = {
+			isa = PBXGroup;
+			children = (
+				D89AD8642AD88CDC007D0A08 /* CallInlineErrorView.swift */,
+				D89AD8662AD88CDC007D0A08 /* CallInlineErrorView.xib */,
+				D89AD8652AD88CDC007D0A08 /* CallInlineErrorViewModel.swift */,
+			);
+			path = CallInlineErrorView;
+			sourceTree = "<group>";
+		};
+		D89AD86A2AD88CE6007D0A08 /* ControlButton */ = {
+			isa = PBXGroup;
+			children = (
+				D89AD86C2AD88CF1007D0A08 /* ControlButton.swift */,
+				D89AD86B2AD88CF1007D0A08 /* ControlButton.xib */,
+			);
+			path = ControlButton;
+			sourceTree = "<group>";
+		};
+		D89AD86F2AD88CF8007D0A08 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				D89AD79B2AD88017007D0A08 /* TitleView */,
+				D89AD8702AD88CFE007D0A08 /* PaddingLabel.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		D89AD8722AD88D03007D0A08 /* VideoView */ = {
+			isa = PBXGroup;
+			children = (
+				D89AD8752AD88D0D007D0A08 /* VideoView.swift */,
+				D89AD8742AD88D0C007D0A08 /* VideoView.xib */,
+				D89AD8732AD88D0C007D0A08 /* VideoViewModel.swift */,
+			);
+			path = VideoView;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D89AD75E2AD8794E007D0A08 /* AmazonConnectInAppCallingIOSSample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D89AD7732AD8794F007D0A08 /* Build configuration list for PBXNativeTarget "AmazonConnectInAppCallingIOSSample" */;
+			buildPhases = (
+				2F8542A47622DCDFDC341280 /* [CP] Check Pods Manifest.lock */,
+				D89AD75B2AD8794E007D0A08 /* Sources */,
+				D89AD75C2AD8794E007D0A08 /* Frameworks */,
+				D89AD75D2AD8794E007D0A08 /* Resources */,
+				286CAFE66723D4ED93B4F6D6 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AmazonConnectInAppCallingIOSSample;
+			productName = AmazonConnectInAppCallingIOSSample;
+			productReference = D89AD75F2AD8794E007D0A08 /* AmazonConnectInAppCallingIOSSample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D89AD7572AD8794E007D0A08 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					D89AD75E2AD8794E007D0A08 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = D89AD75A2AD8794E007D0A08 /* Build configuration list for PBXProject "AmazonConnectInAppCallingIOSSample" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D89AD7562AD8794E007D0A08;
+			productRefGroup = D89AD7602AD8794E007D0A08 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D89AD75E2AD8794E007D0A08 /* AmazonConnectInAppCallingIOSSample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D89AD75D2AD8794E007D0A08 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D89AD8772AD88D0D007D0A08 /* VideoView.xib in Resources */,
+				D89AD8482AD88C73007D0A08 /* BgBlurPrefCell.xib in Resources */,
+				D89AD8622AD88CC9007D0A08 /* ActionPanelView.xib in Resources */,
+				D89AD7992AD87F5F007D0A08 /* CallViewController.xib in Resources */,
+				D89AD8612AD88CC9007D0A08 /* ActionPanelCell.xib in Resources */,
+				D89AD7C42AD881C9007D0A08 /* DTMFView.xib in Resources */,
+				D89AD86D2AD88CF1007D0A08 /* ControlButton.xib in Resources */,
+				D89AD8692AD88CDC007D0A08 /* CallInlineErrorView.xib in Resources */,
+				D89AD76F2AD8794F007D0A08 /* LaunchScreen.storyboard in Resources */,
+				D89AD8532AD88C8C007D0A08 /* VoiceFocusPrefCell.xib in Resources */,
+				D89AD79F2AD88023007D0A08 /* TitleView.xib in Resources */,
+				D89AD84E2AD88C80007D0A08 /* PrefViewController.xib in Resources */,
+				D89AD76C2AD8794F007D0A08 /* Assets.xcassets in Resources */,
+				D89AD8422AD88C63007D0A08 /* BgBlurPicker.xib in Resources */,
+				D89AD77F2AD87D0A007D0A08 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		286CAFE66723D4ED93B4F6D6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AmazonConnectInAppCallingIOSSample/Pods-AmazonConnectInAppCallingIOSSample-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AmazonConnectInAppCallingIOSSample/Pods-AmazonConnectInAppCallingIOSSample-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AmazonConnectInAppCallingIOSSample/Pods-AmazonConnectInAppCallingIOSSample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2F8542A47622DCDFDC341280 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AmazonConnectInAppCallingIOSSample-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D89AD75B2AD8794E007D0A08 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D89AD7D82AD88AB9007D0A08 /* CallState.swift in Sources */,
+				D89AD7B62AD88115007D0A08 /* DeviceHelper.swift in Sources */,
+				D89AD7B12AD88115007D0A08 /* Errors.swift in Sources */,
+				D89AD79E2AD88023007D0A08 /* TitleView.swift in Sources */,
+				D89AD8782AD88D0D007D0A08 /* VideoView.swift in Sources */,
+				D89AD7D32AD88AB0007D0A08 /* CallObserverWeakReference.swift in Sources */,
+				D89AD7A22AD880C3007D0A08 /* UIViewExtension.swift in Sources */,
+				D89AD84D2AD88C80007D0A08 /* PrefViewController.swift in Sources */,
+				D89AD7852AD87E9F007D0A08 /* InAppCallingConfiguration.swift in Sources */,
+				D89AD8602AD88CC9007D0A08 /* ActionPanelView.swift in Sources */,
+				D89AD7EA2AD88AE9007D0A08 /* MeetingSessionConfigurationExtension.swift in Sources */,
+				D89AD8242AD88BE0007D0A08 /* BackgroundBlurState.swift in Sources */,
+				D8439B5B2BB6340500FE5C78 /* DefaultCallController.swift in Sources */,
+				D89AD8412AD88C63007D0A08 /* BgBlurPicker.swift in Sources */,
+				D89AD7C52AD881C9007D0A08 /* DTMFView.swift in Sources */,
+				D89AD7982AD87F5F007D0A08 /* CallViewController.swift in Sources */,
+				D89AD7632AD8794E007D0A08 /* AppDelegate.swift in Sources */,
+				D89AD8212AD88BC7007D0A08 /* ServiceProvider.swift in Sources */,
+				D877DF772AE0739F00EFD231 /* SceneDelegate.swift in Sources */,
+				D89AD8062AD88B84007D0A08 /* DTMFSender.swift in Sources */,
+				D89AD85E2AD88CC9007D0A08 /* ActionPanelCell.swift in Sources */,
+				D89AD7A62AD880E0007D0A08 /* UIColorExtension.swift in Sources */,
+				D89AD8262AD88BE3007D0A08 /* VideoTileStateType.swift in Sources */,
+				D8439B5D2BB6341900FE5C78 /* CallController.swift in Sources */,
+				D89AD8682AD88CDC007D0A08 /* CallInlineErrorViewModel.swift in Sources */,
+				D89AD8432AD88C63007D0A08 /* BgBlurPickerViewModel.swift in Sources */,
+				D89AD8672AD88CDC007D0A08 /* CallInlineErrorView.swift in Sources */,
+				D89AD85D2AD88CC9007D0A08 /* ActionPanelViewModel.swift in Sources */,
+				6A9788B42BAA16640038DD43 /* CallKitManager.swift in Sources */,
+				D89AD7B42AD88115007D0A08 /* StringExtension.swift in Sources */,
+				D89AD7972AD87F5F007D0A08 /* CallViewModel.swift in Sources */,
+				D89AD7922AD87EC2007D0A08 /* Config.swift in Sources */,
+				D89AD81A2AD88BBC007D0A08 /* CreateParticipantConnectionResponse.swift in Sources */,
+				D89AD86E2AD88CF1007D0A08 /* ControlButton.swift in Sources */,
+				D89AD7B52AD88115007D0A08 /* BundleExtension.swift in Sources */,
+				D89AD84F2AD88C80007D0A08 /* PrefViewModel.swift in Sources */,
+				D89AD7A42AD880C8007D0A08 /* UIViewControllerExtension.swift in Sources */,
+				D89AD8052AD88B84007D0A08 /* ParcitipantConnectionCredentialsProvider.swift in Sources */,
+				D89AD7EF2AD88B25007D0A08 /* CallStateStore.swift in Sources */,
+				D89AD7D42AD88AB0007D0A08 /* CallObserver.swift in Sources */,
+				D89AD7FF2AD88B65007D0A08 /* CallNotificationCenter.swift in Sources */,
+				D89AD85F2AD88CC9007D0A08 /* ActionPanelAudioCell.swift in Sources */,
+				D89AD7D72AD88AB9007D0A08 /* CallManager.swift in Sources */,
+				D89AD8472AD88C73007D0A08 /* BgBlurPrefCell.swift in Sources */,
+				D89AD7B02AD88115007D0A08 /* NSErrorExtension.swift in Sources */,
+				D89AD8192AD88BBC007D0A08 /* CreateWebrtcContactRequest.swift in Sources */,
+				6A9788B52BAA16640038DD43 /* CallKitCallController.swift in Sources */,
+				D89AD8712AD88CFE007D0A08 /* PaddingLabel.swift in Sources */,
+				D89AD7862AD87E9F007D0A08 /* InAppCalling.swift in Sources */,
+				D89AD7BD2AD88194007D0A08 /* HttpClient.swift in Sources */,
+				D89AD81C2AD88BBC007D0A08 /* CreateWebrtcContactResponse.swift in Sources */,
+				D89AD8542AD88C8C007D0A08 /* VoiceFocusPrefCell.swift in Sources */,
+				D89AD7812AD87D34007D0A08 /* MainViewController.swift in Sources */,
+				6A9788B32BAA16640038DD43 /* CallKitConfiguration.swift in Sources */,
+				D89AD8762AD88D0D007D0A08 /* VideoViewModel.swift in Sources */,
+				D89AD81B2AD88BBC007D0A08 /* ApiClient.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		D89AD76D2AD8794F007D0A08 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D89AD76E2AD8794F007D0A08 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D89AD7712AD8794F007D0A08 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D89AD7722AD8794F007D0A08 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D89AD7742AD8794F007D0A08 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 242EE672C3389640B1124F25 /* Pods-AmazonConnectInAppCallingIOSSample.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AmazonConnectInAppCallingIOSSample/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Use camera for video call";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Use microphone for audio call";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.amazonaws.services.InAppCallingIOSSample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		D89AD7752AD8794F007D0A08 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A1A6AB2AAA65E8F2071EDB58 /* Pods-AmazonConnectInAppCallingIOSSample.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AmazonConnectInAppCallingIOSSample/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Use camera for video call";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Use microphone for audio call";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.amazonaws.services.InAppCallingIOSSample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D89AD75A2AD8794E007D0A08 /* Build configuration list for PBXProject "AmazonConnectInAppCallingIOSSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D89AD7712AD8794F007D0A08 /* Debug */,
+				D89AD7722AD8794F007D0A08 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D89AD7732AD8794F007D0A08 /* Build configuration list for PBXNativeTarget "AmazonConnectInAppCallingIOSSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D89AD7742AD8794F007D0A08 /* Debug */,
+				D89AD7752AD8794F007D0A08 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D89AD7572AD8794E007D0A08 /* Project object */;
+}

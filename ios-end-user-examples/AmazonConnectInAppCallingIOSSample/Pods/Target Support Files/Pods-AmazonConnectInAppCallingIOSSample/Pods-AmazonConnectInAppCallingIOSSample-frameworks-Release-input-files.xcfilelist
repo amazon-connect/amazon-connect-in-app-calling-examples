@@ -1,0 +1,3 @@
+${PODS_ROOT}/Target Support Files/Pods-AmazonConnectInAppCallingIOSSample/Pods-AmazonConnectInAppCallingIOSSample-frameworks.sh
+${PODS_XCFRAMEWORKS_BUILD_DIR}/AmazonChimeSDK-No-Bitcode/AmazonChimeSDK.framework/AmazonChimeSDK
+${PODS_XCFRAMEWORKS_BUILD_DIR}/AmazonChimeSDKMedia-No-Bitcode/AmazonChimeSDKMedia.framework/AmazonChimeSDKMedia

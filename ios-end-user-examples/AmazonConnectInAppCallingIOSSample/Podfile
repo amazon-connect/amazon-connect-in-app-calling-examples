@@ -1,0 +1,12 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '13.0'
+
+target 'AmazonConnectInAppCallingIOSSample' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for AmazonConnectInAppCallingIOSSample
+  pod 'AmazonChimeSDK-No-Bitcode', '0.23.0'
+  pod 'AmazonChimeSDKMachineLearning-No-Bitcode', '0.2.0'
+
+end

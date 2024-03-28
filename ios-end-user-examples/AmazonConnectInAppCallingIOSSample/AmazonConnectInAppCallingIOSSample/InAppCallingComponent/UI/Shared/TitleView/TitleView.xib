@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TitleView" customModule="AmazonConnectInAppCallingIOSSample" customModuleProvider="target">
+            <connections>
+                <outlet property="actionContainerView" destination="mpW-tT-Y3D" id="M7a-jf-cgC"/>
+                <outlet property="actionImageView" destination="m5h-MT-CtE" id="EVm-7Y-DoF"/>
+                <outlet property="contentView" destination="R6O-P3-OHc" id="JfG-6w-BtK"/>
+                <outlet property="titleLabel" destination="XDR-bb-vvJ" id="MWf-he-p0t"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="R6O-P3-OHc">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="73"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="XDR-bb-vvJ" userLabel="TitleLabel">
+                    <rect key="frame" x="16" y="16" width="43.5" height="41"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" id="ChC-gM-qlJ"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" id="W2z-Hz-2OL"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mpW-tT-Y3D" userLabel="ActionContainerView" customClass="UIControl">
+                    <rect key="frame" x="354" y="14.5" width="44" height="44"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m5h-MT-CtE">
+                            <rect key="frame" x="14" y="14" width="16" height="16"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="16" id="BeK-YQ-x4o"/>
+                                <constraint firstAttribute="width" secondItem="m5h-MT-CtE" secondAttribute="height" multiplier="1:1" id="wjT-0N-CfA"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <accessibility key="accessibilityConfiguration">
+                        <bool key="isElement" value="YES"/>
+                    </accessibility>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="7B0-c9-TfW"/>
+                        <constraint firstItem="m5h-MT-CtE" firstAttribute="centerY" secondItem="mpW-tT-Y3D" secondAttribute="centerY" id="g7r-Mv-Umj"/>
+                        <constraint firstItem="m5h-MT-CtE" firstAttribute="centerX" secondItem="mpW-tT-Y3D" secondAttribute="centerX" id="rN5-34-K5p"/>
+                        <constraint firstAttribute="width" constant="44" id="rff-RP-Xeg"/>
+                    </constraints>
+                    <connections>
+                        <action selector="actionButtonTapped:" destination="-1" eventType="touchUpInside" id="B6g-1r-IjG"/>
+                    </connections>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="hxx-rb-eeg"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="XDR-bb-vvJ" firstAttribute="top" secondItem="R6O-P3-OHc" secondAttribute="top" constant="16" id="0M0-tW-nca"/>
+                <constraint firstAttribute="bottom" secondItem="XDR-bb-vvJ" secondAttribute="bottom" constant="16" id="7L1-nZ-Dgt"/>
+                <constraint firstItem="mpW-tT-Y3D" firstAttribute="left" relation="greaterThanOrEqual" secondItem="XDR-bb-vvJ" secondAttribute="right" constant="24" id="KfC-w9-81y"/>
+                <constraint firstAttribute="right" secondItem="mpW-tT-Y3D" secondAttribute="right" constant="16" id="O2n-lP-KPb"/>
+                <constraint firstItem="mpW-tT-Y3D" firstAttribute="centerY" secondItem="R6O-P3-OHc" secondAttribute="centerY" id="aKi-Sq-MUw"/>
+                <constraint firstItem="XDR-bb-vvJ" firstAttribute="left" secondItem="R6O-P3-OHc" secondAttribute="left" constant="16" id="z8h-AB-mtF"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="97" y="-37"/>
+        </view>
+    </objects>
+</document>

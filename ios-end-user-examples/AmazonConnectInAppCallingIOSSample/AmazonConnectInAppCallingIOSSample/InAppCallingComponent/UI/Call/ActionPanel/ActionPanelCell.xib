@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ActionPanelCell" customModule="AmazonConnectInAppCallingIOSSample" customModuleProvider="target">
+            <connections>
+                <outlet property="actionButton" destination="Cb8-Wh-8Rg" id="RYK-0V-MRe"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX">
+            <rect key="frame" x="0.0" y="0.0" width="80" height="86"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="80" height="86"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cb8-Wh-8Rg" customClass="ControlButton" customModule="AmazonConnectInAppCallingIOSSample" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="80" height="86"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <connections>
+                            <action selector="buttonTapped:" destination="-1" eventType="touchUpInside" id="mpv-Xc-vNk"/>
+                        </connections>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="Cb8-Wh-8Rg" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" id="EXY-wp-KNe"/>
+                <constraint firstItem="Cb8-Wh-8Rg" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" id="JyB-cT-dU9"/>
+                <constraint firstItem="Cb8-Wh-8Rg" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="pa0-2r-YvL"/>
+                <constraint firstItem="Cb8-Wh-8Rg" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="zKe-cG-pDR"/>
+            </constraints>
+            <size key="customSize" width="117" height="125"/>
+            <point key="canvasLocation" x="190.07633587786259" y="-5.9859154929577469"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

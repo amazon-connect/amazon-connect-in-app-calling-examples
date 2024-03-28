@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VideoView" customModule="AmazonChimeSDKEngagementComponent" customModuleProvider="target">
+            <connections>
+                <outlet property="localVideoContainer" destination="SOG-cC-0Vq" id="G7g-qY-teJ"/>
+                <outlet property="localVideoView" destination="NrG-PB-dbV" id="SqJ-lI-LxO"/>
+                <outlet property="remoteVideoPlaceHolderImageView" destination="Ehy-08-Lux" id="QUa-2P-Mtu"/>
+                <outlet property="remoteVideoView" destination="SHg-fz-SVg" id="hhi-1w-CCW"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="390" height="205"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SHg-fz-SVg" userLabel="RemoteVideoView" customClass="DefaultVideoRenderView" customModule="AmazonChimeSDK">
+                    <rect key="frame" x="0.0" y="0.0" width="390" height="205"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="remote-video-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Ehy-08-Lux">
+                    <rect key="frame" x="115" y="30.666666666666671" width="160" height="143.66666666666663"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="160" id="bpE-FM-ic2"/>
+                    </constraints>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SOG-cC-0Vq" userLabel="LocalVideoContainer" customClass="UIControl">
+                    <rect key="frame" x="16" y="16" width="72" height="84"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NrG-PB-dbV" customClass="DefaultVideoRenderView" customModule="AmazonChimeSDK">
+                            <rect key="frame" x="0.0" y="0.0" width="72" height="84"/>
+                        </imageView>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera-switch" translatesAutoresizingMaskIntoConstraints="NO" id="TgA-Cr-uVh">
+                            <rect key="frame" x="4" y="4" width="24" height="24"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="24" id="N5y-24-d3E"/>
+                                <constraint firstAttribute="width" constant="24" id="Ya0-7A-psp"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <accessibility key="accessibilityConfiguration">
+                        <bool key="isElement" value="YES"/>
+                    </accessibility>
+                    <constraints>
+                        <constraint firstItem="TgA-Cr-uVh" firstAttribute="top" secondItem="SOG-cC-0Vq" secondAttribute="top" constant="4" id="AVL-ek-HFP"/>
+                        <constraint firstItem="NrG-PB-dbV" firstAttribute="leading" secondItem="SOG-cC-0Vq" secondAttribute="leading" id="Ejf-B4-on3"/>
+                        <constraint firstItem="TgA-Cr-uVh" firstAttribute="left" secondItem="SOG-cC-0Vq" secondAttribute="left" constant="4" id="JYb-le-HJp"/>
+                        <constraint firstAttribute="width" constant="72" id="NEt-d6-kAh"/>
+                        <constraint firstAttribute="trailing" secondItem="NrG-PB-dbV" secondAttribute="trailing" id="V54-AU-diL"/>
+                        <constraint firstAttribute="bottom" secondItem="NrG-PB-dbV" secondAttribute="bottom" id="Wx2-cQ-lX7"/>
+                        <constraint firstItem="NrG-PB-dbV" firstAttribute="top" secondItem="SOG-cC-0Vq" secondAttribute="top" id="nmO-jA-M4n"/>
+                        <constraint firstAttribute="height" constant="84" id="pvA-uD-Nvy"/>
+                    </constraints>
+                    <connections>
+                        <action selector="localVideoContainerTapped:" destination="-1" eventType="touchUpInside" id="BZG-TX-9Cp"/>
+                    </connections>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" red="0.84705882352941175" green="0.84705882352941175" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="SHg-fz-SVg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="2hE-0i-rFu"/>
+                <constraint firstItem="SOG-cC-0Vq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="7Kb-zJ-wxW"/>
+                <constraint firstItem="Ehy-08-Lux" firstAttribute="centerY" secondItem="SHg-fz-SVg" secondAttribute="centerY" id="Edu-J8-zbu"/>
+                <constraint firstAttribute="trailing" secondItem="SHg-fz-SVg" secondAttribute="trailing" id="Iuz-f4-xgc"/>
+                <constraint firstAttribute="bottom" secondItem="SHg-fz-SVg" secondAttribute="bottom" id="OyY-TX-W6D"/>
+                <constraint firstItem="Ehy-08-Lux" firstAttribute="height" secondItem="SHg-fz-SVg" secondAttribute="height" multiplier="0.7" id="eWf-YV-SNv"/>
+                <constraint firstItem="SOG-cC-0Vq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="eoS-Aq-A5i"/>
+                <constraint firstItem="Ehy-08-Lux" firstAttribute="centerX" secondItem="SHg-fz-SVg" secondAttribute="centerX" id="gU0-6e-TIN"/>
+                <constraint firstAttribute="top" secondItem="SHg-fz-SVg" secondAttribute="top" id="hcd-55-vi6"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="140" y="219.31279620853078"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="camera-switch" width="1080" height="1080"/>
+        <image name="remote-video-placeholder" width="432" height="432"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

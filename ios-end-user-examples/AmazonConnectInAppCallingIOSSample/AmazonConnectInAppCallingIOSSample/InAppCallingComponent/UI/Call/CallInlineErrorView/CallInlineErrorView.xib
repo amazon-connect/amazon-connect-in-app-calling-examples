@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InlineErrorView" customModule="AmazonChimeSDKEngagementComponent" customModuleProvider="target">
+            <connections>
+                <outlet property="heightConstraint" destination="HEt-wr-wB5" id="hfq-AJ-XK9"/>
+                <outlet property="label" destination="3Nh-4x-yhX" id="PHb-9d-quL"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="VeI-6B-XnO" userLabel="ErrorView">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="77"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Nh-4x-yhX" customClass="PaddingLabel" customModule="AmazonChimeSDKEngagementComponent" customModuleProvider="target">
+                    <rect key="frame" x="24" y="8" width="345" height="61"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" id="maO-pF-21f"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="d6L-PK-AwJ"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="height" secondItem="3Nh-4x-yhX" secondAttribute="height" constant="16" id="HEt-wr-wB5"/>
+                <constraint firstAttribute="right" secondItem="3Nh-4x-yhX" secondAttribute="right" constant="24" id="S8D-s4-RQv"/>
+                <constraint firstItem="3Nh-4x-yhX" firstAttribute="centerY" secondItem="VeI-6B-XnO" secondAttribute="centerY" id="ZSc-eK-U6r"/>
+                <constraint firstItem="3Nh-4x-yhX" firstAttribute="left" secondItem="VeI-6B-XnO" secondAttribute="left" constant="24" id="qaI-NY-ZgJ"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="69.465648854961827" y="297.88732394366201"/>
+        </view>
+    </objects>
+    <designables>
+        <designable name="3Nh-4x-yhX">
+            <size key="intrinsicContentSize" width="40.666666666666664" height="19.333333333333332"/>
+        </designable>
+    </designables>
+</document>
