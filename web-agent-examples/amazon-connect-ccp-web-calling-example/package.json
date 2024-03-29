@@ -1,0 +1,16 @@
+{
+  "name": "web-calling",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "node esbuild.mjs",
+    "start": "node esbuild.mjs --watch"
+  },
+  "dependencies": {
+    "amazon-chime-sdk-js": "^3.18.2",
+    "amazon-connect-streams": "^2.10.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.19.10",
+    "esbuild-plugins-node-modules-polyfill": "^1.6.1"
+  }
+}
