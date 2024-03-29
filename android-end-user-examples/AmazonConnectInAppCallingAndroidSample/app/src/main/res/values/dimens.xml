@@ -1,0 +1,25 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="call_sheet_title_text_size">22sp</dimen>
+    <dimen name="call_sheet_title_margin_horizontal">16dp</dimen>
+    <dimen name="call_sheet_button_min_size">48dp</dimen>
+    <dimen name="call_sheet_title_margin_vertical">10dp</dimen>
+    <dimen name="call_sheet_button_size">60dp</dimen>
+    <dimen name="call_sheet_icon_button_description_text_size">13sp</dimen>
+    <dimen name="call_sheet_icon_button_description_margin">6dp</dimen>
+    <dimen name="call_sheet_icon_button_margin_horizontal">16dp</dimen>
+    <dimen name="call_sheet_icon_button_row_margin_vertical">16dp</dimen>
+    <dimen name="call_sheet_control_panel_margin_vertical">32dp</dimen>
+    <dimen name="call_sheet_video_local_tile_margin">16dp</dimen>
+    <dimen name="call_sheet_video_camera_switch_button_margin">4dp</dimen>
+    <dimen name="call_sheet_dtfm_content_margin_horizontal">16dp</dimen>
+    <dimen name="call_sheet_dtfm_content_margin_vertical">8dp</dimen>
+    <dimen name="call_sheet_dtfm_input_box_height">48dp</dimen>
+    <dimen name="call_sheet_preferences_container_header_text_size">14sp</dimen>
+    <dimen name="call_sheet_preferences_container_margin_start">20dp</dimen>
+    <dimen name="call_sheet_preferences_container_margin_vertical">8dp</dimen>
+    <dimen name="call_sheet_preferences_detail_name_text_size">17sp</dimen>
+    <dimen name="call_sheet_preferences_detail_description_text_size">13sp</dimen>
+    <dimen name="call_sheet_preferences_background_blur_row_margin_start">14dp</dimen>
+    <dimen name="call_sheet_preferences_background_blur_row_margin_vertical">10dp</dimen>
+</resources>

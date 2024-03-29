@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">Amazon Connect In-App Calling</string>
+
+    <!--Main activities-->
+    <string name="attributes_header">ATTRIBUTES</string>
+    <string name="attributes_display_name_title">Display Name</string>
+    <string name="attributes_city_title">City</string>
+    <string name="start_call_button_text">Start Call</string>
+
+    <!--Error messages-->
+    <string name="error_title">Error</string>
+    <string name="error_neutral_button_text">OK</string>
+    <string name="error_input_are_required">All inputs are required for making a call.</string>
+
+    <!--Call sheet-->
+    <string name="call_sheet_header_text">Need help? Give us a call</string>
+    <string name="call_sheet_minimize_button">Minimize the sheet</string>
+    <string name="call_sheet_calling_description">Calling...</string>
+    <string name="call_sheet_end_call_button_description">End</string>
+    <string name="call_sheet_muted_button_description">Unmute</string>
+    <string name="call_sheet_unmuted_button_description">Mute</string>
+    <string name="call_sheet_keypad_button_description">Keypad</string>
+    <string name="call_sheet_device_button_handset_description">Handset</string>
+    <string name="call_sheet_device_button_content">Select audio device</string>
+    <string name="call_sheet_video_button_on_description">Stop video</string>
+    <string name="call_sheet_video_button_off_description">Start video</string>
+    <string name="call_sheet_video_remote_tile_image_content">Remote caller video</string>
+    <string name="call_sheet_video_switch_camera_button_content">Switch camera</string>
+    <string name="call_sheet_preferences_button_description">Preferences</string>
+    <string name="call_sheet_background_blur_dialog_title">Background Blur</string>
+    <string name="call_sheet_background_blur_high">High</string>
+    <string name="call_sheet_background_blur_medium">Medium</string>
+    <string name="call_sheet_background_blur_low">Low</string>
+    <string name="call_sheet_background_blur_off">Off</string>
+    <string name="call_sheet_reconnecting_text">Reconnecting...</string>
+    <string name="call_sheet_device_dialog_cancel_button_text">Cancel</string>
+    <string name="call_sheet_device_dialog_option_active_content">Selected</string>
+    <string name="call_sheet_call_text">Call</string>
+    <string name="call_sheet_dtmf_sheet_title">Enter code and press send</string>
+    <string name="call_sheet_dtmf_sheet_code_label_description">Code</string>
+    <string name="call_sheet_dtmf_sheet_send_button_description">Send</string>
+    <string name="call_sheet_dtmf_sheet_message_sent_description">Sent</string>
+    <string name="call_sheet_dtmf_sheet_message_error_description">Error</string>
+    <string name="call_sheet_preference_sheet_title">Preferences</string>
+    <string name="call_sheet_preference_sheet_speech_enhancement_header">SPEECH ENHANCEMENT</string>
+    <string name="call_sheet_preference_sheet_voice_focus_detail_name">Amazon Voice Focus</string>
+    <string name="call_sheet_preference_sheet_voice_focus_detail_description">Amazon Voice Focus is a noise suppressor that uses machine learning to reduce unwanted background noise.</string>
+    <string name="call_sheet_preference_sheet_video_enhancement_header">VIDEO ENHANCEMENT</string>
+    <string name="call_sheet_preference_sheet_bg_blur_detail_name">Background Blur</string>
+    <string name="call_sheet_preference_sheet_bg_blur_detail_description">Background blur reduces visual distractions and help increase visual privacy.</string>
+    <string name="call_sheet_preference_sheet_bg_blur_selection_button">Choose background blur strength</string>
+    <string name="call_sheet_bg_blur_dialog_cancel_button_text">Cancel</string>
+    <string name="call_sheet_bg_blur_dialog_option_active_content">Selected</string>
+    <string name="call_sheet_left_arrow_button">Back</string>
+
+</resources>

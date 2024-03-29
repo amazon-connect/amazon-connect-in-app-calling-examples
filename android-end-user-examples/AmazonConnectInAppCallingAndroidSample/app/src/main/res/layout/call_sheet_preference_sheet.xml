@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--Header-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/call_sheet_title_margin_vertical"
+            android:text="@string/call_sheet_preference_sheet_title"
+            android:textColor="@color/black"
+            android:textSize="@dimen/call_sheet_title_text_size"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/minimize_button"
+            android:contentDescription="@string/call_sheet_minimize_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/call_sheet_title_margin_horizontal"
+            android:background="@null"
+            android:minWidth="@dimen/call_sheet_button_min_size"
+            android:minHeight="@dimen/call_sheet_button_min_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/title_text"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_minimize" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--Speech Enhancement-->
+    <LinearLayout
+        android:id="@+id/speech_enhancement_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header_container">
+
+        <TextView
+            android:id="@+id/speech_enhancement_header_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/call_sheet_preferences_container_margin_vertical"
+            android:layout_marginStart="@dimen/call_sheet_preferences_container_margin_start"
+            android:text="@string/call_sheet_preference_sheet_speech_enhancement_header"
+            android:textColor="@color/preferences_text_light_gray"
+            android:textSize="@dimen/call_sheet_preferences_container_header_text_size" />
+
+        <LinearLayout
+            android:id="@+id/voice_focus_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_preferences_section_bg"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/call_sheet_preferences_container_margin_start"
+                    android:text="@string/call_sheet_preference_sheet_voice_focus_detail_name"
+                    android:textSize="@dimen/call_sheet_preferences_detail_name_text_size"
+                    android:textColor="@color/black" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/call_sheet_preferences_container_margin_start"
+                    android:text="@string/call_sheet_preference_sheet_voice_focus_detail_description"
+                    android:textColor="@color/preferences_text_light_gray"
+                    android:textSize="@dimen/call_sheet_preferences_detail_description_text_size" />
+            </LinearLayout>
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/voice_focus_switch"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="@dimen/call_sheet_preferences_container_margin_start"
+                android:layout_gravity="center_vertical" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!--Video Enhancement-->
+    <LinearLayout
+        android:id="@+id/video_enhancement_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginVertical="@dimen/call_sheet_preferences_container_margin_vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/speech_enhancement_container">
+
+        <TextView
+            android:id="@+id/header_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/call_sheet_preferences_container_margin_vertical"
+            android:layout_marginStart="@dimen/call_sheet_preferences_container_margin_start"
+            android:text="@string/call_sheet_preference_sheet_video_enhancement_header"
+            android:textColor="@color/preferences_text_light_gray"
+            android:textSize="@dimen/call_sheet_preferences_container_header_text_size" />
+
+        <LinearLayout
+            android:id="@+id/background_blur_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_preferences_section_bg"
+            android:orientation="horizontal"
+            android:baselineAligned="false">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/call_sheet_preferences_container_margin_start"
+                    android:text="@string/call_sheet_preference_sheet_bg_blur_detail_name"
+                    android:textSize="@dimen/call_sheet_preferences_detail_name_text_size"
+                    android:textColor="@color/black" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/call_sheet_preferences_container_margin_start"
+                    android:text="@string/call_sheet_preference_sheet_bg_blur_detail_description"
+                    android:textColor="@color/preferences_text_light_gray"
+                    android:textSize="@dimen/call_sheet_preferences_detail_description_text_size" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="@dimen/call_sheet_preferences_container_margin_start"
+                android:layout_gravity="center_vertical"
+                android:gravity="end"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/bg_blur_status_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/preferences_text_light_gray"
+                    android:textSize="17sp" />
+                <ImageButton
+                    android:id="@+id/bg_blur_selection_button"
+                    android:contentDescription="@string/call_sheet_preference_sheet_bg_blur_selection_button"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@null"
+                    app:srcCompat="@drawable/ic_right_arrow"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

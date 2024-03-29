@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="205dp" >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/remote_video_tile"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/call_sheet_video_remote_tile_image_content"
+            android:scaleType="center" >
+
+            <ImageView
+                android:id="@+id/remote_video_placeholder"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_video_tile_bg_gray"
+                android:contentDescription="@string/call_sheet_video_remote_tile_image_content"
+                android:scaleType="center"
+                android:src="@drawable/ic_caller" />
+
+            <com.amazonaws.services.chime.sdk.meetings.audiovideo.video.DefaultVideoRenderView
+                android:id="@+id/remote_video_render_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <FrameLayout
+        android:id="@+id/local_video_tile"
+        android:layout_width="72dp"
+        android:layout_height="84dp"
+        android:layout_marginStart="@dimen/call_sheet_video_local_tile_margin"
+        android:layout_marginTop="@dimen/call_sheet_video_local_tile_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+            <com.amazonaws.services.chime.sdk.meetings.audiovideo.video.DefaultVideoRenderView
+                android:id="@+id/local_video_render_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+            <ImageButton
+                android:id="@+id/camera_switch_button"
+                android:contentDescription="@string/call_sheet_video_switch_camera_button_content"
+                android:layout_width="@dimen/call_sheet_button_min_size"
+                android:layout_height="@dimen/call_sheet_button_min_size"
+                android:layout_marginTop="@dimen/call_sheet_video_camera_switch_button_margin"
+                android:layout_marginStart="@dimen/call_sheet_video_camera_switch_button_margin"
+                android:background="@null"
+                app:srcCompat="@drawable/ic_baseline_flip_camera_ios_24" />
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

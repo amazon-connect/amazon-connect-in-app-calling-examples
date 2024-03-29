@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <!--Mute / Unmute-->
+    <com.amazonaws.services.connect.inappcalling.sample.ui.controlpanel.ControlButton
+        android:id="@+id/mute_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/keypad_button"
+        android:layout_marginVertical="@dimen/call_sheet_control_panel_margin_vertical"
+        android:layout_marginHorizontal="@dimen/call_sheet_icon_button_margin_horizontal" />
+
+    <!-- Keypad -->
+    <com.amazonaws.services.connect.inappcalling.sample.ui.controlpanel.ControlButton
+        android:id="@+id/keypad_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/mute_button"
+        app:layout_constraintEnd_toStartOf="@id/device_button"
+        android:layout_marginVertical="@dimen/call_sheet_control_panel_margin_vertical"
+        android:layout_marginHorizontal="@dimen/call_sheet_icon_button_margin_horizontal"/>
+
+    <!-- Devices -->
+    <com.amazonaws.services.connect.inappcalling.sample.ui.controlpanel.ControlButton
+        android:id="@+id/device_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/video_button"
+        app:layout_constraintStart_toEndOf="@id/keypad_button"
+        android:layout_marginVertical="@dimen/call_sheet_control_panel_margin_vertical"
+        android:layout_marginHorizontal="@dimen/call_sheet_icon_button_margin_horizontal"/>
+
+    <!-- Video -->
+    <com.amazonaws.services.connect.inappcalling.sample.ui.controlpanel.ControlButton
+        android:id="@+id/video_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/mute_button"
+        app:layout_constraintStart_toStartOf="@id/mute_button"
+        app:layout_constraintEnd_toEndOf="@id/mute_button"
+        android:layout_marginVertical="@dimen/call_sheet_icon_button_row_margin_vertical"/>
+
+    <!-- Preferences -->
+    <com.amazonaws.services.connect.inappcalling.sample.ui.controlpanel.ControlButton
+        android:id="@+id/preferences_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/keypad_button"
+        app:layout_constraintStart_toStartOf="@id/keypad_button"
+        app:layout_constraintEnd_toEndOf="@id/keypad_button"
+        android:layout_marginVertical="@dimen/call_sheet_icon_button_row_margin_vertical"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

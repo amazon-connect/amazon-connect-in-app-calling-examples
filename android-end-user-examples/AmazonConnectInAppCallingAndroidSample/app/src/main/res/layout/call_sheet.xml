@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <!--Header-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/call_sheet_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/call_sheet_content">
+                <TextView
+                    android:id="@+id/call_sheet_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/call_sheet_title_text_size"
+                    android:layout_marginStart="@dimen/call_sheet_title_margin_horizontal"
+                    android:layout_marginVertical="@dimen/call_sheet_title_margin_vertical"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+                <ImageButton
+                    android:id="@+id/call_sheet_minimize_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:background="@null"
+                    android:minWidth="@dimen/call_sheet_button_min_size"
+                    android:minHeight="@dimen/call_sheet_button_min_size"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintLeft_toRightOf="@id/call_sheet_title"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_minimize" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!--Content-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/call_sheet_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/call_sheet_header"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <include layout="@layout/call_sheet_content_before_call"
+                    android:id="@+id/before_call_content"/>
+                <include layout="@layout/call_sheet_content_calling"
+                    android:id="@+id/calling_content" android:visibility="gone"/>
+                <include layout="@layout/call_sheet_content_in_call"
+                    android:id="@+id/in_call_content" android:visibility="gone"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
