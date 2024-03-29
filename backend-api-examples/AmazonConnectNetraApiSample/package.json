@@ -1,0 +1,30 @@
+{
+  "name": "amazon_connect_in_app_calling_api_sample",
+  "version": "0.1.0",
+  "bin": {
+    "amazon_connect_in_app_calling_api_sample": "bin/cdk.js"
+  },
+  "scripts": {
+    "bootstrap": "cdk bootstrap",
+    "build": "tsc",
+    "cdk": "cdk",
+    "deploy:no-approval": "cdk deploy --outputs-file ../shared/config.json --require-approval never",
+    "deploy": "cdk deploy --outputs-file ../shared/config.json",
+    "postinstall": "cd lambda && npm install",
+    "start": "npm run watch",
+    "watch": "tsc -w",
+    "destroy": "cdk destroy"
+  },
+  "devDependencies": {
+    "@types/node": "10.17.27",
+    "aws-cdk": "^2.63.0",
+    "esbuild": "^0.14.54",
+    "ts-node": "^9.1.1",
+    "typescript": "~3.9.7"
+  },
+  "dependencies": {
+    "aws-cdk-lib": "^2.63.0",
+    "constructs": "^10.1.71",
+    "source-map-support": "^0.5.21"
+  }
+}

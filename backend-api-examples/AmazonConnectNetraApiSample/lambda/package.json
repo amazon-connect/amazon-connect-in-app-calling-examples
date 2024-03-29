@@ -1,0 +1,9 @@
+{
+  "name": "amazon-connect-webrtc-api-sample-lambda",
+  "version": "1.0.0",
+  "dependencies": {
+    "@aws-sdk/client-connect": "3.535.0",
+    "@aws-sdk/client-connectparticipant": "3.535.0",
+    "@types/aws-lambda": "^8.10.119"
+  }
+}
