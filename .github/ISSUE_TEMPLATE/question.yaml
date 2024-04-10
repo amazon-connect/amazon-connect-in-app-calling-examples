@@ -1,0 +1,34 @@
+name: Question
+description: Use this template if you have a question
+body:
+  - type: checkboxes
+    id: existing-resources-check
+    attributes:
+      label: Have you reviewed our existing documentation?
+      description: Please check all resources as your question may have been answered.
+      options:
+      - label: GitHub [issues](https://github.com/amazon-connect/amazon-connect-in-app-calling-examples/issues)
+        required: true
+      - label: README [page](https://github.com/amazon-connect/amazon-connect-in-app-calling-examples)
+        required: true
+      - label: Documentations [page](https://docs.aws.amazon.com/connect/latest/adminguide/inapp-calling.html)
+        required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: What's your question?
+    validations:
+      required: true
+  - type: checkboxes
+    id: examples
+    attributes:
+      label: Please select the associaged examples
+      options:
+      - label: iOS In-App Calling Example
+        required: false
+      - label: Android In-App Calling Example
+        required: false
+      - label: CCP Web Calling Example
+        required: false
+      - label: Backend Example
+        required: false
