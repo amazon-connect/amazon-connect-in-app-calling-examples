@@ -4,7 +4,7 @@ body:
   - type: dropdown
     id: examples
     attributes:
-      label: Please select the example?
+      label: Please select the example
       description: The associated example with the unexpected behavior.
       options:
         - "iOS In-App Calling Example"
