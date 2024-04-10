@@ -1,0 +1,65 @@
+name: Bug Report
+description: Report unexpected behavior in examples
+body:
+  - type: dropdown
+    id: examples
+    attributes:
+      label: Please select the example?
+      description: The associated example with the unexpected behavior.
+      options:
+        - "iOS In-App Calling Example"
+        - "Android In-App Calling Example"
+        - "CCP Web Calling Example"
+        - "Backend Example"
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened and what did you expect to happen?
+      description: |
+        Observed problem and expected result.
+    validations:
+      required: true
+  - type: checkboxes
+    id: existing-resources-check
+    attributes:
+      label: Have you reviewed our existing documentation?
+      description: Please check all resources as your issue may have been addressed before.
+      options:
+      - label: GitHub [issues](https://github.com/amazon-connect/amazon-connect-in-app-calling-examples/issues)
+        required: true
+      - label: README [page](https://github.com/amazon-connect/amazon-connect-in-app-calling-examples)
+        required: true
+      - label: Documentations [page](https://docs.aws.amazon.com/connect/latest/adminguide/inapp-calling.html)
+        required: true
+  - type: textarea
+    id: reproduction-steps
+    attributes:
+      label: Reproduction steps
+      description: Steps to reproduce this issue.
+    validations:
+      required: true
+  - type: input
+    id: browsers
+    attributes:
+      label: If it's related to web examples, please enter broswer name and version?
+    validations:
+      required: false
+  - type: input
+    id: mobile
+    attributes:
+      label: If it's related to mobile examples, please enter OS version?
+    validations:
+      required: false
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: Please share the console logs
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
