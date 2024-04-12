@@ -9,16 +9,16 @@ This repo contains examples on how to implement Amazon Connect in-app, web and v
 
 At the moment, there are 4 the examples in this repository:
 
-1. **[iOS Customer Integration Example](https://github.com/amazon-connect/amazon-connect-in-app-calling-examples/iOS/AmazonConnectInAppCallingIOSSample)**
+1. **[iOS Customer Integration Example](https://github.com/amazon-connect/amazon-connect-in-app-calling-examples/tree/main/iOS/AmazonConnectInAppCallingIOSSample)**
    This example demonstrates how to interact with Amazon Connect api for placing an inbound in-app, web or video call to a contact, and eatablishing the underlying audio/video call connection between customer and agent by utilizing [Amazon Chime SDK for iOS](https://github.com/aws/amazon-chime-sdk-ios).
 
-2. **[Android Customer Integration Example](https://github.com/amazon-connect/amazon-connect-in-app-calling-examples/Android/AmazonConnectInAppCallingAndroidSample)**
+2. **[Android Customer Integration Example](https://github.com/amazon-connect/amazon-connect-in-app-calling-examples/tree/main/Android/AmazonConnectInAppCallingAndroidSample)**
    This example demonstrates how to interact with Amazon Connect api for placing an inbound in-app, web or video call to a contact, and eatablishing the underlying audio/video call connection between customer and agent by utilizing [Amazon Chime SDK for Android](https://github.com/aws/amazon-chime-sdk-android).
 
-3. **[CCP Web Calling Example](https://github.com/amazon-connect/amazon-connect-in-app-calling-examples/Web/amazon-connect-ccp-web-calling-example)**
+3. **[CCP Web Calling Example](https://github.com/amazon-connect/amazon-connect-in-app-calling-examples/tree/main/Web/amazon-connect-ccp-web-calling-example)**
    This example demonstrates how to integrate video calling into your custom agent desktop by leverageing the capabilities of [Amazon Connect Streams](https://github.com/amazon-connect/amazon-connect-streams) and [Amazon Connect SDK for Javascript](https://github.com/aws/amazon-chime-sdk-js). It utilizes the pre-built CCP UI offered by [amazon-connect-streams](https://github.com/amazon-connect/amazon-connect-streams) as an engine, handling the agent and contact events, and integrating the WebRTC video calling using [amazon-chime-sdk-js](https://github.com/aws/amazon-chime-sdk-js).
 
-4. **[StartWebRTCContact Example](https://github.com/amazon-connect/amazon-connect-in-app-calling-examples/Web/amazon-connect-ccp-web-calling-example)**
+4. **[StartWebRTCContact Example](https://github.com/amazon-connect/amazon-connect-in-app-calling-examples/tree/main/Backend/AmazonConnectNetraApiSample)**
    This example demonstrates how to invoke Amazon Connect [StartWebRTCConnect](https://docs.aws.amazon.com/connect/latest/APIReference/API_StartWebRTCContact.html) API from AWS Lambda, an Amazon API Gateway is also to integrate with the Lambda, in order to serve as the backend for the iOS/Android customer integration examples, for placing inbound in-app, web or video calls to a contact.
 
 ## Use Cases
