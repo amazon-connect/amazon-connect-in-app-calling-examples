@@ -1,6 +1,6 @@
 # Amazon Connect In-App Calling Examples
 
-This repo contains examples on how to implement Amazon Connect in-app, web and video calling capabilities on both the customer and agent sides. Please refer to the README under each solution to see the complete details as to what each solution does and how to deploy it.
+Amazon Connect’s out of the box communication widget and agent workspace allow you to add in-app, web, and video calling capabilities to your website or mobile application with a few lines of code. This repository contains examples of: 1) how to integrate in-app calling into iOS and Android applications, 2) an example backend that works with these iOS and Android mobile samples, and 3) while web calling works out of the box with custom CCPs for voice call, we show to integrate video calling into an custom CCP.
 
 **New to Amazon Connect and looking to onboard with in-app calling capabilities?** Refer to [“Set up in-app, web, and video calling capabilities”](https://docs.aws.amazon.com/connect/latest/adminguide/inapp-calling.html).
 
@@ -10,13 +10,13 @@ This repo contains examples on how to implement Amazon Connect in-app, web and v
 At the moment, there are 4 the examples in this repository:
 
 1. **[iOS Customer Integration Example](https://github.com/amazon-connect/amazon-connect-in-app-calling-examples/tree/main/iOS/AmazonConnectInAppCallingIOSSample)**
-   This example demonstrates how to interact with Amazon Connect api for placing an inbound in-app, web or video call to a contact, and eatablishing the underlying audio/video call connection between customer and agent by utilizing [Amazon Chime SDK for iOS](https://github.com/aws/amazon-chime-sdk-ios).
+   This example demonstrates how to interact with Amazon Connect api for placing an inbound in-app, web or video call to a contact, and establishing the underlying audio/video call connection between customer and agent by utilizing [Amazon Chime SDK for iOS](https://github.com/aws/amazon-chime-sdk-ios).
 
 2. **[Android Customer Integration Example](https://github.com/amazon-connect/amazon-connect-in-app-calling-examples/tree/main/Android/AmazonConnectInAppCallingAndroidSample)**
-   This example demonstrates how to interact with Amazon Connect api for placing an inbound in-app, web or video call to a contact, and eatablishing the underlying audio/video call connection between customer and agent by utilizing [Amazon Chime SDK for Android](https://github.com/aws/amazon-chime-sdk-android).
+   This example demonstrates how to interact with Amazon Connect api for placing an inbound in-app, web or video call to a contact, and establishing the underlying audio/video call connection between customer and agent by utilizing [Amazon Chime SDK for Android](https://github.com/aws/amazon-chime-sdk-android).
 
 3. **[CCP Web Calling Example](https://github.com/amazon-connect/amazon-connect-in-app-calling-examples/tree/main/Web/amazon-connect-ccp-web-calling-example)**
-   This example demonstrates how to integrate video calling into your custom agent desktop by leverageing the capabilities of [Amazon Connect Streams](https://github.com/amazon-connect/amazon-connect-streams) and [Amazon Connect SDK for Javascript](https://github.com/aws/amazon-chime-sdk-js). It utilizes the pre-built CCP UI offered by [amazon-connect-streams](https://github.com/amazon-connect/amazon-connect-streams) as an engine, handling the agent and contact events, and integrating the WebRTC video calling using [amazon-chime-sdk-js](https://github.com/aws/amazon-chime-sdk-js).
+   This example demonstrates how to integrate video calling into your custom agent desktop by leveraging the capabilities of [Amazon Connect Streams](https://github.com/amazon-connect/amazon-connect-streams) and [Amazon Connect SDK for Javascript](https://github.com/aws/amazon-chime-sdk-js). It utilizes the pre-built CCP UI offered by [amazon-connect-streams](https://github.com/amazon-connect/amazon-connect-streams) as an engine, handling the agent and contact events, and integrating the WebRTC video calling using [amazon-chime-sdk-js](https://github.com/aws/amazon-chime-sdk-js).
 
 4. **[StartWebRTCContact Example](https://github.com/amazon-connect/amazon-connect-in-app-calling-examples/tree/main/Backend/AmazonConnectNetraApiSample)**
    This example demonstrates how to invoke Amazon Connect [StartWebRTCConnect](https://docs.aws.amazon.com/connect/latest/APIReference/API_StartWebRTCContact.html) API from AWS Lambda, an Amazon API Gateway is also to integrate with the Lambda, in order to serve as the backend for the iOS/Android customer integration examples, for placing inbound in-app, web or video calls to a contact.
@@ -26,7 +26,7 @@ Below are the common use cases can be referenced using those examples:
 
 1. ``I want to enable in-app calling in my mobile applications, so that users can reach out to our customer support while staying in the app, and the app is able to send needed information(such as user info or current page) to customer support along the call.``
 
-The iOS/Android integration examples and StartWebRTCContact example are needed to acheive this use case: iOS/Android examples demonstrates the mobile application part including invoke StartWebRTCContact api(through StartWebRTC example), sending contact attributes, start audio/video call session, as well as sending DTMF; StartWebRTCContact example acts as a proxy API, relaying the StartWebRTCContact request from mobile applications to Amazon Connect.
+The iOS/Android integration examples and StartWebRTCContact example are needed to achieve this use case: iOS/Android examples demonstrates the mobile application part including invoke StartWebRTCContact api(through StartWebRTC example), sending contact attributes, start audio/video call session, as well as sending DTMF; StartWebRTCContact example acts as a proxy API, relaying the StartWebRTCContact request from mobile applications to Amazon Connect.
 
 2. ``I have my web application for agents, I would like to enable video capablity on my agent application so that agents can send/receive videos while supporting customers.``
 
