@@ -93,8 +93,11 @@ extension VideoView {
     }
 }
 
-// VideoViewModelDelegate
+// CallObserver
 extension VideoView: CallObserver {
+    func screenShareCapabilityDidUpdate() {}
+    
+    func screenShareStatusDidUpdate() {}
     
     func callStateDidUpdate(_ oldState: CallState,
                             _ newState: CallState) {}
@@ -114,4 +117,6 @@ extension VideoView: CallObserver {
             self.updateUI()
         }
     }
+    
+    func messageDidUpdate(_ message: String?) {}
 }

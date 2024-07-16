@@ -17,13 +17,14 @@ private enum ActionButtonType {
     case audio // Device selection
     case video
     case preferences
-    
+    case screenShare
 }
 
 protocol ActionPanelViewDelegate: AnyObject {
     
     func keypadButtonDidTap(_ sender: Any)
     func preferencesButtonDidTap(_ sender: Any)
+    func shareScreenButtonDidTap(_ sender: Any)
 }
 
 private class CommonInitData {
@@ -47,7 +48,7 @@ class ActionPanelView: UIView {
     private let audioActionCellID = "audioActionCell"
     
     // The action button container view width
-    private let cellHeight: CGFloat = 86
+    private let cellHeight: CGFloat = 64
     
     private let vm: ViewModel
     private let callNtfCenter: CallNotificationCenter
@@ -59,7 +60,13 @@ class ActionPanelView: UIView {
     }
     
     // Determine the available actions buttons
-    private let actionButtons: [ActionButtonType] = [.mute, .keypad, .audio, .video, .preferences]
+    private var actionButtons: [ActionButtonType] {
+        if self.vm.isScreenShareCapabilityEnabled {
+            return [.mute, .keypad, .audio, .video, .preferences, .screenShare]
+        } else {
+            return [.mute, .keypad, .audio, .video, .preferences]
+        }
+    }
     
     // This varaible will determine the action panel height in call view
     override var intrinsicContentSize: CGSize {
@@ -170,6 +177,7 @@ extension ActionPanelView: UICollectionViewDataSource {
         case .audio: break
         case .video: configureVideoCell(cell)
         case .preferences: configurePrefCell(cell)
+        case .screenShare: configureScreenshareCell(cell)
         }
         return cell
     }
@@ -251,6 +259,17 @@ extension ActionPanelView: UICollectionViewDataSource {
         }
     }
     
+    private func configureScreenshareCell(_ cell: ActionPanelCell) {
+        cell.title = self.vm.screenShareStatus == .local ? .stopShare : .shareScreen
+        cell.image = self.vm.screenShareStatus == .local
+                ? Bundle.Images.screenShareWhite : Bundle.Images.screenShare
+        cell.imageBackgroundColor = self.vm.screenShareStatus == .local
+                ? UIColor.defaultActionColor : UIColor.actionButtonOffBGColor
+        cell.action = { [weak self] in
+            guard let self = self else { return }
+            self.delegate?.shareScreenButtonDidTap(self)
+        }
+    }
 }
 
 extension ActionPanelView: UICollectionViewDelegateFlowLayout {
@@ -264,6 +283,13 @@ extension ActionPanelView: UICollectionViewDelegateFlowLayout {
 }
 
 extension ActionPanelView: CallObserver {
+    func screenShareCapabilityDidUpdate() {
+        DispatchQueue.main.async { self.updateUI() }
+    }
+    
+    func screenShareStatusDidUpdate() {
+        DispatchQueue.main.async { self.updateUI() }
+    }
     
     func callStateDidUpdate(_ oldState: CallState,
                             _ newState: CallState) {
@@ -283,4 +309,6 @@ extension ActionPanelView: CallObserver {
     func videoTileStateDidRemove() {
         DispatchQueue.main.async { self.updateUI() }
     }
+    
+    func messageDidUpdate(_ message: String?) {}
 }

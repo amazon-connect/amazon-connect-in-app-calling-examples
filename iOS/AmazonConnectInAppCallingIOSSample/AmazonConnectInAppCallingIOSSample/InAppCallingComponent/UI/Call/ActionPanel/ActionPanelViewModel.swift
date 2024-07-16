@@ -35,6 +35,14 @@ class ActionPanelViewModel {
         return self.callStateStore.remoteVideoTileState != nil
     }
     
+    var isScreenShareCapabilityEnabled: Bool {
+        return self.callStateStore.isScreenShareCapabilityEnabled
+    }
+    
+    var screenShareStatus: ScreenShareStatus {
+        return self.callStateStore.screenShareStatus
+    }
+    
     private let callManager: CallManager
     private let callStateStore: CallStateStore
     

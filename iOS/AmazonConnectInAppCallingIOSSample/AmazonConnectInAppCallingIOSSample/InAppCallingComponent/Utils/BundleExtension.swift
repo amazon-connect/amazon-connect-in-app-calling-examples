@@ -69,6 +69,14 @@ extension Bundle {
             return getImage("preferences")
         }
         
+        static var screenShare: UIImage? {
+            return getImage("screen-share")
+        }
+        
+        static var screenShareWhite: UIImage? {
+            return getImage("screen-share-white")
+        }
+        
         private static func getImage(_ name: String) -> UIImage? {
             return UIImage(named: name)
         }

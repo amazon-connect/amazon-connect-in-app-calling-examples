@@ -7,12 +7,13 @@
 //
 
 import Foundation
+import AmazonChimeSDK
 
 class DefaultCallController: CallController {
     
     private let callManager: CallManager
     
-    init(_ callManager: CallManager) {
+    init(callManager: CallManager) {
         self.callManager = callManager
     }
     
@@ -34,5 +35,13 @@ class DefaultCallController: CallController {
     
     func stopLocalVideo() {
         self.callManager.stopLocalVideo()
+    }
+    
+    func startScreenShare() {
+        self.callManager.startScreenShare()
+    }
+    
+    func stopScreenShare() {
+        self.callManager.stopScreenShare()
     }
 }

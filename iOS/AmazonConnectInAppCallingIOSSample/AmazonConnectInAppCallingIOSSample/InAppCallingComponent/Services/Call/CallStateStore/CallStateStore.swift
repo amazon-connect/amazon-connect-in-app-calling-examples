@@ -8,6 +8,12 @@
 import Foundation
 import AmazonChimeSDK
 
+enum ScreenShareStatus {
+    case local  //End user is sharing screen
+    case remote // Agent is sharing screen
+    case none   // No one is sharing screen
+}
+
 class CallStateStore {
     
     var callState: CallState = .notStarted {
@@ -28,6 +34,12 @@ class CallStateStore {
                 return
             }
             self.callNtfCenter.notifyCallErrorOccur(error)
+        }
+    }
+    
+    var message: String? {
+        didSet {
+            self.callNtfCenter.notifyMessageUpdate(message)
         }
     }
     
@@ -65,11 +77,29 @@ class CallStateStore {
         return self.videoTileStates[.remote]
     }
     
+    // For tracking remote screen share tile state
+    var screenShareTileState: VideoTileState? {
+        return self.videoTileStates[.contentShare]
+    }
+    
     var bgBlurState: BackgroundBlurState?
     
     var isVoiceFocusEnabled: Bool = false
     
     var participantToken: String?
+    
+    // True when agent enable screen share session
+    var isScreenShareCapabilityEnabled: Bool = false {
+        didSet {
+            self.callNtfCenter.notifyScreenShareCapabilityUpdate(isScreenShareCapabilityEnabled)
+        }
+    }
+    
+    var screenShareStatus: ScreenShareStatus = .none {
+        didSet {
+            self.callNtfCenter.notifyScreenShareStatusUpdate(screenShareStatus)
+        }
+    }
     
     private(set) var videoTileStates = [VideoTileStateType: VideoTileState]()
     
@@ -110,5 +140,7 @@ class CallStateStore {
         self.bgBlurState = nil
         self.isVoiceFocusEnabled = false
         self.participantToken = nil
+        self.isScreenShareCapabilityEnabled = false
+        self.screenShareStatus = .none
     }
 }

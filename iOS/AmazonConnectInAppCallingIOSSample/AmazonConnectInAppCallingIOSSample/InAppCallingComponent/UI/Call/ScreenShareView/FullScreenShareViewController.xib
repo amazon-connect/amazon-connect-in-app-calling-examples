@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FullScreenShareViewController" customModule="AmazonConnectInAppCallingIOSSample" customModuleProvider="target">
+            <connections>
+                <outlet property="closeButton" destination="4vo-Gb-a9g" id="Aaf-Ma-wzP"/>
+                <outlet property="screenShareView" destination="j3N-fO-Hix" id="RrG-nJ-xPQ"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j3N-fO-Hix" customClass="ScreenShareView" customModule="AmazonConnectInAppCallingIOSSample" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4vo-Gb-a9g">
+                    <rect key="frame" x="337" y="75" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="ORX-zp-oTI"/>
+                        <constraint firstAttribute="width" constant="40" id="oF9-sH-6M9"/>
+                    </constraints>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" image="xmark" catalog="system"/>
+                    <connections>
+                        <action selector="closeButtonPressed:" destination="-1" eventType="touchUpInside" id="7xv-kn-c73"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="j3N-fO-Hix" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="4iK-5C-jwL"/>
+                <constraint firstItem="4vo-Gb-a9g" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="KxZ-Z7-uQb"/>
+                <constraint firstItem="j3N-fO-Hix" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="LuL-Mr-p4P"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="j3N-fO-Hix" secondAttribute="bottom" id="lQ3-n7-i9w"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="4vo-Gb-a9g" secondAttribute="trailing" constant="16" id="oFN-YH-Omg"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="j3N-fO-Hix" secondAttribute="trailing" id="uVE-Pw-Nrx"/>
+            </constraints>
+            <point key="canvasLocation" x="139" y="21"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="xmark" catalog="system" width="128" height="113"/>
+    </resources>
+</document>

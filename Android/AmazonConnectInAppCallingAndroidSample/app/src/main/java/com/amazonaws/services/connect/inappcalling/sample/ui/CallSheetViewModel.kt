@@ -5,11 +5,13 @@
 
 package com.amazonaws.services.connect.inappcalling.sample.ui
 
+import android.content.Intent
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.amazonaws.services.chime.sdk.meetings.audiovideo.video.VideoRenderView
+import com.amazonaws.services.chime.sdk.meetings.audiovideo.video.VideoTileState
 import com.amazonaws.services.chime.sdk.meetings.device.MediaDevice
 import com.amazonaws.services.connect.inappcalling.sample.data.domain.CallError
 import com.amazonaws.services.connect.inappcalling.sample.data.domain.CallManager
@@ -19,6 +21,7 @@ import com.amazonaws.services.connect.inappcalling.sample.data.domain.CallStateR
 import com.amazonaws.services.connect.inappcalling.sample.data.domain.Caller
 import com.amazonaws.services.connect.inappcalling.sample.data.domain.CallerMuteState
 import com.amazonaws.services.connect.inappcalling.sample.data.domain.CallerVideoState
+import com.amazonaws.services.connect.inappcalling.sample.data.domain.screenshare.ScreenShareStatus
 import com.amazonaws.services.connect.inappcalling.sample.data.utils.Transient
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -56,6 +59,15 @@ class CallSheetViewModel(
             ?: CallerVideoState(Caller(false), false)
     )
     val remoteVideoState = _remoteVideoState
+
+    private val _screenShareCapabilityEnabled = MutableLiveData(callStateRepository.isScreenShareCapabilityEnabled())
+    val screenShareCapabilityEnabled: LiveData<Boolean> = _screenShareCapabilityEnabled
+
+    private val _screenShareStatus = MutableLiveData(callStateRepository.getScreenShareStatus())
+    val screenShareStatus: LiveData<ScreenShareStatus> = _screenShareStatus
+
+    private val _screenShareTileState = MutableLiveData(callStateRepository.getScreenShareTileState())
+    val screenShareTileState: LiveData<VideoTileState?> = _screenShareTileState
 
     fun startCall() {
         // Starting call in a different thread not tie to the UI
@@ -114,6 +126,18 @@ class CallSheetViewModel(
         }
     }
 
+    fun bindVideoView(viewRenderView: VideoRenderView, tileId: Int) {
+        viewModelScope.launch {
+            callManager.bindVideoView(viewRenderView, tileId)
+        }
+    }
+
+    fun unbindVideoView(tileId: Int) {
+        viewModelScope.launch {
+            callManager.unbindVideoView(tileId)
+        }
+    }
+
     fun switchCamera() {
         viewModelScope.launch {
             callManager.switchCamera()
@@ -151,6 +175,18 @@ class CallSheetViewModel(
         return res
     }
 
+    fun startScreenShare(resultCode: Int, data: Intent) {
+        viewModelScope.launch {
+            callManager.startScreenShare(resultCode, data)
+        }
+    }
+
+    fun stopScreenShare() {
+        viewModelScope.launch {
+            callManager.stopScreenShare()
+        }
+    }
+
     override fun onCallStateChanged(state: CallState) {
 
         if (state == CallState.IN_CALL) {
@@ -183,6 +219,30 @@ class CallSheetViewModel(
             _localVideoState.postValue(state)
         } else {
             _remoteVideoState.postValue(state)
+        }
+    }
+
+    override fun onScreenShareCapabilityChanged(enabled: Boolean) {
+        _screenShareCapabilityEnabled.postValue(enabled)
+    }
+
+    override fun onScreenShareStatusChanged(status: ScreenShareStatus) {
+        _screenShareStatus.postValue(status)
+    }
+
+    override fun onScreenShareTileStateChanged(tileStates: VideoTileState?) {
+        _screenShareTileState.postValue(tileStates)
+    }
+
+    fun bindLocalScreenShareView(videoRenderView: VideoRenderView) {
+        viewModelScope.launch {
+            callManager.bindLocalScreenShareView(videoRenderView)
+        }
+    }
+
+    fun unbindLocalScreenShareView(videoRenderView: VideoRenderView) {
+        viewModelScope.launch {
+            callManager.unbindLocalScreenShareView(videoRenderView)
         }
     }
 }

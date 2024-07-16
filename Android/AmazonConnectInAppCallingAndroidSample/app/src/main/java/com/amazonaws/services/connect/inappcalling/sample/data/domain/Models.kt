@@ -5,7 +5,10 @@
 
 package com.amazonaws.services.connect.inappcalling.sample.data.domain
 
+import com.amazonaws.services.chime.sdk.meetings.audiovideo.video.VideoTileState
 import com.amazonaws.services.chime.sdk.meetings.device.MediaDevice
+import com.amazonaws.services.connect.inappcalling.sample.data.domain.screenshare.ScreenShareDataMessageType
+import com.amazonaws.services.connect.inappcalling.sample.data.domain.screenshare.ScreenShareStatus
 
 enum class CallState { NOT_STARTED, CALLING, IN_CALL, RECONNECTING }
 
@@ -34,6 +37,12 @@ interface CallObserver {
     fun onActiveAudioDeviceChanged(device: MediaDevice) {}
 
     fun onCallerVideoStateChanged(state: CallerVideoState) {}
+
+    fun onScreenShareCapabilityChanged(enabled: Boolean) {}
+
+    fun onScreenShareStatusChanged(status: ScreenShareStatus) {}
+
+    fun onScreenShareTileStateChanged(tileState: VideoTileState?) {}
 }
 
 enum class CallError(val message: String) {

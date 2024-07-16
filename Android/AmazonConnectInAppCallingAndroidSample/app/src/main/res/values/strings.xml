@@ -25,8 +25,12 @@
     <string name="call_sheet_video_button_on_description">Stop video</string>
     <string name="call_sheet_video_button_off_description">Start video</string>
     <string name="call_sheet_video_remote_tile_image_content">Remote caller video</string>
+    <string name="call_sheet_screen_share_video_tile">Screen share</string>
+    <string name="call_sheet_screen_share_local_sender">Screen share: You</string>
+    <string name="call_sheet_screen_share_remote_sender">Screen share: Agent</string>
     <string name="call_sheet_video_switch_camera_button_content">Switch camera</string>
     <string name="call_sheet_preferences_button_description">Preferences</string>
+    <string name="call_sheet_share_screen_button_description">Share Screen</string>
     <string name="call_sheet_background_blur_dialog_title">Background Blur</string>
     <string name="call_sheet_background_blur_high">High</string>
     <string name="call_sheet_background_blur_medium">Medium</string>
@@ -52,5 +56,10 @@
     <string name="call_sheet_bg_blur_dialog_cancel_button_text">Cancel</string>
     <string name="call_sheet_bg_blur_dialog_option_active_content">Selected</string>
     <string name="call_sheet_left_arrow_button">Back</string>
+    <string name="call_sheet_screen_share_capability_enabled_message">Screen-sharing session has started, you can now share your screen.</string>
+
+    <!-- Service -->
+    <string name="screen_capture_notification_tile">Screen Sharing</string>
+    <string name="screen_capture_notification_text">Your screen is being shared.</string>
 
 </resources>

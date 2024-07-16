@@ -6,9 +6,11 @@
 package com.amazonaws.services.connect.inappcalling.sample.data.domain
 
 
+import com.amazonaws.services.chime.sdk.meetings.audiovideo.video.VideoTileState
 import com.amazonaws.services.chime.sdk.meetings.device.MediaDevice
 import com.amazonaws.services.chime.sdk.meetings.internal.utils.ConcurrentSet
 import com.amazonaws.services.chime.sdk.meetings.utils.logger.ConsoleLogger
+import com.amazonaws.services.connect.inappcalling.sample.data.domain.screenshare.ScreenShareStatus
 import java.lang.ref.WeakReference
 
 class CallStateRepository {
@@ -23,6 +25,13 @@ class CallStateRepository {
     private var backgroundBlurState: BackgroundBlurState = BackgroundBlurState.OFF
     private val callerMuteStates = mutableMapOf<Caller, CallerMuteState>()
     private val callerVideoStates = mutableMapOf<Caller, CallerVideoState>()
+
+    // For tracking if the screen share capability is enabled by agent
+    private var screenShareCapabilityEnabled: Boolean = false
+    // For tracking the screen share status
+    private var screenShareStatus: ScreenShareStatus = ScreenShareStatus.NONE
+    // For tracking the remote video tile state
+    private var screenShareTileState: VideoTileState? = null
 
     fun addCallObserver(observer: CallObserver) {
         observers.add(WeakReference(observer))
@@ -104,6 +113,35 @@ class CallStateRepository {
     }
     fun getBackgroundBlurState(): BackgroundBlurState = backgroundBlurState
 
+    fun updateScreenShareCapabilityEnabled(enabled: Boolean) {
+        if(enabled == screenShareCapabilityEnabled) {
+            return
+        }
+        screenShareCapabilityEnabled = enabled
+        observers.forEach { it.get()?.onScreenShareCapabilityChanged(enabled) }
+    }
+
+    fun isScreenShareCapabilityEnabled(): Boolean = screenShareCapabilityEnabled
+
+    fun updateScreenShareStatus(status: ScreenShareStatus) {
+        if(screenShareStatus == status) {
+            return
+        }
+        screenShareStatus = status
+        observers.forEach { it.get()?.onScreenShareStatusChanged(status) }
+    }
+
+    fun getScreenShareStatus(): ScreenShareStatus = screenShareStatus
+
+    fun getScreenShareTileState(): VideoTileState? = screenShareTileState
+    fun updateScreenShareTileState(newTileState: VideoTileState?) {
+        if(screenShareTileState?.tileId == newTileState?.tileId) {
+            return
+        }
+        screenShareTileState = newTileState
+        observers.forEach { it.get()?.onScreenShareTileStateChanged(newTileState) }
+    }
+
     private fun reset() {
         state = CallState.NOT_STARTED
         localAttendeeId = null
@@ -113,5 +151,8 @@ class CallStateRepository {
         voiceFocusEnabled = false
         backgroundBlurState = BackgroundBlurState.OFF
         callerVideoStates.clear()
+        screenShareCapabilityEnabled = false
+        screenShareStatus = ScreenShareStatus.NONE
+        screenShareTileState = null
     }
 }

@@ -7,6 +7,7 @@
 
 import Foundation
 import CallKit
+import AmazonChimeSDK
 
 class CallKitCallController: CallController {
     
@@ -73,9 +74,21 @@ class CallKitCallController: CallController {
     func stopLocalVideo() {
         self.callManager.stopLocalVideo()
     }
+    
+    func startScreenShare() {
+        self.callManager.startScreenShare()
+    }
+    
+    func stopScreenShare() {
+        self.callManager.stopScreenShare()
+    }
 }
 
 extension CallKitCallController: CallObserver {
+    func screenShareCapabilityDidUpdate() {}
+    
+    func screenShareStatusDidUpdate() {}
+    
     func callStateDidUpdate(_ oldState: CallState, _ newState: CallState) {
         if oldState == .calling && newState == .inCall {
             self.callKitManager.reportOutgoingCall(connectedAt: Date())
@@ -92,4 +105,6 @@ extension CallKitCallController: CallObserver {
     func videoTileStateDidRemove() {}
     
     func muteStateDidUpdate() {}
+    
+    func messageDidUpdate(_ message: String?) {}
 }

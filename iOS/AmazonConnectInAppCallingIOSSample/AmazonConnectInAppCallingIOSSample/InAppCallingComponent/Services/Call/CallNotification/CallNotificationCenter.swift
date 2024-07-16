@@ -53,4 +53,22 @@ class CallNotificationCenter {
             observer.value?.callErrorDidOccur(error)
         }
     }
+    
+    func notifyMessageUpdate(_ message: String?) {
+        for observer in callObservers {
+            observer.value?.messageDidUpdate(message)
+        }
+    }
+    
+    func notifyScreenShareCapabilityUpdate(_ enabled: Bool) {
+        for observer in callObservers {
+            observer.value?.screenShareCapabilityDidUpdate()
+        }
+    }
+    
+    func notifyScreenShareStatusUpdate(_ status: ScreenShareStatus) {
+        for observer in callObservers {
+            observer.value?.screenShareStatusDidUpdate()
+        }
+    }
 }

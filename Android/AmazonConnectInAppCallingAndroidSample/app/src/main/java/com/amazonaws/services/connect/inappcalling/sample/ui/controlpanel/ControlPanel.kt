@@ -17,7 +17,8 @@ class ControlPanel(
     private val keypadButton: ControlButton,
     private val deviceButton: ControlButton,
     private val videoButton: ControlButton,
-    private val preferencesButton: ControlButton
+    private val preferencesButton: ControlButton,
+    private val screenShareButton: ControlButton
 ) {
     constructor(
         binding: CallSheetControlPanelBinding
@@ -26,7 +27,8 @@ class ControlPanel(
         keypadButton = binding.keypadButton,
         deviceButton = binding.deviceButton,
         videoButton = binding.videoButton,
-        preferencesButton = binding.preferencesButton
+        preferencesButton = binding.preferencesButton,
+        screenShareButton = binding.screenShareButton
     )
 
     fun initMuteButton(onClick: (View) -> Unit) {
@@ -101,6 +103,17 @@ class ControlPanel(
         preferencesButton.setButtonBackgroundColor(R.color.control_button_bg_gray)
         preferencesButton.setButtonContentDescription(R.string.call_sheet_preferences_button_description)
         preferencesButton.setDescriptionText(R.string.call_sheet_preferences_button_description)
+    }
 
+    fun initScreenShareButton(onClick: (View) -> Unit) {
+        screenShareButton.setButtonOnClickListener { onClick.invoke(it) }
+        screenShareButton.setButtonImage(R.drawable.ic_screen_share)
+        screenShareButton.setButtonBackgroundColor(R.color.control_button_bg_gray)
+        screenShareButton.setButtonContentDescription(R.string.call_sheet_share_screen_button_description)
+        screenShareButton.setDescriptionText(R.string.call_sheet_share_screen_button_description)
+    }
+
+    fun updateScreenShareButtonVisibility(visibility: Int) {
+        screenShareButton.visibility = visibility
     }
 }
