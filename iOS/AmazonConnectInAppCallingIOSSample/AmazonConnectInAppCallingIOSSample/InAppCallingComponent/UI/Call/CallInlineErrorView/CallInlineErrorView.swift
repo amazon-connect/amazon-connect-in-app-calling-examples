@@ -67,6 +67,9 @@ class CallInlineErrorView: UIView {
 }
 
 extension CallInlineErrorView: CallObserver {
+    func screenShareCapabilityDidUpdate() {}
+    
+    func screenShareStatusDidUpdate() {}
     
     func callStateDidUpdate(_ oldState: CallState,
                             _ newState: CallState) {
@@ -82,4 +85,6 @@ extension CallInlineErrorView: CallObserver {
     func videoTileStateDidAdd() {}
     
     func videoTileStateDidRemove() {}
+    
+    func messageDidUpdate(_ message: String?) {}
 }

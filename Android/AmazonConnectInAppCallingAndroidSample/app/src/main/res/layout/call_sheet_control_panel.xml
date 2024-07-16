@@ -58,4 +58,15 @@
         app:layout_constraintEnd_toEndOf="@id/keypad_button"
         android:layout_marginVertical="@dimen/call_sheet_icon_button_row_margin_vertical"/>
 
+    <!-- Screen share -->
+    <com.amazonaws.services.connect.inappcalling.sample.ui.controlpanel.ControlButton
+        android:id="@+id/screen_share_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/device_button"
+        app:layout_constraintStart_toStartOf="@id/device_button"
+        app:layout_constraintEnd_toEndOf="@id/device_button"
+        android:layout_marginVertical="@dimen/call_sheet_icon_button_row_margin_vertical"
+        android:visibility="gone"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

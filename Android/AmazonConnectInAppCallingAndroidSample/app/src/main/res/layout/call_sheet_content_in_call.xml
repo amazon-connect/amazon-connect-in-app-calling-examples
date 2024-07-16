@@ -12,6 +12,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <include
+        android:id="@+id/screen_share_panel"
+        layout="@layout/call_sheet_screen_share_panel"
+        android:layout_width="match_parent"
+        android:layout_height="205dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/video_panel"
+        app:layout_constraintBottom_toTopOf="@id/control_panel" />
 
     <include
         android:id="@+id/control_panel"
@@ -20,7 +29,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/video_panel"
+        app:layout_constraintTop_toBottomOf="@id/screen_share_panel"
         app:layout_constraintBottom_toTopOf="@id/end_control"/>
 
     <!-- End call button -->
@@ -38,7 +47,7 @@
             android:contentDescription="@string/call_sheet_end_call_button_description"
             android:layout_width="@dimen/call_sheet_button_size"
             android:layout_height="@dimen/call_sheet_button_size"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="24dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -48,7 +57,7 @@
             android:id="@+id/end_button_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="54dp"
+            android:layout_marginBottom="32dp"
             android:layout_marginTop="@dimen/call_sheet_icon_button_description_margin"
             android:text="@string/call_sheet_end_call_button_description"
             android:textColor="@color/call_button_text_gray"

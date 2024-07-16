@@ -15,6 +15,10 @@ public class CallViewController: UIViewController {
     @IBOutlet weak var callContentView: UIView!
     @IBOutlet weak var titleView: TitleView!
     @IBOutlet weak var inlineErrorView: CallInlineErrorView!
+    @IBOutlet weak var bannerContainerView: UIView!
+    @IBOutlet weak var screenShareContainerView: UIView!
+    @IBOutlet weak var screenShareView: ScreenShareView!
+    @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var videoContainerView: UIView!
     @IBOutlet weak var videoView: VideoView!
     @IBOutlet weak var actionPanelContainerView: UIView!
@@ -25,8 +29,12 @@ public class CallViewController: UIViewController {
     @IBOutlet weak var inlineErrorViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var videoContainerZeroHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var actionPanelContainerZeroHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var videoContainerViewHeightConstraint: NSLayoutConstraint!
+    
     
     private let callNtfCenter: CallNotificationCenter
+    
+    private var screenShareBannerDismissed: Bool = false
     
     private let vm: CallViewModel
     private lazy var dtmfView: DTMFView = {
@@ -53,7 +61,12 @@ public class CallViewController: UIViewController {
     }
     
     private func startCall() {
+        self.screenShareBannerDismissed = false
         self.vm.call()
+    }
+    
+    private func endCall() {
+        self.vm.endCall()
     }
 }
 
@@ -105,6 +118,8 @@ extension CallViewController {
         self.titleView.delegate = self
         
         self.actionPanelContentView.delegate = self
+        
+        self.screenShareView.delegate = self
     }
     
     // UI updates when events occur
@@ -114,6 +129,8 @@ extension CallViewController {
         self.updateVideoContainerView()
         self.updateActionPanel()
         self.updateCallButton()
+        self.updateBannerUI()
+        self.updateScreenShareUI()
     }
     
     private func updateTitleView() {
@@ -136,6 +153,8 @@ extension CallViewController {
             self.videoContainerView.isHidden = true
             self.videoContainerZeroHeightConstraint.priority = .required
         }
+        
+        self.videoContainerViewHeightConstraint.priority = self.vm.screenShareStatus == .none ? .defaultLow : .required
     }
     
     private func updateActionPanel() {
@@ -146,6 +165,15 @@ extension CallViewController {
             self.actionPanelContainerView.isHidden = true
             self.actionPanelContainerZeroHeightConstraint.priority = .required
         }
+    }
+    
+    private func updateBannerUI() {
+        self.bannerContainerView.isHidden = self.vm.message == nil
+        self.messageLabel.text = self.vm.message
+    }
+    
+    private func updateScreenShareUI() {
+        self.screenShareContainerView.isHidden = self.vm.screenShareStatus == .none
     }
 
     private func updateCallButton() {
@@ -190,6 +218,10 @@ extension CallViewController {
         case .calling, .cancelling: break
         }
     }
+    
+    @IBAction func bannerCloseButtonTapped(_ sender: Any) {
+        self.bannerContainerView.isHidden = true
+    }
 }
 
 // TitleViewDelegate
@@ -202,6 +234,13 @@ extension CallViewController: TitleViewDelegate {
 
 // ViewModelDelegate
 extension CallViewController: CallObserver {
+    func screenShareCapabilityDidUpdate() { }
+    
+    func screenShareStatusDidUpdate() {
+        DispatchQueue.main.async {
+            self.updateUI()
+        }
+    }
     
     func callStateDidUpdate(_ oldState: CallState,
                             _ newState: CallState) {
@@ -234,6 +273,12 @@ extension CallViewController: CallObserver {
     func videoTileStateDidRemove() {
         DispatchQueue.main.async {
             self.updateUI()
+        }
+    }
+    
+    func messageDidUpdate(_ message: String?) {
+        DispatchQueue.main.async {
+            self.updateBannerUI()
         }
     }
 }
@@ -270,5 +315,30 @@ extension CallViewController: ActionPanelViewDelegate {
     func preferencesButtonDidTap(_ sender: Any) {
         let controller = PrefViewController()
         self.presentInNavController(controller)
+    }
+    
+    func shareScreenButtonDidTap(_ sender: Any) {
+        if self.vm.screenShareStatus != .local {
+            self.vm.startScreenShare()
+        } else {
+            self.vm.stopScreenShare()
+        }
+    }
+}
+
+// MARK: - ScreenShareViewDelegate
+extension CallViewController: ScreenShareViewDelegate {
+    func fullScreenButtonPressed(sender: ScreenShareView) {
+        let fullScreenShareViewController = FullScreenShareViewController()
+        fullScreenShareViewController.delegate = self
+        self.present(fullScreenShareViewController, animated: true)
+    }
+}
+
+// MARK: - FullScreenShareViewControllerDelegate
+extension CallViewController: FullScreenShareViewControllerDelegate {
+    
+    func willDismiss(sender: FullScreenShareViewController) {
+        self.screenShareView.updateUI()
     }
 }

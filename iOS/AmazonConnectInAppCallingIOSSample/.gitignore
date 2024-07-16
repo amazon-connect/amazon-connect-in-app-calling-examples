@@ -1,5 +1,5 @@
 .DS_Store
-xcuserdata
+xcuserdata/
 AmazonChimeSDK.framework
 AmazonChimeSDKMachineLearning.framework
 AmazonChimeSDKMedia.framework
@@ -10,4 +10,3 @@ build
 Pods
 build/
 DerivedData/
-

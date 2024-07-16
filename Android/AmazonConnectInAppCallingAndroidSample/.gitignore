@@ -9,3 +9,31 @@ build/
 .externalNativeBuild
 .cxx
 /libs
+**/build/
+!src/**/build/
+
+# Ignore Gradle GUI config
+gradle-app.setting
+
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+!gradle-wrapper.jar
+
+# Avoid ignore Gradle wrappper properties
+!gradle-wrapper.properties
+
+# Cache of project
+.gradletasknamecache
+
+# Eclipse Gradle plugin generated files
+# Eclipse Core
+.project
+# JDT-specific (Eclipse Java Development Tools)
+.classpath
+
+# All files under the .idea directory in the project root except the items that store user-specific settings
+./idea/workspace.xml
+./idea/usage.statistics.xml
+./idea/shelf
+
+# All the .iml module files (can be located in different module directories) -> applies to IntelliJ IDEA
+*.iml

@@ -44,7 +44,7 @@ class DTMFView: UIView {
     }
     
     required init(controller: DTMFViewDelegate) {
-        super.init(frame: CGRect(x: 0, y: 0, width: 0, height: 160))
+        super.init(frame: CGRect(x: 0, y: 0, width: 0, height: 146))
         self.loadView("DTMFView")
         self.delegate = controller
         self.setupUI()
