@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ScreenShareView" customModule="AmazonConnectInAppCallingIOSSample" customModuleProvider="target">
+            <connections>
+                <outlet property="fullScreenButton" destination="1OZ-Sq-U1d" id="eRB-nZ-Mkj"/>
+                <outlet property="screenShareRenderView" destination="HKO-LC-bs9" id="kCJ-xh-uvg"/>
+                <outlet property="senderLabel" destination="G1W-PH-4HE" id="59L-Kt-HN7"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="220"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HKO-LC-bs9" customClass="DefaultVideoRenderView" customModule="AmazonChimeSDK">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="220"/>
+                </imageView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G1W-PH-4HE" customClass="PaddingLabel" customModule="AmazonConnectInAppCallingIOSSample" customModuleProvider="target">
+                    <rect key="frame" x="16" y="180.33333333333334" width="49" height="31.666666666666657"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" id="3AY-iC-C9O"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" id="uk1-dd-65j"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="topInset">
+                            <real key="value" value="8"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
+                            <real key="value" value="8"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                            <real key="value" value="8"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                            <real key="value" value="8"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRaidus">
+                            <integer key="value" value="4"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1OZ-Sq-U1d">
+                    <rect key="frame" x="349" y="0.0" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="44" id="IRy-zt-27C"/>
+                        <constraint firstAttribute="height" constant="44" id="oWa-ef-ecV"/>
+                    </constraints>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" image="arrow.up.left.and.arrow.down.right" catalog="system"/>
+                    <connections>
+                        <action selector="fullScreenButtonPressed:" destination="-1" eventType="touchUpInside" id="yik-cM-1Wa"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="G1W-PH-4HE" secondAttribute="bottom" constant="8" id="0qj-k5-v3f"/>
+                <constraint firstAttribute="bottom" secondItem="HKO-LC-bs9" secondAttribute="bottom" id="3Da-KH-g3j"/>
+                <constraint firstAttribute="trailing" secondItem="1OZ-Sq-U1d" secondAttribute="trailing" id="BiR-7V-thf"/>
+                <constraint firstAttribute="trailing" secondItem="HKO-LC-bs9" secondAttribute="trailing" id="gB9-Jc-kDO"/>
+                <constraint firstItem="G1W-PH-4HE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="hAl-lv-DeT"/>
+                <constraint firstAttribute="top" secondItem="HKO-LC-bs9" secondAttribute="top" id="q5M-De-Ud3"/>
+                <constraint firstItem="HKO-LC-bs9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="vo8-hH-T1S"/>
+                <constraint firstItem="1OZ-Sq-U1d" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="x21-U7-I8f"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="107.63358778625954" y="-41.549295774647888"/>
+        </view>
+    </objects>
+    <designables>
+        <designable name="G1W-PH-4HE">
+            <size key="intrinsicContentSize" width="49" height="31.666666666666664"/>
+        </designable>
+    </designables>
+    <resources>
+        <image name="arrow.up.left.and.arrow.down.right" catalog="system" width="128" height="115"/>
+    </resources>
+</document>

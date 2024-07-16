@@ -10,9 +10,16 @@
 		6A9788B32BAA16640038DD43 /* CallKitConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9788B02BAA16640038DD43 /* CallKitConfiguration.swift */; };
 		6A9788B42BAA16640038DD43 /* CallKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9788B12BAA16640038DD43 /* CallKitManager.swift */; };
 		6A9788B52BAA16640038DD43 /* CallKitCallController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9788B22BAA16640038DD43 /* CallKitCallController.swift */; };
+		D81001DD2C5411090036E836 /* FullScreenShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D81001DC2C5411090036E836 /* FullScreenShareViewController.xib */; };
+		D81001DE2C5411090036E836 /* FullScreenShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81001DB2C5411090036E836 /* FullScreenShareViewController.swift */; };
+		D81001E02C5412390036E836 /* FullScreenShareViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81001DF2C5412390036E836 /* FullScreenShareViewModel.swift */; };
 		D8439B5B2BB6340500FE5C78 /* DefaultCallController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8439B5A2BB6340500FE5C78 /* DefaultCallController.swift */; };
 		D8439B5D2BB6341900FE5C78 /* CallController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8439B5C2BB6341900FE5C78 /* CallController.swift */; };
 		D877DF772AE0739F00EFD231 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D877DF762AE0739F00EFD231 /* SceneDelegate.swift */; };
+		D8842F002C472B4F0007E700 /* InAppScreenShare.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8842EFF2C472B4F0007E700 /* InAppScreenShare.swift */; };
+		D8842F022C472C360007E700 /* ScreenShareDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8842F012C472C360007E700 /* ScreenShareDelegate.swift */; };
+		D8842F042C472D230007E700 /* ScreenShare.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8842F032C472D230007E700 /* ScreenShare.swift */; };
+		D8842F072C473D950007E700 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8842F062C473D950007E700 /* BannerView.swift */; };
 		D89AD7632AD8794E007D0A08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD7622AD8794E007D0A08 /* AppDelegate.swift */; };
 		D89AD76C2AD8794F007D0A08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D89AD76B2AD8794F007D0A08 /* Assets.xcassets */; };
 		D89AD76F2AD8794F007D0A08 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D89AD76D2AD8794F007D0A08 /* LaunchScreen.storyboard */; };
@@ -78,6 +85,9 @@
 		D89AD8762AD88D0D007D0A08 /* VideoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD8732AD88D0C007D0A08 /* VideoViewModel.swift */; };
 		D89AD8772AD88D0D007D0A08 /* VideoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D89AD8742AD88D0C007D0A08 /* VideoView.xib */; };
 		D89AD8782AD88D0D007D0A08 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89AD8752AD88D0D007D0A08 /* VideoView.swift */; };
+		D8D683582C48799E00F8E916 /* ScreenShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D683572C48799E00F8E916 /* ScreenShareView.swift */; };
+		D8D6835A2C4879AE00F8E916 /* ScreenShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8D683592C4879AE00F8E916 /* ScreenShareView.xib */; };
+		D8D6835C2C487A8100F8E916 /* ScreenShareViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D6835B2C487A8100F8E916 /* ScreenShareViewModel.swift */; };
 		F8B155A708702DCD5DBAFF95 /* Pods_AmazonConnectInAppCallingIOSSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7E9237D9F7578FC9AC0BD69 /* Pods_AmazonConnectInAppCallingIOSSample.framework */; };
 /* End PBXBuildFile section */
 
@@ -88,9 +98,16 @@
 		6A9788B22BAA16640038DD43 /* CallKitCallController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallKitCallController.swift; sourceTree = "<group>"; };
 		A1A6AB2AAA65E8F2071EDB58 /* Pods-AmazonConnectInAppCallingIOSSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AmazonConnectInAppCallingIOSSample.release.xcconfig"; path = "Target Support Files/Pods-AmazonConnectInAppCallingIOSSample/Pods-AmazonConnectInAppCallingIOSSample.release.xcconfig"; sourceTree = "<group>"; };
 		C7E9237D9F7578FC9AC0BD69 /* Pods_AmazonConnectInAppCallingIOSSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AmazonConnectInAppCallingIOSSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D81001DB2C5411090036E836 /* FullScreenShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenShareViewController.swift; sourceTree = "<group>"; };
+		D81001DC2C5411090036E836 /* FullScreenShareViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FullScreenShareViewController.xib; sourceTree = "<group>"; };
+		D81001DF2C5412390036E836 /* FullScreenShareViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenShareViewModel.swift; sourceTree = "<group>"; };
 		D8439B5A2BB6340500FE5C78 /* DefaultCallController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCallController.swift; sourceTree = "<group>"; };
 		D8439B5C2BB6341900FE5C78 /* CallController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallController.swift; sourceTree = "<group>"; };
 		D877DF762AE0739F00EFD231 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		D8842EFF2C472B4F0007E700 /* InAppScreenShare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppScreenShare.swift; sourceTree = "<group>"; };
+		D8842F012C472C360007E700 /* ScreenShareDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenShareDelegate.swift; sourceTree = "<group>"; };
+		D8842F032C472D230007E700 /* ScreenShare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenShare.swift; sourceTree = "<group>"; };
+		D8842F062C473D950007E700 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
 		D89AD75F2AD8794E007D0A08 /* AmazonConnectInAppCallingIOSSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AmazonConnectInAppCallingIOSSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D89AD7622AD8794E007D0A08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D89AD76B2AD8794F007D0A08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -158,6 +175,9 @@
 		D89AD8732AD88D0C007D0A08 /* VideoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoViewModel.swift; sourceTree = "<group>"; };
 		D89AD8742AD88D0C007D0A08 /* VideoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoView.xib; sourceTree = "<group>"; };
 		D89AD8752AD88D0D007D0A08 /* VideoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
+		D8D683572C48799E00F8E916 /* ScreenShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenShareView.swift; sourceTree = "<group>"; };
+		D8D683592C4879AE00F8E916 /* ScreenShareView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScreenShareView.xib; sourceTree = "<group>"; };
+		D8D6835B2C487A8100F8E916 /* ScreenShareViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenShareViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +219,24 @@
 				D8439B5C2BB6341900FE5C78 /* CallController.swift */,
 			);
 			path = CallController;
+			sourceTree = "<group>";
+		};
+		D8842EFE2C472B410007E700 /* ScreenShare */ = {
+			isa = PBXGroup;
+			children = (
+				D8842EFF2C472B4F0007E700 /* InAppScreenShare.swift */,
+				D8842F012C472C360007E700 /* ScreenShareDelegate.swift */,
+				D8842F032C472D230007E700 /* ScreenShare.swift */,
+			);
+			path = ScreenShare;
+			sourceTree = "<group>";
+		};
+		D8842F052C473D710007E700 /* BannerView */ = {
+			isa = PBXGroup;
+			children = (
+				D8842F062C473D950007E700 /* BannerView.swift */,
+			);
+			path = BannerView;
 			sourceTree = "<group>";
 		};
 		D89AD7562AD8794E007D0A08 = {
@@ -301,6 +339,7 @@
 		D89AD7CD2AD88A91007D0A08 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				D8842EFE2C472B410007E700 /* ScreenShare */,
 				D89AD81D2AD88BBE007D0A08 /* ServiceProvider */,
 				D89AD8142AD88BAC007D0A08 /* Api */,
 				D89AD8002AD88B7A007D0A08 /* DTMFSender */,
@@ -447,6 +486,7 @@
 		D89AD8562AD88CAF007D0A08 /* Call */ = {
 			isa = PBXGroup;
 			children = (
+				D8D683562C48798A00F8E916 /* ScreenShareView */,
 				D89AD7932AD87F3E007D0A08 /* CallViewController */,
 				D89AD8722AD88D03007D0A08 /* VideoView */,
 				D89AD86A2AD88CE6007D0A08 /* ControlButton */,
@@ -478,6 +518,7 @@
 		D89AD86F2AD88CF8007D0A08 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				D8842F052C473D710007E700 /* BannerView */,
 				D89AD79B2AD88017007D0A08 /* TitleView */,
 				D89AD8702AD88CFE007D0A08 /* PaddingLabel.swift */,
 			);
@@ -492,6 +533,19 @@
 				D89AD8732AD88D0C007D0A08 /* VideoViewModel.swift */,
 			);
 			path = VideoView;
+			sourceTree = "<group>";
+		};
+		D8D683562C48798A00F8E916 /* ScreenShareView */ = {
+			isa = PBXGroup;
+			children = (
+				D8D683572C48799E00F8E916 /* ScreenShareView.swift */,
+				D8D683592C4879AE00F8E916 /* ScreenShareView.xib */,
+				D8D6835B2C487A8100F8E916 /* ScreenShareViewModel.swift */,
+				D81001DB2C5411090036E836 /* FullScreenShareViewController.swift */,
+				D81001DC2C5411090036E836 /* FullScreenShareViewController.xib */,
+				D81001DF2C5412390036E836 /* FullScreenShareViewModel.swift */,
+			);
+			path = ScreenShareView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -556,12 +610,14 @@
 			files = (
 				D89AD8772AD88D0D007D0A08 /* VideoView.xib in Resources */,
 				D89AD8482AD88C73007D0A08 /* BgBlurPrefCell.xib in Resources */,
+				D8D6835A2C4879AE00F8E916 /* ScreenShareView.xib in Resources */,
 				D89AD8622AD88CC9007D0A08 /* ActionPanelView.xib in Resources */,
 				D89AD7992AD87F5F007D0A08 /* CallViewController.xib in Resources */,
 				D89AD8612AD88CC9007D0A08 /* ActionPanelCell.xib in Resources */,
 				D89AD7C42AD881C9007D0A08 /* DTMFView.xib in Resources */,
 				D89AD86D2AD88CF1007D0A08 /* ControlButton.xib in Resources */,
 				D89AD8692AD88CDC007D0A08 /* CallInlineErrorView.xib in Resources */,
+				D81001DD2C5411090036E836 /* FullScreenShareViewController.xib in Resources */,
 				D89AD76F2AD8794F007D0A08 /* LaunchScreen.storyboard in Resources */,
 				D89AD8532AD88C8C007D0A08 /* VoiceFocusPrefCell.xib in Resources */,
 				D89AD79F2AD88023007D0A08 /* TitleView.xib in Resources */,
@@ -623,7 +679,9 @@
 			files = (
 				D89AD7D82AD88AB9007D0A08 /* CallState.swift in Sources */,
 				D89AD7B62AD88115007D0A08 /* DeviceHelper.swift in Sources */,
+				D8D683582C48799E00F8E916 /* ScreenShareView.swift in Sources */,
 				D89AD7B12AD88115007D0A08 /* Errors.swift in Sources */,
+				D8842F002C472B4F0007E700 /* InAppScreenShare.swift in Sources */,
 				D89AD79E2AD88023007D0A08 /* TitleView.swift in Sources */,
 				D89AD8782AD88D0D007D0A08 /* VideoView.swift in Sources */,
 				D89AD7D32AD88AB0007D0A08 /* CallObserverWeakReference.swift in Sources */,
@@ -641,12 +699,14 @@
 				D89AD8212AD88BC7007D0A08 /* ServiceProvider.swift in Sources */,
 				D877DF772AE0739F00EFD231 /* SceneDelegate.swift in Sources */,
 				D89AD8062AD88B84007D0A08 /* DTMFSender.swift in Sources */,
+				D81001DE2C5411090036E836 /* FullScreenShareViewController.swift in Sources */,
 				D89AD85E2AD88CC9007D0A08 /* ActionPanelCell.swift in Sources */,
 				D89AD7A62AD880E0007D0A08 /* UIColorExtension.swift in Sources */,
 				D89AD8262AD88BE3007D0A08 /* VideoTileStateType.swift in Sources */,
 				D8439B5D2BB6341900FE5C78 /* CallController.swift in Sources */,
 				D89AD8682AD88CDC007D0A08 /* CallInlineErrorViewModel.swift in Sources */,
 				D89AD8432AD88C63007D0A08 /* BgBlurPickerViewModel.swift in Sources */,
+				D8D6835C2C487A8100F8E916 /* ScreenShareViewModel.swift in Sources */,
 				D89AD8672AD88CDC007D0A08 /* CallInlineErrorView.swift in Sources */,
 				D89AD85D2AD88CC9007D0A08 /* ActionPanelViewModel.swift in Sources */,
 				6A9788B42BAA16640038DD43 /* CallKitManager.swift in Sources */,
@@ -660,7 +720,9 @@
 				D89AD7A42AD880C8007D0A08 /* UIViewControllerExtension.swift in Sources */,
 				D89AD8052AD88B84007D0A08 /* ParcitipantConnectionCredentialsProvider.swift in Sources */,
 				D89AD7EF2AD88B25007D0A08 /* CallStateStore.swift in Sources */,
+				D81001E02C5412390036E836 /* FullScreenShareViewModel.swift in Sources */,
 				D89AD7D42AD88AB0007D0A08 /* CallObserver.swift in Sources */,
+				D8842F022C472C360007E700 /* ScreenShareDelegate.swift in Sources */,
 				D89AD7FF2AD88B65007D0A08 /* CallNotificationCenter.swift in Sources */,
 				D89AD85F2AD88CC9007D0A08 /* ActionPanelAudioCell.swift in Sources */,
 				D89AD7D72AD88AB9007D0A08 /* CallManager.swift in Sources */,
@@ -671,11 +733,13 @@
 				D89AD8712AD88CFE007D0A08 /* PaddingLabel.swift in Sources */,
 				D89AD7862AD87E9F007D0A08 /* InAppCalling.swift in Sources */,
 				D89AD7BD2AD88194007D0A08 /* HttpClient.swift in Sources */,
+				D8842F042C472D230007E700 /* ScreenShare.swift in Sources */,
 				D89AD81C2AD88BBC007D0A08 /* CreateWebrtcContactResponse.swift in Sources */,
 				D89AD8542AD88C8C007D0A08 /* VoiceFocusPrefCell.swift in Sources */,
 				D89AD7812AD87D34007D0A08 /* MainViewController.swift in Sources */,
 				6A9788B32BAA16640038DD43 /* CallKitConfiguration.swift in Sources */,
 				D89AD8762AD88D0D007D0A08 /* VideoViewModel.swift in Sources */,
+				D8842F072C473D950007E700 /* BannerView.swift in Sources */,
 				D89AD81B2AD88BBC007D0A08 /* ApiClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

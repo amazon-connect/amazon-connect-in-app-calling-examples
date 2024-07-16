@@ -9,7 +9,17 @@ import Foundation
 import AmazonChimeSDK
 import AVFAudio
 
+private enum ScreenShareDataMessageType: String {
+    case screenSharingStarted = "ScreenSharingStarted"
+    case screenSharingStopped = "ScreenSharingStopped"
+}
+
 class CallManager {
+    
+    private let screenShareCapabilityMessage = "Screen-sharing session has started, you can now share your screen."
+    
+    // The data message topic for screen share
+    private let screenShareSessionTopic = "AMAZON_CONNECT_SCREEN_SHARING"
     
     private let apiClient: ApiClient
     private let sdkLogger: Logger
@@ -23,6 +33,8 @@ class CallManager {
     
     private var cameraCaptureSource: CameraCaptureSource
     private var bgBlurVideoFrameProcessor: BackgroundBlurVideoFrameProcessor
+    
+    private var screenShare: ScreenShare?
     
     init(_ config: InAppCallingConfiguration,
          _ apiClient: ApiClient,
@@ -73,7 +85,7 @@ extension CallManager {
         if self.callStateStore.callState != .inCall &&  self.callStateStore.callState != .reconnecting {
             return
         }
-        
+        self.screenShare?.stopScreenShare()
         self.callSession?.audioVideo.stop()
     }
     
@@ -117,6 +129,8 @@ extension CallManager {
         callSession.audioVideo.addAudioVideoObserver(observer: self)
         callSession.audioVideo.addRealtimeObserver(observer: self)
         callSession.audioVideo.addVideoTileObserver(observer: self)
+        callSession.audioVideo.addRealtimeDataMessageObserver(topic: self.screenShareSessionTopic,
+                                                              observer: self)
         self.callSession = callSession
         
         do {
@@ -126,6 +140,45 @@ extension CallManager {
         } catch {
             return false
         }
+    }
+}
+
+extension CallManager: ScreenShareDelegate {
+    
+    func startScreenShare() {
+        guard let audioVideo = self.callSession?.audioVideo else {
+            return
+        }
+        let screenShare = InAppScreenShare(contentShareController: audioVideo)
+        self.screenShare = screenShare
+        screenShare.delegate = self
+        screenShare.startScreenShare()
+    }
+    
+    func stopScreenShare() {
+        self.screenShare?.stopScreenShare()
+        screenShareDidStop()
+    }
+    
+    func screenShareDidStart() {
+        self.callStateStore.screenShareStatus = .local
+    }
+    
+    func screenShareDidStop() {
+        self.callStateStore.screenShareStatus = self.callStateStore.screenShareStatus == .remote ? .remote : .none
+    }
+    
+    func screenShareDidFail() {
+        self.stopScreenShare()
+        self.callStateStore.screenShareStatus = self.callStateStore.screenShareStatus == .remote ? .remote : .none
+    }
+    
+    func bindLocalScreenShareSink(videoSink: VideoSink) {
+        self.screenShare?.addVideoSink(videoSink)
+    }
+    
+    func unbindLocalScreenShareSink(videoSink: VideoSink) {
+        self.screenShare?.removeVideoSink(videoSink)
     }
 }
 
@@ -232,6 +285,7 @@ extension CallManager {
     }
 }
 
+
 extension CallManager: AudioVideoObserver {
     func audioSessionDidStartConnecting(reconnecting: Bool) {}
     
@@ -318,12 +372,17 @@ extension CallManager: RealtimeObserver {
 extension CallManager: VideoTileObserver {
     func videoTileDidAdd(tileState: AmazonChimeSDK.VideoTileState) {
         if tileState.isContent {
-            return
+            // Only remote content share will trigger onVideoTileAdded
+            self.stopScreenShare()
+            self.callStateStore.screenShareStatus = .remote
         }
         self.callStateStore.addVideoTile(tileState)
     }
     
     func videoTileDidRemove(tileState: AmazonChimeSDK.VideoTileState) {
+        if tileState.isContent {
+            self.callStateStore.screenShareStatus = self.callStateStore.screenShareStatus == .local ? .local : .none
+        }
         self.callStateStore.removeVideoTile(tileState)
     }
     
@@ -332,4 +391,32 @@ extension CallManager: VideoTileObserver {
     func videoTileDidResume(tileState: AmazonChimeSDK.VideoTileState) {}
     
     func videoTileSizeDidChange(tileState: AmazonChimeSDK.VideoTileState) {}
+}
+
+extension CallManager: DataMessageObserver {
+    
+    func dataMessageDidReceived(dataMessage: AmazonChimeSDK.DataMessage) {
+        if dataMessage.topic == screenShareSessionTopic {
+            let jsonDict = try? JSONSerialization.jsonObject(with: dataMessage.data, options: []) as? [String: String] ?? [:]
+            guard let message = jsonDict?["message"] else {
+                return
+            }
+            if message == ScreenShareDataMessageType.screenSharingStarted.rawValue {
+                if !self.callStateStore.isScreenShareCapabilityEnabled {
+                    self.callStateStore.isScreenShareCapabilityEnabled = true
+                    self.callStateStore.message = screenShareCapabilityMessage
+                }
+            } else if message == ScreenShareDataMessageType.screenSharingStopped.rawValue {
+                if self.callStateStore.isScreenShareCapabilityEnabled {
+                    self.callStateStore.isScreenShareCapabilityEnabled = false
+                    if self.callStateStore.message == screenShareCapabilityMessage {
+                        self.callStateStore.message = nil
+                    }
+                    if self.callStateStore.screenShareStatus != .none {
+                        self.stopScreenShare()
+                    }
+                }
+            }
+        }
+    }
 }

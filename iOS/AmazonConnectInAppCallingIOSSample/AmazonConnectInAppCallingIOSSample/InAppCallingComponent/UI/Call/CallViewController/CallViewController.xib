@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_72" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,14 +14,19 @@
                 <outlet property="actionPanelContainerView" destination="s0X-ZV-psi" id="Tz1-Yq-BvN"/>
                 <outlet property="actionPanelContainerZeroHeightConstraint" destination="LYe-ax-yCK" id="n1E-Y4-OCe"/>
                 <outlet property="actionPanelContentView" destination="iN9-z0-k1O" id="f03-mm-1IB"/>
+                <outlet property="bannerContainerView" destination="AD6-Sk-lxd" id="qDE-1k-f2W"/>
                 <outlet property="callButton" destination="FeF-Cu-fnd" id="ciN-wc-Yhr"/>
                 <outlet property="callContentView" destination="1u0-yi-boI" id="84I-hS-0m0"/>
                 <outlet property="contentScrollView" destination="psf-eC-zRF" id="3JP-0S-9MQ"/>
                 <outlet property="inlineErrorView" destination="bCq-Gz-cQs" id="Plr-TM-3ce"/>
                 <outlet property="inlineErrorViewHeightConstraint" destination="mCK-eU-2K1" id="lOM-R5-3R7"/>
+                <outlet property="messageLabel" destination="fRw-BE-lO5" id="uc3-wD-1mr"/>
                 <outlet property="overlayView" destination="W9F-iI-1M5" id="KHn-cV-20C"/>
+                <outlet property="screenShareContainerView" destination="fzU-kb-uHo" id="wW3-LR-aSl"/>
+                <outlet property="screenShareView" destination="yMy-Y6-5hl" id="psr-fa-yA9"/>
                 <outlet property="titleView" destination="ygr-Au-wE9" id="bZM-Hs-Xr7"/>
                 <outlet property="videoContainerView" destination="Aw9-5f-Dd7" id="DG7-Ov-Yqi"/>
+                <outlet property="videoContainerViewHeightConstraint" destination="T36-qN-wC3" id="f4n-Ce-0Y0"/>
                 <outlet property="videoContainerZeroHeightConstraint" destination="FA4-YS-rZv" id="UDI-pL-JHr"/>
                 <outlet property="videoView" destination="3yU-3k-MkE" id="WHk-3O-nIj"/>
                 <outlet property="view" destination="3YK-SW-2Ic" id="zli-B2-4f7"/>
@@ -39,114 +45,161 @@
                     </connections>
                 </view>
                 <scrollView contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="psf-eC-zRF">
-                    <rect key="frame" x="0.0" y="365.66666666666669" width="430" height="566.33333333333326"/>
+                    <rect key="frame" x="0.0" y="397.66666666666669" width="430" height="534.33333333333326"/>
                     <subviews>
                         <view contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="1u0-yi-boI" userLabel="CallContentView">
-                            <rect key="frame" x="0.0" y="0.0" width="430" height="566.33333333333337"/>
+                            <rect key="frame" x="0.0" y="0.0" width="430" height="534.33333333333337"/>
                             <subviews>
-                                <view contentMode="scaleToFill" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="ygr-Au-wE9" userLabel="TitleView" customClass="TitleView" customModule="AmazonConnectInAppCallingIOSSample" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="430" height="58"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="58" id="YWg-3B-30i"/>
-                                    </constraints>
-                                </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bCq-Gz-cQs" userLabel="ErrorView" customClass="CallInlineErrorView" customModule="AmazonConnectInAppCallingIOSSample" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="58" width="430" height="0.0"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" id="mCK-eU-2K1"/>
-                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" id="wWx-NP-rcl"/>
-                                    </constraints>
-                                </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aw9-5f-Dd7" userLabel="VideoContainerView">
-                                    <rect key="frame" x="0.0" y="58.000000000000014" width="430" height="254.33333333333337"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="a9E-Fa-Ztc">
+                                    <rect key="frame" x="0.0" y="0.0" width="430" height="500.33333333333331"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3yU-3k-MkE" customClass="VideoView" customModule="AmazonConnectInAppCallingIOSSample" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="430" height="254.33333333333334"/>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        </view>
-                                    </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="3yU-3k-MkE" secondAttribute="bottom" id="2zY-ls-h6T"/>
-                                        <constraint firstAttribute="height" priority="250" id="FA4-YS-rZv"/>
-                                        <constraint firstAttribute="trailing" secondItem="3yU-3k-MkE" secondAttribute="trailing" id="JVM-4X-OZj"/>
-                                        <constraint firstItem="3yU-3k-MkE" firstAttribute="top" secondItem="Aw9-5f-Dd7" secondAttribute="top" id="Oq2-rk-Ax4"/>
-                                        <constraint firstAttribute="width" secondItem="Aw9-5f-Dd7" secondAttribute="height" multiplier="414:245" priority="750" id="mPv-C5-8cl"/>
-                                        <constraint firstItem="3yU-3k-MkE" firstAttribute="leading" secondItem="Aw9-5f-Dd7" secondAttribute="leading" id="mci-xF-sEi"/>
-                                    </constraints>
-                                </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s0X-ZV-psi" userLabel="ControlContainerView">
-                                    <rect key="frame" x="0.0" y="312.33333333333331" width="430" height="110"/>
-                                    <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iN9-z0-k1O" customClass="ActionPanelView" customModule="AmazonConnectInAppCallingIOSSample" customModuleProvider="target">
-                                            <rect key="frame" x="55" y="12" width="320" height="86"/>
+                                        <view contentMode="scaleToFill" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="ygr-Au-wE9" userLabel="TitleView" customClass="TitleView" customModule="AmazonConnectInAppCallingIOSSample" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="430" height="44"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="320" id="YiS-bd-7nd"/>
-                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="86" id="bU1-62-i1a"/>
+                                                <constraint firstAttribute="height" constant="44" id="YWg-3B-30i"/>
                                             </constraints>
                                         </view>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <constraints>
-                                        <constraint firstItem="iN9-z0-k1O" firstAttribute="top" secondItem="s0X-ZV-psi" secondAttribute="top" priority="750" constant="12" id="FcQ-8F-l3M"/>
-                                        <constraint firstAttribute="height" priority="250" id="LYe-ax-yCK"/>
-                                        <constraint firstAttribute="bottom" secondItem="iN9-z0-k1O" secondAttribute="bottom" priority="750" constant="12" id="aOU-HZ-pKu"/>
-                                        <constraint firstItem="iN9-z0-k1O" firstAttribute="centerX" secondItem="s0X-ZV-psi" secondAttribute="centerX" id="cC7-Bh-L0L"/>
-                                    </constraints>
-                                </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qnj-K7-r5K" userLabel="CallButtonContainerView">
-                                    <rect key="frame" x="0.0" y="422.33333333333331" width="430" height="109.99999999999994"/>
-                                    <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FeF-Cu-fnd" userLabel="CallButton" customClass="ControlButton" customModule="AmazonConnectInAppCallingIOSSample" customModuleProvider="target">
-                                            <rect key="frame" x="185" y="12" width="60" height="86"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bCq-Gz-cQs" userLabel="ErrorView" customClass="CallInlineErrorView" customModule="AmazonConnectInAppCallingIOSSample" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="44" width="430" height="0.0"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" id="mCK-eU-2K1"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" id="wWx-NP-rcl"/>
+                                            </constraints>
+                                        </view>
+                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AD6-Sk-lxd" userLabel="BannerContainerView">
+                                            <rect key="frame" x="0.0" y="44" width="430" height="16"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yn3-YJ-kjk" customClass="BannerView" customModule="AmazonConnectInAppCallingIOSSample" customModuleProvider="target">
+                                                    <rect key="frame" x="16" y="8" width="398" height="0.0"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Screen-sharing session has started, you can now share your screen." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fRw-BE-lO5">
+                                                            <rect key="frame" x="0.0" y="0.0" width="366" height="0.0"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" id="R60-cx-CiI"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="close" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NHR-Ko-t7o">
+                                                            <rect key="frame" x="366" y="0.0" width="32" height="0.0"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="32" id="DFe-Zg-bxl"/>
+                                                            </constraints>
+                                                            <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <buttonConfiguration key="configuration" style="plain" image="xmark" catalog="system"/>
+                                                            <connections>
+                                                                <action selector="bannerCloseButtonTapped:" destination="-1" eventType="touchUpInside" id="vjv-Iu-dOo"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </stackView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="Yn3-YJ-kjk" secondAttribute="bottom" constant="8" id="5PT-rM-Wyh"/>
+                                                <constraint firstItem="Yn3-YJ-kjk" firstAttribute="leading" secondItem="AD6-Sk-lxd" secondAttribute="leading" constant="16" id="6I8-Jk-Hro"/>
+                                                <constraint firstAttribute="trailing" secondItem="Yn3-YJ-kjk" secondAttribute="trailing" constant="16" id="9aR-lk-v5G"/>
+                                                <constraint firstItem="Yn3-YJ-kjk" firstAttribute="top" secondItem="AD6-Sk-lxd" secondAttribute="top" constant="8" id="D9c-ZP-MUd"/>
+                                            </constraints>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aw9-5f-Dd7" userLabel="VideoContainerView">
+                                            <rect key="frame" x="0.0" y="44.000000000000014" width="430" height="236.33333333333337"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3yU-3k-MkE" customClass="VideoView" customModule="AmazonConnectInAppCallingIOSSample" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="430" height="236.33333333333334"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="3yU-3k-MkE" secondAttribute="bottom" id="2zY-ls-h6T"/>
+                                                <constraint firstAttribute="height" priority="250" id="FA4-YS-rZv"/>
+                                                <constraint firstAttribute="trailing" secondItem="3yU-3k-MkE" secondAttribute="trailing" id="JVM-4X-OZj"/>
+                                                <constraint firstItem="3yU-3k-MkE" firstAttribute="top" secondItem="Aw9-5f-Dd7" secondAttribute="top" id="Oq2-rk-Ax4"/>
+                                                <constraint firstAttribute="height" relation="lessThanOrEqual" priority="250" constant="140" id="T36-qN-wC3"/>
+                                                <constraint firstAttribute="width" secondItem="Aw9-5f-Dd7" secondAttribute="height" multiplier="100:55" priority="750" id="mPv-C5-8cl"/>
+                                                <constraint firstItem="3yU-3k-MkE" firstAttribute="leading" secondItem="Aw9-5f-Dd7" secondAttribute="leading" id="mci-xF-sEi"/>
+                                            </constraints>
+                                        </view>
+                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fzU-kb-uHo" userLabel="ScreenShareContainerView">
+                                            <rect key="frame" x="0.0" y="280.33333333333331" width="430" height="236.66666666666669"/>
+                                            <subviews>
+                                                <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="yMy-Y6-5hl" customClass="ScreenShareView" customModule="AmazonConnectInAppCallingIOSSample" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="430" height="236.66666666666666"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                </view>
+                                            </subviews>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" priority="250" constant="60" id="MXP-zI-Jxh"/>
-                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" id="UDP-lZ-n88"/>
-                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" id="Z6F-3M-iQS"/>
-                                                <constraint firstAttribute="height" priority="250" constant="86" id="ej8-LO-TID"/>
+                                                <constraint firstItem="yMy-Y6-5hl" firstAttribute="height" secondItem="fzU-kb-uHo" secondAttribute="height" id="1qX-QW-ouV"/>
+                                                <constraint firstAttribute="width" secondItem="fzU-kb-uHo" secondAttribute="height" multiplier="100:55" id="6eD-PW-g85"/>
+                                                <constraint firstItem="yMy-Y6-5hl" firstAttribute="centerX" secondItem="fzU-kb-uHo" secondAttribute="centerX" id="ILC-KJ-vKy"/>
+                                                <constraint firstItem="yMy-Y6-5hl" firstAttribute="width" secondItem="fzU-kb-uHo" secondAttribute="width" id="NkZ-mS-EpJ"/>
+                                                <constraint firstItem="yMy-Y6-5hl" firstAttribute="centerY" secondItem="fzU-kb-uHo" secondAttribute="centerY" id="fAb-fY-hFK"/>
                                             </constraints>
-                                            <connections>
-                                                <action selector="callButtonTapped:" destination="-1" eventType="touchUpInside" id="0eH-gB-Va3"/>
-                                            </connections>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s0X-ZV-psi" userLabel="ControlContainerView">
+                                            <rect key="frame" x="0.0" y="280.33333333333331" width="430" height="110"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iN9-z0-k1O" customClass="ActionPanelView" customModule="AmazonConnectInAppCallingIOSSample" customModuleProvider="target">
+                                                    <rect key="frame" x="55" y="6" width="320" height="98"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="320" id="YiS-bd-7nd"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="64" id="bU1-62-i1a"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="iN9-z0-k1O" firstAttribute="top" secondItem="s0X-ZV-psi" secondAttribute="top" priority="750" constant="6" id="FcQ-8F-l3M"/>
+                                                <constraint firstAttribute="height" priority="250" id="LYe-ax-yCK"/>
+                                                <constraint firstAttribute="bottom" secondItem="iN9-z0-k1O" secondAttribute="bottom" priority="750" constant="6" id="aOU-HZ-pKu"/>
+                                                <constraint firstItem="iN9-z0-k1O" firstAttribute="centerX" secondItem="s0X-ZV-psi" secondAttribute="centerX" id="cC7-Bh-L0L"/>
+                                            </constraints>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qnj-K7-r5K" userLabel="CallButtonContainerView">
+                                            <rect key="frame" x="0.0" y="390.33333333333331" width="430" height="110"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FeF-Cu-fnd" userLabel="CallButton" customClass="ControlButton" customModule="AmazonConnectInAppCallingIOSSample" customModuleProvider="target">
+                                                    <rect key="frame" x="185" y="12" width="60" height="86"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" priority="250" constant="60" id="MXP-zI-Jxh"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" id="UDP-lZ-n88"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" id="Z6F-3M-iQS"/>
+                                                        <constraint firstAttribute="height" priority="250" constant="86" id="ej8-LO-TID"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <action selector="callButtonTapped:" destination="-1" eventType="touchUpInside" id="0eH-gB-Va3"/>
+                                                    </connections>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="FeF-Cu-fnd" firstAttribute="centerX" secondItem="qnj-K7-r5K" secondAttribute="centerX" id="0Zf-hp-MuU"/>
+                                                <constraint firstAttribute="bottom" secondItem="FeF-Cu-fnd" secondAttribute="bottom" constant="12" id="1EM-1j-kUz"/>
+                                                <constraint firstItem="FeF-Cu-fnd" firstAttribute="top" secondItem="qnj-K7-r5K" secondAttribute="top" constant="12" id="Aey-GM-Lqz"/>
+                                            </constraints>
                                         </view>
                                     </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <constraints>
-                                        <constraint firstItem="FeF-Cu-fnd" firstAttribute="centerX" secondItem="qnj-K7-r5K" secondAttribute="centerX" id="0Zf-hp-MuU"/>
-                                        <constraint firstAttribute="bottom" secondItem="FeF-Cu-fnd" secondAttribute="bottom" constant="12" id="1EM-1j-kUz"/>
-                                        <constraint firstItem="FeF-Cu-fnd" firstAttribute="top" secondItem="qnj-K7-r5K" secondAttribute="top" constant="12" id="Aey-GM-Lqz"/>
-                                    </constraints>
-                                </view>
+                                </stackView>
                             </subviews>
                             <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="tintColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
-                                <constraint firstItem="s0X-ZV-psi" firstAttribute="top" secondItem="Aw9-5f-Dd7" secondAttribute="bottom" id="BRH-DM-Ime"/>
-                                <constraint firstItem="qnj-K7-r5K" firstAttribute="top" secondItem="s0X-ZV-psi" secondAttribute="bottom" id="Eqr-fN-pxe"/>
-                                <constraint firstItem="Aw9-5f-Dd7" firstAttribute="top" secondItem="bCq-Gz-cQs" secondAttribute="bottom" id="Gc4-FC-PDJ"/>
-                                <constraint firstAttribute="right" secondItem="bCq-Gz-cQs" secondAttribute="right" id="HqC-5D-eN8"/>
-                                <constraint firstItem="bCq-Gz-cQs" firstAttribute="top" secondItem="ygr-Au-wE9" secondAttribute="bottom" id="JQC-Dh-DP2"/>
-                                <constraint firstItem="ygr-Au-wE9" firstAttribute="top" secondItem="1u0-yi-boI" secondAttribute="top" id="OsU-Ro-PKc"/>
-                                <constraint firstItem="ygr-Au-wE9" firstAttribute="left" secondItem="1u0-yi-boI" secondAttribute="left" id="QCE-UD-Mk1"/>
-                                <constraint firstItem="Aw9-5f-Dd7" firstAttribute="left" secondItem="1u0-yi-boI" secondAttribute="left" id="VtU-5r-TRv"/>
-                                <constraint firstAttribute="right" secondItem="Aw9-5f-Dd7" secondAttribute="right" id="ZSe-J7-299"/>
-                                <constraint firstAttribute="right" secondItem="ygr-Au-wE9" secondAttribute="right" id="hQi-FK-5Fe"/>
-                                <constraint firstAttribute="right" secondItem="s0X-ZV-psi" secondAttribute="right" id="nkd-0H-Vnv"/>
-                                <constraint firstItem="s0X-ZV-psi" firstAttribute="left" secondItem="1u0-yi-boI" secondAttribute="left" id="qCW-w8-1m1"/>
-                                <constraint firstAttribute="bottom" secondItem="qnj-K7-r5K" secondAttribute="bottom" priority="750" id="qEY-qX-Yfe"/>
+                                <constraint firstItem="a9E-Fa-Ztc" firstAttribute="top" secondItem="1u0-yi-boI" secondAttribute="top" id="KbK-rE-HD7"/>
+                                <constraint firstItem="a9E-Fa-Ztc" firstAttribute="leading" secondItem="1u0-yi-boI" secondAttribute="leading" id="PXW-n1-ZcO"/>
+                                <constraint firstAttribute="trailing" secondItem="a9E-Fa-Ztc" secondAttribute="trailing" id="bnU-HB-UDZ"/>
                                 <constraint firstAttribute="width" constant="414" id="rLM-LG-OGe"/>
-                                <constraint firstAttribute="right" secondItem="qnj-K7-r5K" secondAttribute="right" id="wBW-xc-NSq"/>
-                                <constraint firstItem="qnj-K7-r5K" firstAttribute="left" secondItem="1u0-yi-boI" secondAttribute="left" id="xEX-fg-Gng"/>
-                                <constraint firstItem="bCq-Gz-cQs" firstAttribute="left" secondItem="1u0-yi-boI" secondAttribute="left" id="xlC-Lz-ujH"/>
                             </constraints>
                             <variation key="default">
                                 <mask key="constraints">
@@ -187,11 +240,11 @@
             <viewLayoutGuide key="safeArea" id="ODA-X0-s0v"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="qnj-K7-r5K" firstAttribute="bottom" secondItem="ODA-X0-s0v" secondAttribute="bottom" id="098-tk-93j"/>
                 <constraint firstItem="W9F-iI-1M5" firstAttribute="top" secondItem="3YK-SW-2Ic" secondAttribute="top" id="1VX-0y-27y"/>
                 <constraint firstItem="W9F-iI-1M5" firstAttribute="left" secondItem="3YK-SW-2Ic" secondAttribute="left" id="KND-tL-0Oh"/>
                 <constraint firstItem="psf-eC-zRF" firstAttribute="centerX" secondItem="3YK-SW-2Ic" secondAttribute="centerX" id="Q6T-fR-uW8"/>
                 <constraint firstAttribute="bottom" secondItem="psf-eC-zRF" secondAttribute="bottom" id="ciM-fx-Czp"/>
+                <constraint firstItem="a9E-Fa-Ztc" firstAttribute="bottom" secondItem="ODA-X0-s0v" secondAttribute="bottom" id="fjA-vV-aHF"/>
                 <constraint firstAttribute="right" secondItem="W9F-iI-1M5" secondAttribute="right" id="uAG-m7-fT7"/>
                 <constraint firstAttribute="bottom" secondItem="W9F-iI-1M5" secondAttribute="bottom" id="vKP-5f-zND"/>
                 <constraint firstItem="1u0-yi-boI" firstAttribute="width" secondItem="ODA-X0-s0v" secondAttribute="width" id="yAb-vm-Jx7"/>
@@ -200,19 +253,18 @@
             <variation key="default">
                 <mask key="constraints">
                     <exclude reference="yAb-vm-Jx7"/>
-                    <exclude reference="098-tk-93j"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular-widthClass=compact">
                 <mask key="constraints">
                     <include reference="yAb-vm-Jx7"/>
-                    <include reference="098-tk-93j"/>
                 </mask>
             </variation>
             <point key="canvasLocation" x="485.50724637681162" y="-479.46428571428567"/>
         </view>
     </objects>
     <resources>
+        <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

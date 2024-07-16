@@ -19,4 +19,10 @@ protocol CallObserver: AnyObject {
     func videoTileStateDidAdd()
     
     func videoTileStateDidRemove()
+    
+    func screenShareCapabilityDidUpdate()
+    
+    func screenShareStatusDidUpdate()
+    
+    func messageDidUpdate(_ message: String?)
 }

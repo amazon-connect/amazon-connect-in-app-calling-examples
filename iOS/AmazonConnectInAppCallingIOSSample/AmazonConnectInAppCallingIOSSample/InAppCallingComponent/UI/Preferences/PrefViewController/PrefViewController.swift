@@ -171,6 +171,10 @@ extension PrefViewController: VoiceFocusPrefCellDelegate {
 }
 
 extension PrefViewController: CallObserver {
+    func screenShareCapabilityDidUpdate() {}
+    
+    func screenShareStatusDidUpdate() {}
+    
     func callStateDidUpdate(_ oldState: CallState, _ newState: CallState) {}
     
     func callErrorDidOccur(_ error: Error) {
@@ -184,4 +188,6 @@ extension PrefViewController: CallObserver {
     func videoTileStateDidAdd() {}
     
     func videoTileStateDidRemove() {}
+    
+    func messageDidUpdate(_ message: String?) {}
 }

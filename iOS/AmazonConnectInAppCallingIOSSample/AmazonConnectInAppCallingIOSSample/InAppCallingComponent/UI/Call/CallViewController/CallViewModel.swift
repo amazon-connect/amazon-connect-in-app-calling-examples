@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AmazonChimeSDK
 
 class CallViewModel {
     
@@ -39,6 +40,18 @@ class CallViewModel {
         return self.callStateStore.callState
     }
     
+    var screenShareStatus: ScreenShareStatus {
+        return self.callStateStore.screenShareStatus
+    }
+    
+    var isScreenShareCapabilityEnabled: Bool {
+        return self.callStateStore.isScreenShareCapabilityEnabled
+    }
+    
+    var message: String? {
+        return self.callStateStore.message
+    }
+    
     private let callController: CallController
     private let callStateStore: CallStateStore
     private let dtmfSender: DTMFSender
@@ -65,5 +78,13 @@ class CallViewModel {
         } _: { error in
             onCompletion(error)
         }
+    }
+    
+    func startScreenShare() {
+        self.callController.startScreenShare()
+    }
+    
+    func stopScreenShare() {
+        self.callController.stopScreenShare()
     }
 }

@@ -5,7 +5,10 @@
 
 package com.amazonaws.services.connect.inappcalling.sample.ui
 
+import android.app.Activity.RESULT_OK
 import android.content.Context
+import android.content.Intent
+import android.media.projection.MediaProjectionManager
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -14,37 +17,48 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.OnLifecycleEvent
+import androidx.lifecycle.ProcessLifecycleOwner
 import androidx.lifecycle.ViewModelProvider
+import com.amazonaws.services.chime.sdk.meetings.audiovideo.video.VideoTileState
 import com.amazonaws.services.chime.sdk.meetings.device.MediaDevice
 import com.amazonaws.services.chime.sdk.meetings.device.MediaDeviceType
-import com.amazonaws.services.connect.inappcalling.sample.ServiceLocatorProvider
 import com.amazonaws.services.connect.inappcalling.sample.R
+import com.amazonaws.services.connect.inappcalling.sample.ServiceLocatorProvider
+import com.amazonaws.services.connect.inappcalling.sample.common.gone
+import com.amazonaws.services.connect.inappcalling.sample.common.showGeneralErrorAlert
+import com.amazonaws.services.connect.inappcalling.sample.common.visible
+import com.amazonaws.services.connect.inappcalling.sample.data.domain.CallError
 import com.amazonaws.services.connect.inappcalling.sample.data.domain.CallState
 import com.amazonaws.services.connect.inappcalling.sample.data.domain.CallerVideoState
+import com.amazonaws.services.connect.inappcalling.sample.data.domain.screenshare.ScreenShareStatus
+import com.amazonaws.services.connect.inappcalling.sample.data.utils.Transient
 import com.amazonaws.services.connect.inappcalling.sample.databinding.CallSheetBinding
 import com.amazonaws.services.connect.inappcalling.sample.databinding.CallSheetContentBeforeCallBinding
 import com.amazonaws.services.connect.inappcalling.sample.databinding.CallSheetContentCallingBinding
 import com.amazonaws.services.connect.inappcalling.sample.databinding.CallSheetContentInCallBinding
-import com.amazonaws.services.connect.inappcalling.sample.common.gone
-import com.amazonaws.services.connect.inappcalling.sample.common.showGeneralErrorAlert
 import com.amazonaws.services.connect.inappcalling.sample.ui.controlpanel.ControlPanel
+import com.amazonaws.services.connect.inappcalling.sample.ui.controlpanel.preferences.PreferencesSheet
 import com.amazonaws.services.connect.inappcalling.sample.ui.dtmf.DTMFSheet
+import com.amazonaws.services.connect.inappcalling.sample.ui.screenshare.FullScreenShareSheet
+import com.amazonaws.services.connect.inappcalling.sample.ui.screenshare.ScreenSharePanel
 import com.amazonaws.services.connect.inappcalling.sample.ui.utils.PermissionHelper
 import com.amazonaws.services.connect.inappcalling.sample.ui.utils.ViewModelFactory
-import com.amazonaws.services.connect.inappcalling.sample.common.visible
-import com.amazonaws.services.connect.inappcalling.sample.data.domain.CallError
-import com.amazonaws.services.connect.inappcalling.sample.data.utils.Transient
-import com.amazonaws.services.connect.inappcalling.sample.ui.controlpanel.preferences.PreferencesSheet
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 
-class CallSheet : BaseBottomSheetFragment() {
+
+class CallSheet : BaseBottomSheetFragment(), LifecycleObserver {
 
     companion object {
         const val TAG = "CallSheet"
     }
 
     private lateinit var controlPanel: ControlPanel
+    private lateinit var screenSharePanel: ScreenSharePanel
     private lateinit var viewModel: CallSheetViewModel
     private lateinit var sheetBinding: CallSheetBinding
     private lateinit var beforeCallBinding: CallSheetContentBeforeCallBinding
@@ -55,6 +69,8 @@ class CallSheet : BaseBottomSheetFragment() {
 
     private lateinit var audioPermissionRequestLauncher: ActivityResultLauncher<Array<String>>
     private lateinit var videoPermissionRequestLauncher: ActivityResultLauncher<Array<String>>
+    private lateinit var mediaProjectionManager: MediaProjectionManager
+    private lateinit var screenCaptureLauncher: ActivityResultLauncher<Intent>
 
     private var deviceDialog: androidx.appcompat.app.AlertDialog? = null
     private var deviceListAdapter: DeviceAdapter? = null
@@ -141,16 +157,35 @@ class CallSheet : BaseBottomSheetFragment() {
         controlPanel.initPreferencesButton {
             PreferencesSheet().show(childFragmentManager, PreferencesSheet.TAG)
         }
+
+        controlPanel.initScreenShareButton {
+            val status = viewModel.screenShareStatus.value
+            if(status == ScreenShareStatus.LOCAL) {
+                viewModel.stopScreenShare()
+            } else {
+                screenCaptureLauncher.launch(mediaProjectionManager.createScreenCaptureIntent())
+            }
+        }
+
         inCallBinding.videoPanel.cameraSwitchButton.setOnClickListener {
             viewModel.switchCamera()
             inCallBinding.videoPanel.localVideoRenderView.mirror = viewModel.isUsingFrontCamera()
         }
         inCallBinding.endButton.setOnClickListener { endCall() }
 
+        screenSharePanel = ScreenSharePanel(inCallBinding.screenSharePanel,
+            this, (activity?.application as ServiceLocatorProvider).getServiceLocator(), this)
+        screenSharePanel.initMaximizeButton {
+            FullScreenShareSheet().show(childFragmentManager, FullScreenShareSheet.TAG)
+        }
+
         viewModel.localCallerMuted.observe(this, ::handleLocalCallerMuteChange)
         viewModel.activeDevice.observe(this, ::handleActiveDeviceChange)
         viewModel.localVideoState.observe(this, ::handleCallerVideoChange)
         viewModel.remoteVideoState.observe(this, ::handleCallerVideoChange)
+        viewModel.screenShareCapabilityEnabled.observe(this, ::handleScreenShareCapabilityChange)
+        viewModel.screenShareStatus.observe(this, ::handleScreenShareStatusUpdate)
+        viewModel.screenShareTileState.observe(this, ::handleScreenShareTileStateUpdate)
     }
 
     private fun handleCallerVideoChange(state: CallerVideoState) {
@@ -221,6 +256,42 @@ class CallSheet : BaseBottomSheetFragment() {
             controlPanel.updateDeviceButton(it)
             deviceListAdapter?.notifyDataSetChanged()
         }
+    private fun handleScreenShareCapabilityChange(enabled: Boolean) {
+        if(enabled) {
+            Snackbar.make(sheetBinding.inCallContent.root,
+                R.string.call_sheet_screen_share_capability_enabled_message, 5000)
+                .setAction("OK") {}
+                .show()
+        }
+        when(enabled) {
+            true -> controlPanel.updateScreenShareButtonVisibility(View.VISIBLE)
+            false -> controlPanel.updateScreenShareButtonVisibility(View.GONE)
+        }
+    }
+
+    private fun handleScreenShareStatusUpdate(screenShareStatus: ScreenShareStatus) {
+        updateScreenSharePanel()
+    }
+
+    private fun handleScreenShareTileStateUpdate(tileState: VideoTileState?) {
+        updateScreenSharePanel()
+    }
+
+    private fun updateScreenSharePanel() {
+        viewModel.screenShareStatus?.value.let{
+            when(it) {
+                ScreenShareStatus.LOCAL -> {
+                    inCallBinding.screenSharePanel.root.visible()
+                }
+                ScreenShareStatus.REMOTE -> {
+                    inCallBinding.screenSharePanel.root.visible()
+                }
+                else -> {
+                    inCallBinding.screenSharePanel.root.gone()
+                }
+            }
+        }
+    }
 
     private fun endCall() {
         removeVideoTile(true)
@@ -252,6 +323,18 @@ class CallSheet : BaseBottomSheetFragment() {
         )[CallSheetViewModel::class.java]
 
         if (viewModel.callState.value == CallState.NOT_STARTED) startCall()
+
+        mediaProjectionManager =
+            activity?.getSystemService(Context.MEDIA_PROJECTION_SERVICE) as MediaProjectionManager
+        screenCaptureLauncher = registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+        ) { result ->
+            if (result.resultCode == RESULT_OK && result.data != null) {
+                result.data?.let { viewModel.startScreenShare(result.resultCode, it) }
+            }
+        }
+
+        ProcessLifecycleOwner.get().lifecycle.addObserver(this)
     }
 
     override fun onDestroy() {
@@ -305,5 +388,11 @@ class CallSheet : BaseBottomSheetFragment() {
                 if (currentDevice?.type == devices[position].type) "${devices[position]} ✓" else devices[position].toString()
             return view
         }
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_START)
+    fun onEnterForeground() {
+        // App has entered the foreground
+        println("App has entered the foreground")
     }
 }

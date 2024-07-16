@@ -12,6 +12,8 @@ import com.amazonaws.services.connect.inappcalling.sample.data.domain.CallStateR
 import com.amazonaws.services.connect.inappcalling.sample.ui.CallSheetViewModel
 import com.amazonaws.services.connect.inappcalling.sample.ui.dtmf.DTMFSheetViewModel
 import com.amazonaws.services.connect.inappcalling.sample.ui.controlpanel.preferences.PreferencesSheetViewModel
+import com.amazonaws.services.connect.inappcalling.sample.ui.screenshare.FullScreenShareViewModel
+import com.amazonaws.services.connect.inappcalling.sample.ui.screenshare.ScreenSharePanelViewModel
 
 internal class ViewModelFactory(
     private val callManager: CallManager,
@@ -25,6 +27,10 @@ internal class ViewModelFactory(
                 DTMFSheetViewModel(callManager)
             isAssignableFrom(PreferencesSheetViewModel::class.java) ->
                 PreferencesSheetViewModel(callManager, callStateRepository)
+            isAssignableFrom(ScreenSharePanelViewModel::class.java) ->
+                ScreenSharePanelViewModel(callManager, callStateRepository)
+            isAssignableFrom(FullScreenShareViewModel::class.java) ->
+                FullScreenShareViewModel(callStateRepository)
             else ->
                 throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
         }

@@ -46,6 +46,14 @@ extension String {
         return "Preferences"
     }
     
+    static var shareScreen: String {
+        return "Share Screen"
+    }
+    
+    static var stopShare: String {
+        return "Stop Share"
+    }
+    
     public static var defaultCallButtonTitle: String {
         return "Call"
     }

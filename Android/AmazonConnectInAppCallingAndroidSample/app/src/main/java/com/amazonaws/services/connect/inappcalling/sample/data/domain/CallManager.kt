@@ -8,6 +8,7 @@ package com.amazonaws.services.connect.inappcalling.sample.data.domain
 import android.Manifest
 import android.content.ComponentName
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
@@ -30,11 +31,14 @@ import com.amazonaws.services.chime.sdk.meetings.audiovideo.video.backgroundfilt
 import com.amazonaws.services.chime.sdk.meetings.audiovideo.video.capture.CameraCaptureSource
 import com.amazonaws.services.chime.sdk.meetings.audiovideo.video.capture.DefaultCameraCaptureSource
 import com.amazonaws.services.chime.sdk.meetings.audiovideo.video.capture.DefaultSurfaceTextureCaptureSourceFactory
-import com.amazonaws.services.chime.sdk.meetings.audiovideo.video.gl.DefaultEglCoreFactory
+import com.amazonaws.services.chime.sdk.meetings.audiovideo.video.gl.EglCoreFactory
+import com.amazonaws.services.chime.sdk.meetings.audiovideo.video.gl.EglVideoRenderView
 import com.amazonaws.services.chime.sdk.meetings.device.DeviceChangeObserver
 import com.amazonaws.services.chime.sdk.meetings.device.MediaDevice
 import com.amazonaws.services.chime.sdk.meetings.device.MediaDeviceType
 import com.amazonaws.services.chime.sdk.meetings.realtime.RealtimeObserver
+import com.amazonaws.services.chime.sdk.meetings.realtime.datamessage.DataMessage
+import com.amazonaws.services.chime.sdk.meetings.realtime.datamessage.DataMessageObserver
 import com.amazonaws.services.chime.sdk.meetings.session.DefaultMeetingSession
 import com.amazonaws.services.chime.sdk.meetings.session.MeetingSession
 import com.amazonaws.services.chime.sdk.meetings.session.MeetingSessionStatus
@@ -46,16 +50,21 @@ import com.amazonaws.services.connect.inappcalling.sample.common.getAudioRoute
 import com.amazonaws.services.connect.inappcalling.sample.data.api.ApiClient
 import com.amazonaws.services.connect.inappcalling.sample.data.api.CreateWebrtcContactRequest
 import com.amazonaws.services.connect.inappcalling.sample.data.api.CreateWebrtcContactResponse
+import com.amazonaws.services.connect.inappcalling.sample.data.domain.screenshare.AMAZON_CONNECT_SCREEN_SHARING_TOPIC
+import com.amazonaws.services.connect.inappcalling.sample.data.domain.screenshare.ScreenShareManager
+import com.amazonaws.services.connect.inappcalling.sample.data.domain.screenshare.ScreenShareStatus
 import com.amazonaws.services.connect.inappcalling.sample.data.utils.ConnectionTokenProvider
 import com.amazonaws.services.connect.inappcalling.sample.data.utils.onSuccess
 import com.amazonaws.services.connect.inappcalling.sample.service.CallConnectionService
 
 class CallManager(
     private val config: CallConfiguration,
+    private val screenShareManager: ScreenShareManager,
     private val callStateRepository: CallStateRepository,
     private val tokenProvider: ConnectionTokenProvider,
-    private val apiClient: ApiClient
-) : AudioVideoObserver, RealtimeObserver, DeviceChangeObserver, VideoTileObserver {
+    private val apiClient: ApiClient,
+    private val eglCoreFactory: EglCoreFactory
+) : AudioVideoObserver, RealtimeObserver, DeviceChangeObserver, VideoTileObserver, DataMessageObserver {
     private val logger = ConsoleLogger()
     private val tag = "CallManager"
     private val telecomManager = config.applicationContext.getSystemService(Context.TELECOM_SERVICE) as TelecomManager
@@ -71,7 +80,7 @@ class CallManager(
     private lateinit var backgroundBlurVideoFrameProcessor: BackgroundBlurVideoFrameProcessor
 
     init {
-       registerPhoneAccount()
+        registerPhoneAccount()
     }
 
     /*
@@ -130,7 +139,6 @@ class CallManager(
         // Create meeting session
         val meetingSessionConfig = convertToMeetingSessionConfiguration(response = createWebrtcContactResponse)
         val sdkLogger = ConsoleLogger()
-        val eglCoreFactory =  DefaultEglCoreFactory()
         val surfaceTextureCaptureSourceFactory = DefaultSurfaceTextureCaptureSourceFactory(
             logger = sdkLogger,
             eglCoreFactory = eglCoreFactory
@@ -158,12 +166,13 @@ class CallManager(
         session.audioVideo.addRealtimeObserver(observer = this)
         session.audioVideo.addDeviceChangeObserver(observer = this)
         session.audioVideo.addVideoTileObserver(observer = this)
-
+        session.audioVideo.addRealtimeDataMessageObserver(AMAZON_CONNECT_SCREEN_SHARING_TOPIC, observer = this)
         return session
     }
 
     fun endCall() {
         if (callStateRepository.getCallState() == CallState.NOT_STARTED) return
+        stopScreenShare()
         meetingSession?.audioVideo?.stop()
         cleanUp()
     }
@@ -174,7 +183,8 @@ class CallManager(
         meetingSession?.audioVideo?.removeRealtimeObserver(observer = this)
         meetingSession?.audioVideo?.removeDeviceChangeObserver(observer = this)
         meetingSession?.audioVideo?.removeVideoTileObserver(observer = this)
-
+        meetingSession?.audioVideo?.removeRealtimeDataMessageObserverFromTopic(
+            AMAZON_CONNECT_SCREEN_SHARING_TOPIC)
         // Disconnect telecom connection
         CallConnectionService.connection?.setDisconnected(DisconnectCause(DisconnectCause.LOCAL))
         CallConnectionService.connection?.destroy()
@@ -264,6 +274,17 @@ class CallManager(
         meetingSession?.audioVideo?.unbindVideoView(tileId)
     }
 
+    fun bindLocalScreenShareView(videoRenderView: VideoRenderView) {
+        if (videoRenderView is EglVideoRenderView) {
+            videoRenderView.init(eglCoreFactory)
+        }
+        screenShareManager.addVideoSink(videoRenderView)
+    }
+
+    fun unbindLocalScreenShareView(videoRenderView: VideoRenderView) {
+        screenShareManager.removeVideoSink(videoRenderView)
+    }
+
     fun switchCamera() {
         cameraCaptureSource.switchCamera()
     }
@@ -292,6 +313,18 @@ class CallManager(
 
     private fun changeCallState(newState: CallState) {
         callStateRepository.updateCallState(newState)
+    }
+
+    // Start local screen share
+    fun startScreenShare(resultCode: Int, data: Intent) {
+        meetingSession?.let {
+            screenShareManager.startScreenShare(resultCode, data, it.audioVideo)
+        }
+    }
+
+    // Stop local screen share
+    fun stopScreenShare() {
+        screenShareManager.stop()
     }
 
     /*
@@ -350,7 +383,12 @@ class CallManager(
 
     // `VideoTileObserver` implementation
     override fun onVideoTileAdded(tileState: VideoTileState) {
-        if (tileState.isContent) return
+        if (tileState.isContent) {
+            stopScreenShare()
+            callStateRepository.updateScreenShareTileState(tileState)
+            callStateRepository.updateScreenShareStatus(ScreenShareStatus.REMOTE)
+            return
+        }
 
         callStateRepository.updateCallerVideoState(
             CallerVideoState(
@@ -362,6 +400,13 @@ class CallManager(
     }
 
     override fun onVideoTileRemoved(tileState: VideoTileState) {
+        if(tileState.isContent) {
+            callStateRepository.updateScreenShareTileState(null)
+            if(callStateRepository.getScreenShareStatus() != ScreenShareStatus.LOCAL) {
+                callStateRepository.updateScreenShareStatus(ScreenShareStatus.NONE)
+            }
+            return
+        }
         callStateRepository.updateCallerVideoState(
             CallerVideoState(
                 caller = Caller(tileState.isLocalTile),
@@ -397,6 +442,8 @@ class CallManager(
     override fun onVideoTileSizeChanged(tileState: VideoTileState) {}
     override fun onCameraSendAvailabilityUpdated(available: Boolean) {}
 
+
+
     /**
      * Connection Service integration
      */
@@ -422,4 +469,9 @@ class CallManager(
             )
         }
     }
+
+    override fun onDataMessageReceived(dataMessage: DataMessage) {
+        screenShareManager.handleDataMessage(dataMessage)
+    }
+
 }

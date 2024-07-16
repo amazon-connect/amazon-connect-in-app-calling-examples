@@ -38,7 +38,7 @@ class ServiceProvider {
             let callKitManager = CallKitManager(callKitConfig, callManager, callStateStore)
             self.callController = CallKitCallController(callKitConfig, callManager, callKitManager, callStateStore, callNtfCenter)
         } else {
-            self.callController = DefaultCallController(callManager)
+            self.callController = DefaultCallController(callManager: callManager)
         }
         
         self.dtmfSender = DTMFSender(apiClient: self.apiClient,

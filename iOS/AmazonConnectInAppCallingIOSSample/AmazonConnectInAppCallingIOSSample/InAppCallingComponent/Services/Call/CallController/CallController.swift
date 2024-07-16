@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import AmazonChimeSDK
 
 protocol CallController: AnyObject {
     
@@ -19,4 +20,8 @@ protocol CallController: AnyObject {
     func startLocalVideo()
     
     func stopLocalVideo()
+    
+    func startScreenShare()
+    
+    func stopScreenShare()
 }
