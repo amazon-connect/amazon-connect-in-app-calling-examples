@@ -10,6 +10,7 @@ import com.amazonaws.services.chime.sdk.meetings.audiovideo.video.gl.EglCoreFact
 import com.amazonaws.services.connect.inappcalling.sample.data.api.ApiClient
 import com.amazonaws.services.connect.inappcalling.sample.data.api.ApiClientConfig
 import com.amazonaws.services.connect.inappcalling.sample.data.api.DefaultApiClient
+import com.amazonaws.services.connect.inappcalling.sample.data.api.ReactDemoClient
 import com.amazonaws.services.connect.inappcalling.sample.data.utils.ConnectionTokenProvider
 import com.amazonaws.services.connect.inappcalling.sample.data.domain.CallManager
 import com.amazonaws.services.connect.inappcalling.sample.data.domain.CallStateRepository
@@ -19,13 +20,7 @@ import com.amazonaws.services.connect.inappcalling.sample.data.domain.screenshar
 class ServiceLocator(private val config: CallConfiguration) {
 
     private val apiClient: ApiClient by lazy {
-        DefaultApiClient(
-            config = ApiClientConfig(
-                startWebRTCContactEndpoint = config.startWebrtcEndpoint,
-                createParticipantConnectionEndpoint = config.createParticipantConnectionEndpoint,
-                sendMessageEndpoint = config.sendMessageEndpoint
-            )
-        )
+        ReactDemoClient()
     }
 
     private val connectionTokenProvider: ConnectionTokenProvider by lazy {

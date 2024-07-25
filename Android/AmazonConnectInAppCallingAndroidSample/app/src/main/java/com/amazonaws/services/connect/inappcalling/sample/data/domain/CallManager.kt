@@ -352,7 +352,7 @@ class CallManager(
 
     // `RealtimeObserver` implementation
     override fun onAttendeesJoined(attendeeInfo: Array<AttendeeInfo>) {
-        val hasAgent = attendeeInfo.any { it.externalUserId.endsWith("agent") }
+        val hasAgent = attendeeInfo.any { it.externalUserId.endsWith("") }
         if (hasAgent) {
             changeCallState(CallState.IN_CALL)
             CallConnectionService.connection?.setActive()
