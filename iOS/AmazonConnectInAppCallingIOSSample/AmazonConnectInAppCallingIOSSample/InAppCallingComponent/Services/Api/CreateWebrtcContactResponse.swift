@@ -14,6 +14,18 @@ struct CreateWebrtcContactResponse: Codable {
     let participantId: String
     let participantToken: String
     
+    // TODO: removed
+    init(meetingData: MeetingData,
+         attendeeData: AttendeeData,
+         contactId: String,
+         participantId: String,
+         participantToken: String) {
+        self.connectionData = ConnectionData(attendee: attendeeData, meeting: meetingData)
+        self.contactId = contactId
+        self.participantId = participantId
+        self.participantToken = participantToken
+    }
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
@@ -35,6 +47,13 @@ struct ConnectionData: Codable {
     
     let attendee: AttendeeData
     let meeting: MeetingData
+    
+    // TODO: remove
+    init(attendee: AttendeeData,
+         meeting: MeetingData) {
+        self.attendee = attendee
+        self.meeting = meeting
+    }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -70,7 +89,7 @@ struct MeetingData: Codable {
     
     let mediaRegion: String
     let mediaPlacement: MediaPlacement
-    let meetingFeatures: MeetingFeatures
+    // let meetingFeatures: MeetingFeatures // TODO: remove optional
     let meetingId: String
     
     init(from decoder: Decoder) throws {
@@ -78,15 +97,15 @@ struct MeetingData: Codable {
         mediaRegion = try container.decode(String.self, forKey: .mediaRegion)
         mediaPlacement = try container.decode(MediaPlacement.self,
                                               forKey: .mediaPlacement)
-        meetingFeatures = try container.decode(MeetingFeatures.self,
-                                               forKey: .meetingFeatures)
+//        meetingFeatures = try container.decode(MeetingFeatures.self,
+//                                               forKey: .meetingFeatures)
         meetingId = try container.decode(String.self, forKey: .meetingId)
     }
     
     enum CodingKeys: String, CodingKey {
         case mediaRegion = "MediaRegion"
         case mediaPlacement = "MediaPlacement"
-        case meetingFeatures = "MeetingFeatures"
+        // case meetingFeatures = "MeetingFeatures"
         case meetingId = "MeetingId"
     }
 }

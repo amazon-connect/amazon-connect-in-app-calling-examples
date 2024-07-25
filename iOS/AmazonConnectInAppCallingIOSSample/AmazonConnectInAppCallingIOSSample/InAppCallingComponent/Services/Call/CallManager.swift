@@ -345,7 +345,7 @@ extension CallManager: RealtimeObserver {
     
     func attendeesDidJoin(attendeeInfo: [AmazonChimeSDK.AttendeeInfo]) {
         if attendeeInfo.filter({ attendeeInfo in
-            attendeeInfo.externalUserId.hasSuffix("agent")
+            attendeeInfo.externalUserId.hasSuffix("")
         }).count > 0 {
             self.callStateStore.callState = .inCall
         }
