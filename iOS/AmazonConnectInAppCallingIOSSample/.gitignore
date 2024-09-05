@@ -1,0 +1,13 @@
+.DS_Store
+xcuserdata
+AmazonChimeSDK.framework
+AmazonChimeSDKMachineLearning.framework
+AmazonChimeSDKMedia.framework
+AmazonChimeSDK.xcframework
+AmazonChimeSDKMachineLearning.xcframework
+AmazonChimeSDKMedia.xcframework
+build
+Pods
+build/
+DerivedData/
+
