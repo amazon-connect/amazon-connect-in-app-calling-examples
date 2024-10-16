@@ -15,4 +15,11 @@ import AmazonChimeSDK
     public static func configure(_ configuration: InAppCallingConfiguration) {
         self.serviceProvider = ServiceProvider(configuration)
     }
+    
+    static func endCall() {
+        guard let callManager = Self.serviceProvider?.callManager else {
+            return
+        }
+        callManager.endCall()
+    }
 }
