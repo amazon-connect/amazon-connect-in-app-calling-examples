@@ -13,7 +13,7 @@ import {
 
 import eventBus from '../utils/EventBus';
 
-const CCP_URL = '<your-ccp-url>';
+const CCP_URL = '<your-ccp-url>'; // Such as 'https://my-instance-domain.awsapps.com/connect/ccp-v2/'
 
 class ContactManager {
   logger;
