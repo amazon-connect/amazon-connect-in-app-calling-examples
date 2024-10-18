@@ -37,10 +37,6 @@ class FullScreenShareViewModel {
     func unbindScreenShareView(videoView: DefaultVideoRenderView) {
         if screenShareStatus == .local {
             self.callManager.unbindLocalScreenShareSink(videoSink: videoView)
-        } else if screenShareStatus == .remote {
-            if let screenShareTileState = callStateStore.screenShareTileState {
-                self.callManager.unbindVideoView(screenShareTileState)
-            }
         }
     }
 }

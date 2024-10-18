@@ -17,6 +17,8 @@ class InAppScreenShare: ScreenShare {
     weak var delegate: ScreenShareDelegate?
 
     let inAppScreenCaptureSource: VideoCaptureSource
+    
+    private var isCaptureSourceObserverAlreadyAdded = false
 
     init(contentShareController: ContentShareController) {
         self.inAppScreenCaptureSource = InAppScreenCaptureSource(logger: logger)
@@ -25,7 +27,10 @@ class InAppScreenShare: ScreenShare {
     }
     
     func startScreenShare() {
-        inAppScreenCaptureSource.addCaptureSourceObserver(observer: self)
+        if(!isCaptureSourceObserverAlreadyAdded) {
+            inAppScreenCaptureSource.addCaptureSourceObserver(observer: self)
+            isCaptureSourceObserverAlreadyAdded = true
+        }
         inAppScreenCaptureSource.start()
     }
     

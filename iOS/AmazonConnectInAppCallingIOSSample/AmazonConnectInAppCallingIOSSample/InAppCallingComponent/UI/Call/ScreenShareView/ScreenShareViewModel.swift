@@ -29,18 +29,12 @@ class ScreenShareViewModel {
     }
     
     func unbindLocalScreenShareView(videoRenderView: DefaultVideoRenderView) {
-        self.callManager.unbindLocalScreenShareSink(videoSink: videoRenderView)
+         self.callManager.unbindLocalScreenShareSink(videoSink: videoRenderView)
     }
     
     func bindRemoteScreenShareView(videoRenderView: DefaultVideoRenderView) {
         if let tileState = self.callStateStore.screenShareTileState {
             self.callManager.bindVideoView(videoRenderView, tileState)
-        }
-    }
-    
-    func unbindRemoteScreenShareView() {
-        if let tileState = self.callStateStore.screenShareTileState {
-            self.callManager.unbindVideoView(tileState)
         }
     }
 }

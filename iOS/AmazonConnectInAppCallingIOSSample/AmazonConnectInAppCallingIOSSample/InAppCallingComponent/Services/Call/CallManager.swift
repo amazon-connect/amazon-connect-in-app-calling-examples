@@ -371,12 +371,14 @@ extension CallManager: RealtimeObserver {
 
 extension CallManager: VideoTileObserver {
     func videoTileDidAdd(tileState: AmazonChimeSDK.VideoTileState) {
+        self.callStateStore.addVideoTile(tileState)
         if tileState.isContent {
             // Only remote content share will trigger onVideoTileAdded
-            self.stopScreenShare()
+            if(self.callStateStore.screenShareStatus == .local) {
+                self.stopScreenShare()
+            }
             self.callStateStore.screenShareStatus = .remote
         }
-        self.callStateStore.addVideoTile(tileState)
     }
     
     func videoTileDidRemove(tileState: AmazonChimeSDK.VideoTileState) {
@@ -384,6 +386,7 @@ extension CallManager: VideoTileObserver {
             self.callStateStore.screenShareStatus = self.callStateStore.screenShareStatus == .local ? .local : .none
         }
         self.callStateStore.removeVideoTile(tileState)
+        self.unbindVideoView(tileState)
     }
     
     func videoTileDidPause(tileState: AmazonChimeSDK.VideoTileState) {}

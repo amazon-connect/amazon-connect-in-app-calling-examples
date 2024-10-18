@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol FullScreenShareViewControllerDelegate: AnyObject {
+    
+    func willDismiss(sender: FullScreenShareViewController)
+}
+
 class FullScreenShareViewController: UIViewController {
 
     @IBOutlet weak var screenShareView: ScreenShareView!
@@ -15,6 +20,8 @@ class FullScreenShareViewController: UIViewController {
     private let callNtfCenter: CallNotificationCenter
     private let vm: FullScreenShareViewModel
     @IBOutlet weak var closeButton: UIButton!
+    
+    weak var delegate: FullScreenShareViewControllerDelegate?
     
     public init() {
         let serviceProvider = InAppCalling.serviceProvider!
@@ -48,6 +55,7 @@ class FullScreenShareViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.vm.unbindScreenShareView(videoView: self.screenShareView.screenShareRenderView)
+        self.delegate?.willDismiss(sender: self)
     }
 
     private func updateScreenShareRenderView() {

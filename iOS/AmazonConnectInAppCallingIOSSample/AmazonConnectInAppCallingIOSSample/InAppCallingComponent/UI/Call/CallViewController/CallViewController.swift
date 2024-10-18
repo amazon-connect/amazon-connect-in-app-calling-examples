@@ -330,6 +330,15 @@ extension CallViewController: ActionPanelViewDelegate {
 extension CallViewController: ScreenShareViewDelegate {
     func fullScreenButtonPressed(sender: ScreenShareView) {
         let fullScreenShareViewController = FullScreenShareViewController()
+        fullScreenShareViewController.delegate = self
         self.present(fullScreenShareViewController, animated: true)
+    }
+}
+
+// MARK: - FullScreenShareViewControllerDelegate
+extension CallViewController: FullScreenShareViewControllerDelegate {
+    
+    func willDismiss(sender: FullScreenShareViewController) {
+        self.screenShareView.updateUI()
     }
 }

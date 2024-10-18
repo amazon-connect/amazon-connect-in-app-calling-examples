@@ -97,6 +97,9 @@ class CallStateStore {
     
     var screenShareStatus: ScreenShareStatus = .none {
         didSet {
+            guard screenShareStatus != oldValue else {
+                return
+            }
             self.callNtfCenter.notifyScreenShareStatusUpdate(screenShareStatus)
         }
     }

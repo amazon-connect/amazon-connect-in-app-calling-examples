@@ -56,10 +56,9 @@ class ScreenShareView: UIView {
         self.updateUI()
     }
     
-    private func updateUI() {
+    func updateUI() {
         switch self.vm.screenShareStatus {
         case .local:
-            self.vm.unbindRemoteScreenShareView()
             self.vm.bindLocalScreenShareView(videoRenderView: self.screenShareRenderView)
             self.senderLabel.text = "Screen share: you"
         case .remote:
@@ -68,7 +67,6 @@ class ScreenShareView: UIView {
             self.senderLabel.text = "Screen share: agent"
         case .none:
             self.vm.unbindLocalScreenShareView(videoRenderView: self.screenShareRenderView)
-            self.vm.unbindRemoteScreenShareView()
             self.senderLabel.text = nil
         }
     }
@@ -99,11 +97,7 @@ extension ScreenShareView: CallObserver {
     
     func muteStateDidUpdate() {}
     
-    func videoTileStateDidAdd() {
-        DispatchQueue.main.async {
-            self.updateUI()
-        }
-    }
+    func videoTileStateDidAdd() {}
     
     func videoTileStateDidRemove() {}
     
