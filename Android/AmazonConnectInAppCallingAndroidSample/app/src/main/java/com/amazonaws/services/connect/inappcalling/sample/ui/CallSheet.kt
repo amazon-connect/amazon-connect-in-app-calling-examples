@@ -51,7 +51,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 
 
-class CallSheet : BaseBottomSheetFragment(), LifecycleObserver {
+class CallSheet : BaseBottomSheetFragment() {
 
     companion object {
         const val TAG = "CallSheet"
@@ -281,12 +281,15 @@ class CallSheet : BaseBottomSheetFragment(), LifecycleObserver {
         viewModel.screenShareStatus?.value.let{
             when(it) {
                 ScreenShareStatus.LOCAL -> {
+                    controlPanel.updateScreenShareButtonHighlight(true)
                     inCallBinding.screenSharePanel.root.visible()
                 }
                 ScreenShareStatus.REMOTE -> {
+                    controlPanel.updateScreenShareButtonHighlight(false)
                     inCallBinding.screenSharePanel.root.visible()
                 }
                 else -> {
+                    controlPanel.updateScreenShareButtonHighlight(false)
                     inCallBinding.screenSharePanel.root.gone()
                 }
             }
@@ -333,8 +336,6 @@ class CallSheet : BaseBottomSheetFragment(), LifecycleObserver {
                 result.data?.let { viewModel.startScreenShare(result.resultCode, it) }
             }
         }
-
-        ProcessLifecycleOwner.get().lifecycle.addObserver(this)
     }
 
     override fun onDestroy() {
@@ -388,11 +389,5 @@ class CallSheet : BaseBottomSheetFragment(), LifecycleObserver {
                 if (currentDevice?.type == devices[position].type) "${devices[position]} ✓" else devices[position].toString()
             return view
         }
-    }
-
-    @OnLifecycleEvent(Lifecycle.Event.ON_START)
-    fun onEnterForeground() {
-        // App has entered the foreground
-        println("App has entered the foreground")
     }
 }

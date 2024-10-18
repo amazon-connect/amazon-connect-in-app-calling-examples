@@ -116,4 +116,14 @@ class ControlPanel(
     fun updateScreenShareButtonVisibility(visibility: Int) {
         screenShareButton.visibility = visibility
     }
+
+    fun updateScreenShareButtonHighlight(shouldHighlight: Boolean) {
+        if(shouldHighlight) {
+            screenShareButton.setButtonImage(R.drawable.ic_screen_share_enabled)
+            screenShareButton.setButtonBackgroundColor(R.color.control_button_bg_highlighted)
+        } else {
+            screenShareButton.setButtonImage(R.drawable.ic_screen_share)
+            screenShareButton.setButtonBackgroundColor(R.color.control_button_bg_gray)
+        }
+    }
 }
