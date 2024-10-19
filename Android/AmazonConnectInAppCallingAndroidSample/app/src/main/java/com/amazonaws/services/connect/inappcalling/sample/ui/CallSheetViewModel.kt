@@ -104,6 +104,12 @@ class CallSheetViewModel(
         }
     }
 
+    fun startLocalVideo() {
+        viewModelScope.launch {
+            callManager.startLocalVideo()
+        }
+    }
+
     fun isLocalVideoOn(): Boolean = localVideoState.value?.on == true
 
     fun isRemoteVideoOn(): Boolean = remoteVideoState.value?.on == true

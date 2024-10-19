@@ -313,6 +313,15 @@ class CallSheet : BaseBottomSheetFragment() {
         savedInstanceState: Bundle?
     ): View? = inflater.inflate(R.layout.call_sheet, container, false)
 
+    override fun onStart() {
+        super.onStart()
+        // In case if the camera is taken over by other app,
+        // take it back when entering foreground
+        if(viewModel.isLocalVideoOn()) {
+            viewModel.startLocalVideo()
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
