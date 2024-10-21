@@ -324,7 +324,9 @@ class CallManager(
 
     // Stop local screen share
     fun stopScreenShare() {
-        screenShareManager.stop()
+        if(callStateRepository.getScreenShareStatus() == ScreenShareStatus.LOCAL) {
+            screenShareManager.stop()
+        }
     }
 
     /*

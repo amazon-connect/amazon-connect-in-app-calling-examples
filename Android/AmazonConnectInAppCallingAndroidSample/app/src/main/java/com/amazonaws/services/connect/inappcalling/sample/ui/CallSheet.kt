@@ -10,7 +10,6 @@ import android.content.Context
 import android.content.Intent
 import android.media.projection.MediaProjectionManager
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,10 +17,6 @@ import android.widget.ArrayAdapter
 import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.OnLifecycleEvent
-import androidx.lifecycle.ProcessLifecycleOwner
 import androidx.lifecycle.ViewModelProvider
 import com.amazonaws.services.chime.sdk.meetings.audiovideo.video.VideoTileState
 import com.amazonaws.services.chime.sdk.meetings.device.MediaDevice
@@ -89,8 +84,14 @@ class CallSheet : BaseBottomSheetFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        Log.i(TAG, "Creating View Model")
         configureRootLayout(view)
+    }
+
+    override fun onDestroyView() {
+        // This is needed for notifying CCP the call has been ended by end-user.
+        // By testing, it's more reliable to endCall() in onDestroyView() than onDestroy()
+        endCall()
+        super.onDestroyView()
     }
 
     private fun configureRootLayout(view: View) {
@@ -345,11 +346,6 @@ class CallSheet : BaseBottomSheetFragment() {
                 result.data?.let { viewModel.startScreenShare(result.resultCode, it) }
             }
         }
-    }
-
-    override fun onDestroy() {
-        endCall()
-        super.onDestroy()
     }
 
     private fun startCall() {
