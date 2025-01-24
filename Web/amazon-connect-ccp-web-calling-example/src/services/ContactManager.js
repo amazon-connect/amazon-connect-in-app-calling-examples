@@ -29,6 +29,9 @@ class ContactManager {
   videoFxProcessor;
   isVideoFxProcessorSupported;
 
+  isScreenSharingSessionStarted = false;
+  isLocalUserSharing = false;
+
   videoFxConfig = {
     backgroundBlur: {
       isEnabled: true,
@@ -45,6 +48,7 @@ class ContactManager {
     this.initCCP();
     this.subscribeToContactEvents();
     this.subscribeToAgentEvents();
+    this.subscribeToScreenSharingEvents();
 
     this.setupDeviceController();
     await this.initVideoFxProcessor();
@@ -64,6 +68,8 @@ class ContactManager {
       softphone: {
         allowFramedSoftphone: true,
         allowFramedVideoCall: false,
+        allowFramedScreenSharing: false,
+        allowFramedScreenSharingPopUp: false,
       },
     });
   }
@@ -97,6 +103,24 @@ class ContactManager {
     });
   }
 
+  subscribeToScreenSharingEvents() {
+    connect.contact((contact) => {
+      contact.onScreenSharingError((error) => {
+        console.error('Screen sharing session has error', error);
+      });
+      contact.onScreenSharingStarted(() => {
+        console.log('Screen sharing session has started');
+        this.isScreenSharingSessionStarted = true;
+        eventBus.emit('ScreenSharingStateChanged', true);
+      });
+      contact.onScreenSharingStopped(() => {
+        console.log('Screen sharing session has stopped');
+        this.isScreenSharingSessionStarted = false;
+        eventBus.emit('ScreenSharingStateChanged', false);
+      });
+    });
+  }
+
   handleContactConnecting(contact) {
     contact.accept();
   }
@@ -111,13 +135,21 @@ class ContactManager {
 
   handleContactACW(contact) {
     eventBus.emit('ContactACW');
-    // meetingSession is undefined for voice contact
-    this.meetingSession?.audioVideo.stop();
-    this.meetingSession?.audioVideo.stopLocalVideoTile();
+    this.cleanup();
   }
 
   handleContactDestroy(contact) {
     eventBus.emit('ContactDestroy');
+    this.cleanup();
+  }
+
+  cleanup() {
+    this.isScreenSharingSessionStarted = false;
+    this.isLocalUserSharing = false;
+
+    // meetingSession is undefined for voice contact
+    this.meetingSession?.audioVideo.stopLocalVideoTile();
+    this.meetingSession?.audioVideo.stop();
     this.meetingSession = undefined;
   }
 
@@ -211,6 +243,18 @@ class ContactManager {
     this.meetingSession.audioVideo.addObserver(observer);
   }
 
+  subscribeToScreenShare(screenShareElement) {
+    const observer = {
+      videoTileDidUpdate: (tileState) => {
+        // Ignore a tile without attendee ID, or not a content share.
+        if (!tileState.boundAttendeeId || !tileState.isContent) return;
+        this.meetingSession.audioVideo.bindVideoElement(tileState.tileId, screenShareElement);
+      },
+    };
+
+    this.meetingSession.audioVideo.addObserver(observer);
+  }
+
   async toggleVideo() {
     if (this.canStartLocalVideo()) {
       await this.meetingSession.audioVideo.startVideoInput(this.selectedCamera);
@@ -234,6 +278,15 @@ class ContactManager {
     await contactManager.videoFxProcessor.setEffectConfig(contactManager.videoFxConfig);
   }
 
+  async toggleScreenShare() {
+    if (this.isLocalUserSharing) {
+      await this.meetingSession.audioVideo.stopContentShare();
+    } else {
+      await this.meetingSession.audioVideo.startContentShareFromScreenCapture();
+    }
+    this.isLocalUserSharing ^= true;
+  }
+
   canStartLocalVideo() {
     return !this.meetingSession.audioVideo.hasStartedLocalVideoTile();
   }
@@ -253,6 +306,17 @@ class ContactManager {
         console.error('Failed to hang up agent connection', err);
       },
     });
+  }
+
+  async toggleScreenSharingSession() {
+    if (this.isScreenSharingSessionStarted) {
+      if (this.isLocalUserSharing) {
+        await this.toggleScreenShare();
+      }
+      await this.currentContact.stopScreenSharing();
+    } else {
+      await this.currentContact.startScreenSharing();
+    }
   }
 }
 

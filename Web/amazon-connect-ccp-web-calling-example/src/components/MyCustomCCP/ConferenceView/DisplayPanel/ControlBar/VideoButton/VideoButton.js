@@ -6,7 +6,7 @@ import contactManager from '../../../../../../services/ContactManager';
 class VideoButton extends HTMLElement {
   constructor() {
     super();
-    this.label = 'Turn on video';
+    this.label = 'Start video';
   }
 
   get videoButton() {
@@ -26,7 +26,7 @@ class VideoButton extends HTMLElement {
   }
 
   updateLabel() {
-    this.label = this.label === 'Turn on video' ? 'Turn off video' : 'Turn on video';
+    this.label = this.label === 'Start video' ? 'Stop video' : 'Start video';
     this.videoButton.innerHTML = this.label;
   }
 
