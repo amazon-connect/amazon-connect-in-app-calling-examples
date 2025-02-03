@@ -6,8 +6,8 @@
     "start": "node esbuild.mjs --watch"
   },
   "dependencies": {
-    "amazon-chime-sdk-js": "^3.18.2",
-    "amazon-connect-streams": "^2.10.0"
+    "amazon-chime-sdk-js": "^3.26.0",
+    "amazon-connect-streams": "^2.18.0"
   },
   "devDependencies": {
     "esbuild": "^0.19.10",

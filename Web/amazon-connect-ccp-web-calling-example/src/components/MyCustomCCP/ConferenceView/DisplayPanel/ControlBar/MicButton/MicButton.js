@@ -38,7 +38,7 @@ class MicButton extends HTMLElement {
   }
 
   updateLabel() {
-    this.micButton.textContent = this.isMuted ? 'Unmute mic' : 'Mute mic';
+    this.micButton.textContent = this.isMuted ? 'Unmute' : 'Mute';
   }
 
   render() {
@@ -49,8 +49,9 @@ class MicButton extends HTMLElement {
         }
       </style>
 
-      <button id="mic-button" >Mute mic</button>
+      <button id="mic-button" ></button>
     `;
+    this.updateLabel();
   }
 }
 
