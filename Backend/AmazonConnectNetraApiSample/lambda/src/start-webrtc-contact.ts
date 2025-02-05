@@ -36,10 +36,12 @@ function startWebRtcContact(body) {
     },
     AllowedCapabilities: {
       Customer: {
-        Video: "SEND"
+        Video: "SEND",
+        ScreenShare: "SEND"
       }, 
       Agent: {
-        Video: "SEND"
+        Video: "SEND",
+        ScreenShare: "SEND"
       }
     }
   };
