@@ -8,10 +8,10 @@
 import Foundation
 
 class Config {
-    
+
     let connectInstanceId: String = ""
     let contactFlowId: String = ""
-    
+
     let startWebrtcEndpoint: String = ""
     let createParticipantConnectionEndpoint: String = ""
     let sendMessageEndpoint: String = ""

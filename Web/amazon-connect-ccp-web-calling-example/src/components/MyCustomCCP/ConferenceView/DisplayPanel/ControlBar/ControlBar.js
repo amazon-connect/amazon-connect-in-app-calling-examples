@@ -40,7 +40,7 @@ class ControlBar extends HTMLElement {
           align-items: center;
         }
       </style>
-  
+
       <div id="control-bar" >
         ${
           this.isConnectionActive

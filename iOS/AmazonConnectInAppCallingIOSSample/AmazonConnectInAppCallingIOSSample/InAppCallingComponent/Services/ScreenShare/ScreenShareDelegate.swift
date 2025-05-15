@@ -9,10 +9,10 @@
 import Foundation
 
 protocol ScreenShareDelegate: AnyObject {
-    
+
     func screenShareDidStart()
-    
+
     func screenShareDidStop()
-    
+
     func screenShareDidFail()
 }

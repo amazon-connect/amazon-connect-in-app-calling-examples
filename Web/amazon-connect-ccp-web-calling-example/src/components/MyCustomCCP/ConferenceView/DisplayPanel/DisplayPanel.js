@@ -63,12 +63,12 @@ class DisplayPanel extends HTMLElement {
           height: 450px;
           background-color: grey;
         }
-  
+
         #content {
           height: 400px;
         }
       </style>
-  
+
       <div id="display-panel">
         ${
           this.isContactActive

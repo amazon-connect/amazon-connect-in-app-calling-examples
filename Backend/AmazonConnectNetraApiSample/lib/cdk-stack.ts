@@ -9,7 +9,7 @@ import { INSTANCE_ID, CONTACT_FLOW_ID, CONNECT_ENDPOINT, CONNECT_PARTICIPANT_END
 export class CdkStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
-    
+
     if (!INSTANCE_ID) {
       throw new Error(
         `INSTANCE_ID is missing! Assign your INSTANCE_ID to the variable INSTANCE_ID in the file 'backend/lib/cdk-stack.ts'.`

@@ -17,8 +17,8 @@ This sample iOS app demonstrates how to interact with Amazon Connect APIs to sta
 
 **Config.swift**: file that contains the Amazon Connect configurations (e.g., contact flow ID, Connect Instance ID)
 
-**CallManager**: Contains methods to: 1) start the call, 2) manage the call session, 3) call controls (e.g., mute, unmute) 
+**CallManager**: Contains methods to: 1) start the call, 2) manage the call session, 3) call controls (e.g., mute, unmute)
 
-**DTMFSender**: Utilizes the Amazon Connect participant service APIs to send DTMF messages. 
+**DTMFSender**: Utilizes the Amazon Connect participant service APIs to send DTMF messages.
 
 **CallViewController**: Main UI for manipulating the call session

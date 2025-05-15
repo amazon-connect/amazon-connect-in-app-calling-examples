@@ -15,16 +15,16 @@ protocol ScreenShareViewDelegate: AnyObject {
 
 @IBDesignable
 class ScreenShareView: UIView {
-    
+
     @IBOutlet weak var screenShareRenderView: DefaultVideoRenderView!
     @IBOutlet weak var senderLabel: PaddingLabel!
     @IBOutlet weak var fullScreenButton: UIButton!
-    
+
     private let vm: ScreenShareViewModel
     private let callNtfCenter: CallNotificationCenter
-    
+
     weak var delegate: ScreenShareViewDelegate?
-    
+
     override init(frame: CGRect) {
         let (callNtfCenter, vm) = Self.commonInit()
         self.vm = vm
@@ -32,7 +32,7 @@ class ScreenShareView: UIView {
         super.init(frame: frame)
         initView()
     }
-    
+
     required init?(coder: NSCoder) {
         let (callNtfCenter, vm) = Self.commonInit()
         self.vm = vm
@@ -40,7 +40,7 @@ class ScreenShareView: UIView {
         super.init(coder: coder)
         initView()
     }
-    
+
     private static func commonInit() -> (CallNotificationCenter, ScreenShareViewModel) {
         let serviceProvider = InAppCalling.serviceProvider!
         let vm = ScreenShareViewModel(callManager: serviceProvider.callManager,
@@ -48,14 +48,14 @@ class ScreenShareView: UIView {
         let callNtfCenter = serviceProvider.callNtfCenter
         return (callNtfCenter, vm)
     }
-    
+
     private func initView() {
         self.callNtfCenter.addObserver(self)
         self.loadView("ScreenShareView")
         self.fullScreenButton.setTitle("", for: .normal)
         self.updateUI()
     }
-    
+
     func updateUI() {
         switch self.vm.screenShareStatus {
         case .local:
@@ -70,11 +70,11 @@ class ScreenShareView: UIView {
             self.senderLabel.text = nil
         }
     }
-    
+
     @IBAction func fullScreenButtonPressed(_ sender: Any) {
         self.delegate?.fullScreenButtonPressed(sender: self)
     }
-    
+
     func hideFullScreenButton() {
         self.fullScreenButton.isHidden = true
     }
@@ -82,24 +82,24 @@ class ScreenShareView: UIView {
 
 extension ScreenShareView: CallObserver {
     func screenShareCapabilityDidUpdate() {}
-    
+
     func screenShareStatusDidUpdate() {
         DispatchQueue.main.async {
             self.screenShareRenderView.resetImage()
             self.updateUI()
         }
     }
-    
+
     func callStateDidUpdate(_ oldState: CallState,
                             _ newState: CallState) {}
-    
+
     func callErrorDidOccur(_ error: Error) {}
-    
+
     func muteStateDidUpdate() {}
-    
+
     func videoTileStateDidAdd() {}
-    
+
     func videoTileStateDidRemove() {}
-    
+
     func messageDidUpdate(_ message: String?) {}
 }

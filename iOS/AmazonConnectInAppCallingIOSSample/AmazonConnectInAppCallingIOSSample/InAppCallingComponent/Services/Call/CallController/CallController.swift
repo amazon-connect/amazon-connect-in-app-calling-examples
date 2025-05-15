@@ -10,18 +10,18 @@ import Foundation
 import AmazonChimeSDK
 
 protocol CallController: AnyObject {
-    
+
     func startCall()
-    
+
     func endCall()
-    
+
     func setMute(_ isMuted: Bool)
-    
+
     func startLocalVideo()
-    
+
     func stopLocalVideo()
-    
+
     func startScreenShare()
-    
+
     func stopScreenShare()
 }

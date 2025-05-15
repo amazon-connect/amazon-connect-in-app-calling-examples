@@ -14,7 +14,7 @@ class ControlButton: UIControl {
     @IBOutlet private weak var iconContainerView: UIView!
     @IBOutlet private weak var iconImageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
- 
+
     var title: String? {
         get {
             return self.titleLabel.text
@@ -23,7 +23,7 @@ class ControlButton: UIControl {
             self.titleLabel.text = newValue
         }
     }
-    
+
     var image: UIImage? {
         get {
             return self.iconImageView.image
@@ -32,7 +32,7 @@ class ControlButton: UIControl {
             self.iconImageView.image = newValue
         }
     }
-    
+
     var imageBackgroundColor: UIColor? {
         get {
             return self.iconContainerView.backgroundColor
@@ -41,7 +41,7 @@ class ControlButton: UIControl {
             self.iconContainerView.backgroundColor = newValue
         }
     }
-    
+
     override var isEnabled: Bool {
         get {
             return super.isEnabled
@@ -51,20 +51,20 @@ class ControlButton: UIControl {
             self.iconContainerView.alpha = self.isEnabled ? 1 : 0.6
         }
     }
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.initView()
     }
-    
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         self.initView()
     }
-    
+
     private func initView() {
         self.loadView("ControlButton")
-        
+
         self.iconContainerView.clipsToBounds = true
         self.iconContainerView.layer.cornerRadius = self.iconContainerView.frame.size.width * 0.5
     }

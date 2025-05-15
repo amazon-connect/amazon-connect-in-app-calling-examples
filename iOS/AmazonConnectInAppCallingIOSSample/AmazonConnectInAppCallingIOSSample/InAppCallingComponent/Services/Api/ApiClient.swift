@@ -8,17 +8,17 @@
 import Foundation
 
 class ApiClient {
-    
+
     private let config: InAppCallingConfiguration
     private let httpClient: HttpClient
-    
+
     init(config: InAppCallingConfiguration,
          httpClient: HttpClient) {
         self.config = config
         self.httpClient = httpClient
     }
-    
-    func createWebrtcContact(connectInstanceId: String, 
+
+    func createWebrtcContact(connectInstanceId: String,
                              contactFlowId: String,
                              displayName: String,
                              attributes: [String: String],
@@ -35,8 +35,8 @@ class ApiClient {
             onFailure(error)
         }
     }
-    
-    func createParticipantConnection(participantToken: String, 
+
+    func createParticipantConnection(participantToken: String,
                                      onSuccess: @escaping (_ response: CreateParticipantConnectionResponse) -> Void,
                                      onFailure: @escaping (_ error: Error) -> Void) {
         let url = self.config.createParticipantConnectionEndpoint
@@ -47,8 +47,8 @@ class ApiClient {
             onFailure(error)
         }
     }
-    
-    func sendMessage(connectionToken: String, 
+
+    func sendMessage(connectionToken: String,
                      digits: String,
                      onSuccess: @escaping () -> Void,
                      onFailure: @escaping (_ error: Error) -> Void) {

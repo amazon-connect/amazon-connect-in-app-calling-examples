@@ -23,7 +23,7 @@ class VideoPreferences extends HTMLElement {
           height: 500px;
         }
       </style>
-  
+
       <fieldset id="video-preferences">
         <legend>Video Preferences</legend>
         ${

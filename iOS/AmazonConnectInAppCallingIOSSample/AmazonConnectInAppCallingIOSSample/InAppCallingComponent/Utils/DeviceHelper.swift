@@ -9,7 +9,7 @@ import Foundation
 import AVFoundation
 
 class DeviceHelper {
-    
+
     func requestAudioPermissionIfNeeded(
         _ completion: @escaping (_ error: Error?) -> Void) {
             let audioSession = AVAudioSession.sharedInstance()
@@ -26,7 +26,7 @@ class DeviceHelper {
                 completion(error)
             }
     }
-    
+
     private func requestAudioPermission(
         _ completion: @escaping (_ error: Error?) -> Void
     ) {
@@ -38,7 +38,7 @@ class DeviceHelper {
             }
         }
     }
-    
+
     func requestCameraPermissionIfNeeded(
         _ completion: @escaping (_ error: Error?) -> Void
     ) {
@@ -55,7 +55,7 @@ class DeviceHelper {
             completion(error)
         }
     }
-    
+
     private func requestCameraPermission(
         _ completion: @escaping (_ error: Error?) -> Void) {
         AVCaptureDevice.requestAccess(for: .video) { authorized in

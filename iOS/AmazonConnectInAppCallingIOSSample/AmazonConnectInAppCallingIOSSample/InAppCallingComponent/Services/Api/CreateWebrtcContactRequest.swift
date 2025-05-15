@@ -13,7 +13,7 @@ struct CreateWebrtcContactRequest: Codable {
     let contactFlowId: String
     let displayName: String
     let attributes: [String: String]
-    
+
     enum CodingKeys: String, CodingKey {
         case connectInstanceId = "ConnectInstanceId"
         case contactFlowId = "ContactFlowId"

@@ -8,7 +8,7 @@
 import Foundation
 
 class BgBlurPickerViewModel {
-    
+
     var bgBlurStrength: BackgroundBlurState {
         get {
             return self.callStateStore.bgBlurState ?? .off
@@ -17,10 +17,10 @@ class BgBlurPickerViewModel {
             self.callManager.turnOnBGBlur(newValue)
         }
     }
-    
+
     private let callManager: CallManager
     private let callStateStore: CallStateStore
-    
+
     init(callManager: CallManager, callStateStore: CallStateStore) {
         self.callManager = callManager
         self.callStateStore = callStateStore

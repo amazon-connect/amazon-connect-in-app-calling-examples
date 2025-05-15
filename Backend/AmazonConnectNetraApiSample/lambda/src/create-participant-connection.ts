@@ -22,7 +22,7 @@ exports.handler = (event: APIGatewayProxyEventBase<undefined>, context, callback
 };
 
 function createParticipantConnection(body) {
-    
+
     if(!body || !body["ParticipantToken"]) {
         const err = new Error("Missing ParticipantToken");
         err["statusCode"] = "400";

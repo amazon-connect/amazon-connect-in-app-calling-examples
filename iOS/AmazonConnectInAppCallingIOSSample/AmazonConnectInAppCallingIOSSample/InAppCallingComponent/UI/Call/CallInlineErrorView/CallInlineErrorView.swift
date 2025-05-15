@@ -9,15 +9,15 @@ import UIKit
 
 @IBDesignable
 class CallInlineErrorView: UIView {
-    
+
     @IBOutlet private weak var label: PaddingLabel!
-    
+
     @IBOutlet private weak var heightConstraint: NSLayoutConstraint!
-    
+
     private let vm: CallInlineErrorViewModel
     private let callNtfCenter: CallNotificationCenter
     private let verticalPadding: CGFloat = 8
-    
+
     override init(frame: CGRect) {
         let (callNtfCenter, vm) = Self.commonInit()
         self.callNtfCenter = callNtfCenter
@@ -25,7 +25,7 @@ class CallInlineErrorView: UIView {
         super.init(frame: frame)
         initView()
     }
-    
+
     required init?(coder: NSCoder) {
         let (callNtfCenter, vm) = Self.commonInit()
         self.callNtfCenter = callNtfCenter
@@ -33,7 +33,7 @@ class CallInlineErrorView: UIView {
         super.init(coder: coder)
         initView()
     }
-    
+
     private static func commonInit() -> (CallNotificationCenter, CallInlineErrorViewModel) {
         let serviceProvider = InAppCalling.serviceProvider!
         let callNtfCenter = serviceProvider.callNtfCenter
@@ -41,18 +41,18 @@ class CallInlineErrorView: UIView {
         let vm = CallInlineErrorViewModel(callStateStore: callStateStore)
         return (callNtfCenter, vm)
     }
-    
+
     private func initView() {
         self.loadView("CallInlineErrorView")
-        
+
         self.label.textColor = .errorViewTextColor
         self.label.backgroundColor = .errorViewBGColor
-        
+
         self.callNtfCenter.addObserver(self)
-        
+
         updateUI()
     }
-    
+
     private func updateUI() {
         if self.vm.callState == .reconnecting {
             self.label.text = .reconnectingDisplayText
@@ -68,23 +68,23 @@ class CallInlineErrorView: UIView {
 
 extension CallInlineErrorView: CallObserver {
     func screenShareCapabilityDidUpdate() {}
-    
+
     func screenShareStatusDidUpdate() {}
-    
+
     func callStateDidUpdate(_ oldState: CallState,
                             _ newState: CallState) {
         DispatchQueue.main.async {
             self.updateUI()
         }
     }
-    
+
     func callErrorDidOccur(_ error: Error) {}
-    
+
     func muteStateDidUpdate() {}
-    
+
     func videoTileStateDidAdd() {}
-    
+
     func videoTileStateDidRemove() {}
-    
+
     func messageDidUpdate(_ message: String?) {}
 }

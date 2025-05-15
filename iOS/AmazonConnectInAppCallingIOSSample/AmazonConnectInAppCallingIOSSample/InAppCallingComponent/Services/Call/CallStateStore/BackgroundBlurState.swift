@@ -13,7 +13,7 @@ enum BackgroundBlurState: Int, CaseIterable {
     case medium
     case low
     case off
-    
+
     var displayText: String {
         switch self {
         case .high: return "High"
@@ -22,7 +22,7 @@ enum BackgroundBlurState: Int, CaseIterable {
         case .off: return "Off"
         }
     }
-    
+
     var rawValue: Int {
         switch self {
         case .high:

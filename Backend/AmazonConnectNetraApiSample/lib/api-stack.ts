@@ -39,10 +39,10 @@ export class ApiStack extends Construct {
     const startWebRtcContactApi = this.createApi(startWebRtcHandler, 'StartWebRtcContactApi');
     this.startWebRtcContactApiUrl = startWebRtcContactApi.url;
 
-    const participantEnv = (this.props.connectParticipantEndpoint) ? { 
-      CONNECT_PARTICIPANT_ENDPOINT: this.props.connectParticipantEndpoint 
+    const participantEnv = (this.props.connectParticipantEndpoint) ? {
+      CONNECT_PARTICIPANT_ENDPOINT: this.props.connectParticipantEndpoint
     } : undefined;
-    const createParticipantConnectionHandler = this.createLambda(apiRole, 'CreateParticipantConnectionFunction', 
+    const createParticipantConnectionHandler = this.createLambda(apiRole, 'CreateParticipantConnectionFunction',
     './lambda/src/create-participant-connection.ts', participantEnv);
     const createParticipantConnectionApi = this.createApi(createParticipantConnectionHandler, 'CreateParticipantConnectionApi');
     this.createParticipantConnectionApiUrl = createParticipantConnectionApi.url;

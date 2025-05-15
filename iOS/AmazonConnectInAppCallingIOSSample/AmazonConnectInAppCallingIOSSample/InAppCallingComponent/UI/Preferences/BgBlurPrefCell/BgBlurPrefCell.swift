@@ -10,15 +10,15 @@ import UIKit
 class BgBlurPrefCell: UITableViewCell {
 
     @IBOutlet private weak var bgBlurStrengthLabel: UILabel!
-    
+
     static var nib: UINib {
         return UINib(nibName: "BgBlurPrefCell", bundle: .main)
     }
-    
+
     static var cellId: String {
         return "BgBlurPrefCell"
     }
-    
+
     var bgBlurStrength: BackgroundBlurState? {
         didSet {
             switch self.bgBlurStrength {
