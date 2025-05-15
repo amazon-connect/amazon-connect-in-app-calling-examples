@@ -80,7 +80,7 @@ export class ApiStack extends Construct {
       environment: env,
       handler: 'handler',
       role,
-      runtime: lambda.Runtime.NODEJS_18_X,
+      runtime: lambda.Runtime.NODEJS_20_X,
       timeout: cdk.Duration.seconds(30),
     });
     return handler;
