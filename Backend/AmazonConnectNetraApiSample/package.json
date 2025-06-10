@@ -16,15 +16,15 @@
     "destroy": "cdk destroy"
   },
   "devDependencies": {
-    "@types/node": "10.17.27",
-    "aws-cdk": "^2.63.0",
-    "esbuild": "^0.14.54",
-    "ts-node": "^9.1.1",
-    "typescript": "~3.9.7"
+    "@types/node": "22.15.18",
+    "aws-cdk": "^2.1015.0",
+    "esbuild": "^0.25.4",
+    "ts-node": "^10.9.2",
+    "typescript": "~5.8.3"
   },
   "dependencies": {
-    "aws-cdk-lib": "^2.63.0",
-    "constructs": "^10.1.71",
+    "aws-cdk-lib": "^2.195.0",
+    "constructs": "^10.4.2",
     "source-map-support": "^0.5.21"
   }
 }
