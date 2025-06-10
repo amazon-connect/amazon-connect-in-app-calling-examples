@@ -10,14 +10,14 @@ import Foundation
 import AmazonChimeSDK
 
 protocol ScreenShare: AnyObject {
-    
+
     var delegate: ScreenShareDelegate? { get set }
-    
+
     func startScreenShare()
-    
+
     func stopScreenShare()
-    
+
     func addVideoSink(_ videoSink: VideoSink)
-    
+
     func removeVideoSink(_ videoSink: VideoSink)
 }

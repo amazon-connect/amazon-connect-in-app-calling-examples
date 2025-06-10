@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 extension UIView {
-    
+
     // Find the UIViewController holding the view
     var viewController: UIViewController? {
         if let nextResponder = self.next as? UIViewController {
@@ -19,7 +19,7 @@ extension UIView {
         }
         return nil
     }
-    
+
     // Load the view from nib file, add to parent view, and cover the whole parent view
     func loadView(_ nibName: String) {
         let views = Bundle.main.loadNibNamed(nibName, owner: self, options: nil)

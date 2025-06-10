@@ -8,15 +8,15 @@
 import UIKit
 
 class MainViewController: UIViewController {
-    
+
     private let config = Config()
-    
+
     @IBOutlet weak var displayNameTextField: UITextField!
-    
+
     @IBOutlet weak var cityTextField: UITextField!
-    
+
     @IBOutlet weak var callKitSwitch: UISwitch!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -26,7 +26,7 @@ class MainViewController: UIViewController {
         self.configCall()
         self.startCall()
     }
-    
+
     private func configCall() {
         let displayName = self.displayNameTextField.text ?? ""
         let city = self.cityTextField.text ?? ""
@@ -45,7 +45,7 @@ class MainViewController: UIViewController {
             isCallKitEnabled: self.callKitSwitch.isOn)
         InAppCalling.configure(config)
     }
-    
+
     private func startCall() {
         let callViewController = CallViewController()
         self.present(callViewController, animated: true)

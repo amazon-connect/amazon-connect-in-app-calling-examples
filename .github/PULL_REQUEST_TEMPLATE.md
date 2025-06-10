@@ -15,7 +15,7 @@
 
 **Checklist:**
 
-If it's CPP web calling example change: 
+If it's CPP web calling example change:
  1. Have you verified the change works in all [supporting broswers](https://docs.aws.amazon.com/connect/latest/adminguide/connect-supported-browsers.html)?
  2. Is integration tests chnage needed? If yes, please share the link for the change.
 

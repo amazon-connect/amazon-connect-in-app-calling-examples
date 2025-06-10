@@ -8,7 +8,7 @@
 import Foundation
 
 extension NSError {
-    
+
     convenience init(code: Int, localizedDescription: String? = nil) {
         let userInfo: [String: Any]? = localizedDescription != nil ? [
             NSLocalizedDescriptionKey: localizedDescription!

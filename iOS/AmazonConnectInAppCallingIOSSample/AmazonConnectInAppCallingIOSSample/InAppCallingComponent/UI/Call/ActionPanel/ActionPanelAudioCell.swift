@@ -9,26 +9,26 @@ import UIKit
 import AVKit
 
 protocol ActionPanelAudioCellDelegate: AnyObject {
-    
+
     func selectAudioDeviceDidFinish(_ sender: Any)
 }
 
 class ActionPanelAudioCell: ActionPanelCell {
-    
+
     weak var delegate: ActionPanelAudioCellDelegate?
-    
+
     private let routePickerView = AVRoutePickerView()
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.initView()
     }
-    
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         self.initView()
     }
-    
+
     private func initView() {
         self.routePickerView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(self.routePickerView)
@@ -42,7 +42,7 @@ class ActionPanelAudioCell: ActionPanelCell {
 }
 
 extension ActionPanelAudioCell: AVRoutePickerViewDelegate {
-    
+
     func routePickerViewDidEndPresentingRoutes(_ routePickerView: AVRoutePickerView) {
         self.delegate?.selectAudioDeviceDidFinish(self)
     }

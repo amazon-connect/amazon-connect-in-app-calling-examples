@@ -8,12 +8,12 @@
 import UIKit
 
 class ActionPanelCell: UICollectionViewCell {
-    
+
     // The action to perform when the button is pressed
     var action: (() -> Void)?
 
     @IBOutlet weak var actionButton: ControlButton!
-    
+
     var title: String? {
         get {
             return self.actionButton.title
@@ -22,7 +22,7 @@ class ActionPanelCell: UICollectionViewCell {
             self.actionButton.title = newValue
         }
     }
-    
+
     var image: UIImage? {
         get {
             return self.actionButton.image
@@ -31,7 +31,7 @@ class ActionPanelCell: UICollectionViewCell {
             self.actionButton.image = newValue
         }
     }
-    
+
     var imageBackgroundColor: UIColor? {
         get {
             return self.actionButton.imageBackgroundColor
@@ -40,21 +40,21 @@ class ActionPanelCell: UICollectionViewCell {
             self.actionButton.imageBackgroundColor = newValue
         }
     }
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.initView()
     }
-    
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         self.initView()
     }
-    
+
     private func initView() {
         self.loadView("ActionPanelCell")
     }
-    
+
     @IBAction func buttonTapped(_ sender: Any) {
         self.action?()
     }

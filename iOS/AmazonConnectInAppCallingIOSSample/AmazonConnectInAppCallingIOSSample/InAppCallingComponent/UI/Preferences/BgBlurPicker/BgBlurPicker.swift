@@ -11,33 +11,33 @@ import AmazonChimeSDK
 class BgBlurPicker: UIViewController {
 
     @IBOutlet private weak var tableView: UITableView!
-    
+
     private let vm: BgBlurPickerViewModel
-    
+
     // The cell indexpath for current BGBlurState
     private var selectedCellPath: IndexPath?
-    
+
     // Track all cells in tableview
     private var cells = [IndexPath: UITableViewCell]()
-    
+
     private let cellId = "BGBlurStateCell"
-    
+
     public init() {
         let serviceProvider = InAppCalling.serviceProvider!
         self.vm = BgBlurPickerViewModel(callManager: serviceProvider.callManager,
                                         callStateStore: serviceProvider.callStateStore)
         super.init(nibName: "BgBlurPicker", bundle: Bundle.main)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) is not allowed")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupUI()
     }
-    
+
     private func setupUI() {
         self.title = String.bgBlurDisplayText
         if #available(iOS 13.0, *) {
@@ -52,7 +52,7 @@ class BgBlurPicker: UIViewController {
                                                                  target: self,
                                                                  action: #selector(dismissController))
     }
-    
+
     @objc private func dismissController() {
         self.dismiss(animated: true)
     }
@@ -60,15 +60,15 @@ class BgBlurPicker: UIViewController {
 
 // MARK: - UITableViewDataSource
 extension BgBlurPicker: UITableViewDataSource {
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return BackgroundBlurState.allCases.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
         let state = BackgroundBlurState.allCases[indexPath.row]
@@ -86,17 +86,17 @@ extension BgBlurPicker: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 extension BgBlurPicker: UITableViewDelegate {
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
+
         let state = BackgroundBlurState.allCases[indexPath.row]
         self.vm.bgBlurStrength = state
-        
+
         if let selectedCellPath = self.selectedCellPath {
             self.cells[selectedCellPath]?.accessoryType = .none
         }
-        
+
         self.cells[indexPath]?.accessoryType = .checkmark
         self.selectedCellPath = indexPath
     }

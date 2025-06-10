@@ -38,7 +38,7 @@ function startWebRtcContact(body) {
       Customer: {
         Video: "SEND",
         ScreenShare: "SEND"
-      }, 
+      },
       Agent: {
         Video: "SEND",
         ScreenShare: "SEND"

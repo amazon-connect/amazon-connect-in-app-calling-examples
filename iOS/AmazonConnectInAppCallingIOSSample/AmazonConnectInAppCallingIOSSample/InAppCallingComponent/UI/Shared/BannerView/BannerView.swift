@@ -14,14 +14,14 @@ class BannerView: UIStackView {
         super.init(frame: frame)
         initView()
     }
-    
+
     required init(coder: NSCoder) {
         super.init(coder: coder)
         initView()
     }
-    
+
     private func initView() {
-        
+
         self.backgroundColor = UIColor(red: 204/255.0,
                                        green: 229/255.0,
                                        blue: 255/255.0,

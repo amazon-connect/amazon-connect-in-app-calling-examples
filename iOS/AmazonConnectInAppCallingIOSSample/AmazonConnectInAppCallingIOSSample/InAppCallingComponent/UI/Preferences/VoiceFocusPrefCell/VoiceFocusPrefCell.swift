@@ -12,11 +12,11 @@ protocol VoiceFocusPrefCellDelegate: AnyObject {
 }
 
 class VoiceFocusPrefCell: UITableViewCell {
-    
+
     weak var delegate: VoiceFocusPrefCellDelegate?
-    
+
     @IBOutlet private weak var vfSwitch: UISwitch!
-    
+
     var isSwitchOn: Bool {
         get {
             return self.vfSwitch.isOn
@@ -25,20 +25,20 @@ class VoiceFocusPrefCell: UITableViewCell {
             self.vfSwitch.isOn = newValue
         }
     }
-    
+
     static var nib: UINib {
         return UINib(nibName: "VoiceFocusPrefCell",
                      bundle: Bundle.main)
     }
-    
+
     static var cellId: String {
         return "VoiceFocusPrefCell"
     }
-    
+
     override var reuseIdentifier: String? {
         return VoiceFocusPrefCell.cellId
     }
-    
+
     @IBAction func switchValueChanged(_ sender: Any) {
         self.delegate?.switchValueChanged(self)
     }

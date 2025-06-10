@@ -8,11 +8,11 @@
 import Foundation
 
 class DTMFSender {
-    
+
     private let apiClient: ApiClient
     private let callStateStore: CallStateStore
     private let parcitipantConnectionCredentialsProvider: ParcitipantConnectionCredentialsProvider
-    
+
     init(apiClient: ApiClient,
          callStateStore: CallStateStore,
          parcitipantConnectionCredentialsProvider: ParcitipantConnectionCredentialsProvider) {
@@ -20,7 +20,7 @@ class DTMFSender {
         self.callStateStore = callStateStore
         self.parcitipantConnectionCredentialsProvider = parcitipantConnectionCredentialsProvider
     }
-    
+
     func sendDTMF(_ digits: String,
                   _ onSuccess: @escaping() -> Void,
                   _ onFailure: @escaping(_ error: Error) -> Void) {
@@ -30,14 +30,14 @@ class DTMFSender {
         }
         self.parcitipantConnectionCredentialsProvider.getCredentials(
             participantToken: participantToken) { credentials in
-                
+
                 self.apiClient.sendMessage(connectionToken: credentials,
                                            digits: digits) {
                     onSuccess()
                 } onFailure: { error in
                     onFailure(error)
                 }
-                
+
         } onFailure: { error in
             onFailure(error)
         }

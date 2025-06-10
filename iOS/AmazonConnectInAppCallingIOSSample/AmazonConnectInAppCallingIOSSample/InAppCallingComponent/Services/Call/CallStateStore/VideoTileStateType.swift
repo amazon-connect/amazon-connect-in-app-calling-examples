@@ -10,7 +10,7 @@ import AmazonChimeSDK
 
 enum VideoTileStateType {
     case local, remote, contentShare
-    
+
     init(_ videoTileState: VideoTileState) {
         if videoTileState.isContent {
             self = .contentShare

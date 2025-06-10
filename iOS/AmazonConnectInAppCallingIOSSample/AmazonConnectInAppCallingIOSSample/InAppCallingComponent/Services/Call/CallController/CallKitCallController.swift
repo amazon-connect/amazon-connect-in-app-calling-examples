@@ -10,14 +10,14 @@ import CallKit
 import AmazonChimeSDK
 
 class CallKitCallController: CallController {
-    
+
     private let callManager: CallManager
     private let callKitManager: CallKitManager
     private let callStateStore: CallStateStore
     private let config: CallKitConfiguration
-    
+
     private let callKitController = CXCallController()
-    
+
     init(_ config: CallKitConfiguration,
          _ callManager: CallManager,
          _ callKitManager: CallKitManager,
@@ -27,13 +27,13 @@ class CallKitCallController: CallController {
         self.callManager = callManager
         self.callKitManager = callKitManager
         self.callStateStore = callStateStore
-        
+
         callNtfCenter.addObserver(self)
     }
-    
+
     func startCall() {
         self.callKitManager.refreshUUID()
-        
+
         let handle = CXHandle(type: .generic, value: self.config.title)
         let startCallAction = CXStartCallAction(call: self.callKitManager.callUUID, handle: handle)
         let transaction = CXTransaction(action: startCallAction)
@@ -44,18 +44,18 @@ class CallKitCallController: CallController {
         }
 
     }
-    
+
     func cancelCall() {
         self.endCall()
     }
-    
+
     func endCall() {
         let endCallAction = CXEndCallAction(call: self.callKitManager.callUUID)
         let transaction = CXTransaction(action: endCallAction)
         self.callKitController.request(transaction, completion: { _ in
         })
     }
-    
+
     func setMute(_ isMuted: Bool) {
         let muteAction = CXSetMutedCallAction(call: self.callKitManager.callUUID, muted: isMuted)
         let transaction = CXTransaction(action: muteAction)
@@ -66,19 +66,19 @@ class CallKitCallController: CallController {
             }
         }
     }
-    
+
     func startLocalVideo() {
         self.callManager.startLocalVideo()
     }
-    
+
     func stopLocalVideo() {
         self.callManager.stopLocalVideo()
     }
-    
+
     func startScreenShare() {
         self.callManager.startScreenShare()
     }
-    
+
     func stopScreenShare() {
         self.callManager.stopScreenShare()
     }
@@ -86,9 +86,9 @@ class CallKitCallController: CallController {
 
 extension CallKitCallController: CallObserver {
     func screenShareCapabilityDidUpdate() {}
-    
+
     func screenShareStatusDidUpdate() {}
-    
+
     func callStateDidUpdate(_ oldState: CallState, _ newState: CallState) {
         if oldState == .calling && newState == .inCall {
             self.callKitManager.reportOutgoingCall(connectedAt: Date())
@@ -97,14 +97,14 @@ extension CallKitCallController: CallObserver {
                                            reason: .remoteEnded)
         }
     }
-    
+
     func callErrorDidOccur(_ error: Error) {}
-    
+
     func videoTileStateDidAdd() {}
-    
+
     func videoTileStateDidRemove() {}
-    
+
     func muteStateDidUpdate() {}
-    
+
     func messageDidUpdate(_ message: String?) {}
 }

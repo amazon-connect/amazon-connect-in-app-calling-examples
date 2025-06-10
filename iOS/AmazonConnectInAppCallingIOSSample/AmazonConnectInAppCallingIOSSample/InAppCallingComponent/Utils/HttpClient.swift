@@ -14,7 +14,7 @@ typealias HttpHeaders = [HttpHeader.Key: String]
 class HttpHeader {}
 
 extension HttpHeader {
-    
+
     enum Key: String {
         case contentEncoding = "Content-Encoding"
         case contentType = "Content-Type"
@@ -23,7 +23,7 @@ extension HttpHeader {
 }
 
 extension HttpHeader {
-    
+
     enum Value: String {
         case amzEncoding = "amz-1.0"
         case jsonContentType = "Application/json"
@@ -35,31 +35,31 @@ enum HttpMethod: String {
 }
 
 class HttpClient {
-    
+
     private let retryableHttpCodes: Set<Int> = [400, 403, 408, 429, 500, 502, 503, 504, 509]
     private let maxRetry = 2
-    
+
     func postJson<B: Encodable, R: Decodable>(_ urlString: String,
                                               _ headers: HttpHeaders?,
                                               _ body: B,
                                               _ onSuccess: @escaping (_ data: R) -> Void,
                                               _ onFailure: @escaping (_ error: Error) -> Void) {
-        
+
         guard let request = createPostRequest(urlString, headers, body) else {
             let error = NSError(code: 400)
             onFailure(error)
             return
         }
-        
+
         send(request, 0, onSuccess, onFailure)
     }
-    
+
     func postJson(_ urlString: String,
                   _ headers: HttpHeaders?,
                   _ body: [String: String]?,
                   _ onSuccess: @escaping () -> Void,
                   _ onFailure: @escaping (_ error: Error) -> Void) {
-        
+
         guard let request = createPostRequest(urlString, headers, body) else {
             let error = NSError(code: 400)
             onFailure(error)
@@ -67,7 +67,7 @@ class HttpClient {
         }
         send(request, 0, onSuccess, onFailure)
     }
-    
+
     func send(_ request: URLRequest,
               _ retryCount: Int,
               _ onSuccess: @escaping () -> Void,
@@ -78,7 +78,7 @@ class HttpClient {
             onFailure(error)
         }
     }
-    
+
     func send<R: Decodable>(_ request: URLRequest,
                             _ retryCount: Int,
                             _ onSuccess: @escaping (_ data: R) -> Void,
@@ -104,7 +104,7 @@ class HttpClient {
             onFailure(error)
         }
     }
-    
+
     func send(_ request: URLRequest,
               _ retryCount: Int,
               _ onSuccess: @escaping (_ data: Data) -> Void,
@@ -136,10 +136,10 @@ class HttpClient {
             onSuccess(data)
         }.resume()
     }
-    
+
     private func createGetRequest(_ urlString: String) -> URLRequest? {
         guard let serviceUrl = URL(string: urlString) else { return nil }
-        
+
         var request = URLRequest(url: serviceUrl)
         request.httpMethod = HttpMethod.get.rawValue
         request.httpShouldHandleCookies = true
@@ -147,12 +147,12 @@ class HttpClient {
                          forHTTPHeaderField: HttpHeader.Key.contentType.rawValue)
         return request
     }
-    
+
     private func createPostRequest(_ urlString: String,
                                    _ headers: HttpHeaders?,
                                    _ body: Encodable?) -> URLRequest? {
         guard let serviceUrl = URL(string: urlString) else { return nil }
-        
+
         var request = URLRequest(url: serviceUrl)
         request.httpMethod = HttpMethod.post.rawValue
         request.httpShouldHandleCookies = true
@@ -165,12 +165,12 @@ class HttpClient {
                 request.setValue(headerValue, forHTTPHeaderField: headerKey.rawValue)
             }
         }
-        
+
         let encoder = JSONEncoder()
         if let body = body, let httpBody = try? encoder.encode(body) {
             request.httpBody = httpBody
         }
-        
+
         return request
     }
 }

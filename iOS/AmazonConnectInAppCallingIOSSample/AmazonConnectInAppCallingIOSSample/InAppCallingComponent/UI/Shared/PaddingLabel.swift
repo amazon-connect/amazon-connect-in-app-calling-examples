@@ -18,17 +18,17 @@ import UIKit
         super.init(frame: frame)
         initView()
     }
-    
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         initView()
     }
-    
+
     private func initView() {
         self.clipsToBounds = true
         self.layer.cornerRadius = 8
     }
-    
+
     override func drawText(in rect: CGRect) {
         let insets = UIEdgeInsets(top: topInset,
                                   left: leftInset,

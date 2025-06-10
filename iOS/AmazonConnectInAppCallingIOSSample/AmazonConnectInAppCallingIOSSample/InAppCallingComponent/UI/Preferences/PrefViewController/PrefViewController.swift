@@ -14,16 +14,16 @@ private enum TableSectionType {
 class PrefViewController: UIViewController {
 
     @IBOutlet private weak var tableView: UITableView!
-    
+
     private let tableSections: [TableSectionType] = [.speechEnhancement, .videoEnhancement]
-    
+
     private let vm: PrefViewModel
-    
+
     private weak var vfPrefCell: VoiceFocusPrefCell?
     private weak var bgBlurPrefCell: BgBlurPrefCell?
-    
+
     private let callNtfCenter: CallNotificationCenter
-    
+
     public init() {
         let serviceProvider = InAppCalling.serviceProvider!
         callNtfCenter = serviceProvider.callNtfCenter
@@ -33,7 +33,7 @@ class PrefViewController: UIViewController {
         super.init(nibName: "PrefViewController", bundle: Bundle.main)
         self.initController()
     }
-    
+
     private func initController() {
         self.callNtfCenter.addObserver(self)
     }
@@ -41,17 +41,17 @@ class PrefViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) is not allowed")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupUI()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.updateUI()
     }
-    
+
     // SetupUI is called only once on controller is loaded for initialize UI components
     private func setupUI() {
         self.title = String.preferences
@@ -71,7 +71,7 @@ class PrefViewController: UIViewController {
                                                                  target: self,
                                                                  action: #selector(dismissController))
     }
-    
+
     // UpdateUI is the central method for updating UI whenever needed
     private func updateUI() {
         self.vfPrefCell?.isSwitchOn = self.vm.isVfEnabled
@@ -82,7 +82,7 @@ class PrefViewController: UIViewController {
         let picker = BgBlurPicker()
         self.navigationController?.pushViewController(picker, animated: true)
     }
-    
+
     @objc private func dismissController() {
         self.dismiss(animated: true)
     }
@@ -90,15 +90,15 @@ class PrefViewController: UIViewController {
 
 // MARK: - UITableViewDataSource
 extension PrefViewController: UITableViewDataSource {
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.tableSections.count
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let sectionType = self.tableSections[indexPath.section]
         switch sectionType {
@@ -108,7 +108,7 @@ extension PrefViewController: UITableViewDataSource {
             return self.configureBgBlurTableCell(tableView, cellForRowAt: indexPath)
         }
     }
-    
+
     private func configureVfTableCell(_ tableView: UITableView,
                                       cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellId = VoiceFocusPrefCell.cellId
@@ -120,10 +120,10 @@ extension PrefViewController: UITableViewDataSource {
             self.vfPrefCell = cell
             return cell
         }
-        
+
         return UITableViewCell()
     }
-    
+
     private func configureBgBlurTableCell(_ tableView: UITableView,
                                           cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellId = BgBlurPrefCell.cellId
@@ -136,7 +136,7 @@ extension PrefViewController: UITableViewDataSource {
         }
         return UITableViewCell()
     }
-    
+
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let sectionType = self.tableSections[section]
         switch sectionType {
@@ -150,10 +150,10 @@ extension PrefViewController: UITableViewDataSource {
 
 // MARK: - UITableViewDataSource
 extension PrefViewController: UITableViewDelegate {
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
+
         let sectionType = self.tableSections[indexPath.section]
         if sectionType == .videoEnhancement {
             self.showBgBlurPicker()
@@ -163,7 +163,7 @@ extension PrefViewController: UITableViewDelegate {
 
 // MARK: - VoiceFocusPrefCellDelegate
 extension PrefViewController: VoiceFocusPrefCellDelegate {
-    
+
     func switchValueChanged(_ sender: VoiceFocusPrefCell) {
         self.vm.isVfEnabled = sender.isSwitchOn
         self.updateUI()
@@ -172,22 +172,22 @@ extension PrefViewController: VoiceFocusPrefCellDelegate {
 
 extension PrefViewController: CallObserver {
     func screenShareCapabilityDidUpdate() {}
-    
+
     func screenShareStatusDidUpdate() {}
-    
+
     func callStateDidUpdate(_ oldState: CallState, _ newState: CallState) {}
-    
+
     func callErrorDidOccur(_ error: Error) {
         DispatchQueue.main.async {
             self.showError(error)
         }
     }
-    
+
     func muteStateDidUpdate() {}
-    
+
     func videoTileStateDidAdd() {}
-    
+
     func videoTileStateDidRemove() {}
-    
+
     func messageDidUpdate(_ message: String?) {}
 }

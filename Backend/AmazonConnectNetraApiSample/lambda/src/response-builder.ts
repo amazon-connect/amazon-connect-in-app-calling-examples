@@ -17,7 +17,7 @@ export const buildSuccessfulResponse = (result) => {
     console.log("RESPONSE" + JSON.stringify(response));
     return response;
 }
-  
+
 export const buildFailedResponse = (err) => {
     const response = {
         statusCode: err.statusCode,

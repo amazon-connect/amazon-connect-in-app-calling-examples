@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIViewController {
-    
+
     func presentInNavController(_ viewController: UIViewController) {
         let navController = UINavigationController(rootViewController: viewController)
         if #available(iOS 13.0, *) {
@@ -17,7 +17,7 @@ extension UIViewController {
         navController.navigationBar.tintColor = UIColor.defaultActionColor
         self.present(navController, animated: true)
     }
-    
+
     func showError(_ error: Error) {
         let alert = UIAlertController(title: String.error,
                                       message: error.localizedDescription,

@@ -9,7 +9,7 @@ import Foundation
 import AmazonChimeSDK
 
 class CallViewModel {
-    
+
     var isLocalMuted: Bool {
         get {
             return self.callStateStore.isLocalMuted
@@ -31,31 +31,31 @@ class CallViewModel {
             }
         }
     }
-    
+
     var isRemoteVideoOn: Bool {
         return self.callStateStore.remoteVideoTileState != nil
     }
-    
+
     var callState: CallState {
         return self.callStateStore.callState
     }
-    
+
     var screenShareStatus: ScreenShareStatus {
         return self.callStateStore.screenShareStatus
     }
-    
+
     var isScreenShareCapabilityEnabled: Bool {
         return self.callStateStore.isScreenShareCapabilityEnabled
     }
-    
+
     var message: String? {
         return self.callStateStore.message
     }
-    
+
     private let callController: CallController
     private let callStateStore: CallStateStore
     private let dtmfSender: DTMFSender
-    
+
     init(callController: CallController,
          dtmfSender: DTMFSender,
          callStateStore: CallStateStore) {
@@ -63,15 +63,15 @@ class CallViewModel {
         self.dtmfSender = dtmfSender
         self.callStateStore = callStateStore
     }
-    
+
     func call() {
         self.callController.startCall()
     }
-    
+
     func endCall() {
         self.callController.endCall()
     }
-    
+
     func sendDTMF(_ digits: String, _ onCompletion: @escaping (_ error: Error?) -> Void) {
         self.dtmfSender.sendDTMF(digits) {
             onCompletion(nil)
@@ -79,11 +79,11 @@ class CallViewModel {
             onCompletion(error)
         }
     }
-    
+
     func startScreenShare() {
         self.callController.startScreenShare()
     }
-    
+
     func stopScreenShare() {
         self.callController.stopScreenShare()
     }

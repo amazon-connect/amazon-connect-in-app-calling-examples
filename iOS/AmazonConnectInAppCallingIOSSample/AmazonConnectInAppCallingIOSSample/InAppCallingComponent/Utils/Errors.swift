@@ -8,7 +8,7 @@
 import Foundation
 
 enum Errors: Error, LocalizedError, CustomStringConvertible {
-    
+
     case audioPermissionDenied
     case unknownAudioPermission
     case cameraPermissionDenied
@@ -20,7 +20,7 @@ enum Errors: Error, LocalizedError, CustomStringConvertible {
     case failedToStartCall
     case muteLocalAudioFailed
     case unmuteLocalAudioFailed
-    
+
     public var description: String {
         switch self {
         case .audioPermissionDenied, .unknownAudioPermission:
@@ -41,7 +41,7 @@ enum Errors: Error, LocalizedError, CustomStringConvertible {
             return "Unmute local audio failed"
         }
     }
-    
+
     public var errorDescription: String? {
         return self.description
     }

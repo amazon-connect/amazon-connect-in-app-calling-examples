@@ -10,10 +10,10 @@ import Foundation
 import AmazonChimeSDK
 
 class InAppScreenShare: ScreenShare {
-    
+
     private let logger = ConsoleLogger(name: "InAppScreenCaptureModel")
     private let contentShareController: ContentShareController
-    
+
     weak var delegate: ScreenShareDelegate?
 
     let inAppScreenCaptureSource: VideoCaptureSource
@@ -23,20 +23,20 @@ class InAppScreenShare: ScreenShare {
         self.contentShareController = contentShareController
         self.contentShareController.addContentShareObserver(observer: self)
     }
-    
+
     func startScreenShare() {
         inAppScreenCaptureSource.addCaptureSourceObserver(observer: self)
         inAppScreenCaptureSource.start()
     }
-    
+
     func stopScreenShare() {
         inAppScreenCaptureSource.stop()
     }
-    
+
     func addVideoSink(_ videoSink: VideoSink) {
         inAppScreenCaptureSource.addVideoSink(sink: videoSink)
     }
-    
+
     func removeVideoSink(_ videoSink: VideoSink) {
         inAppScreenCaptureSource.removeVideoSink(sink: videoSink)
     }

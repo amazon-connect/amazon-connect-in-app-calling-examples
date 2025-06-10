@@ -8,21 +8,21 @@
 import Foundation
 
 protocol CallObserver: AnyObject {
-    
+
     func callStateDidUpdate(_ oldState: CallState,
                             _ newState: CallState)
-    
+
     func callErrorDidOccur(_ error: Error)
-    
+
     func muteStateDidUpdate()
-    
+
     func videoTileStateDidAdd()
-    
+
     func videoTileStateDidRemove()
-    
+
     func screenShareCapabilityDidUpdate()
-    
+
     func screenShareStatusDidUpdate()
-    
+
     func messageDidUpdate(_ message: String?)
 }

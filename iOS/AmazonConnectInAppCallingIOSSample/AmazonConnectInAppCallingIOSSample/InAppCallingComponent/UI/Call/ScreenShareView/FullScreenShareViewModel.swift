@@ -10,20 +10,20 @@ import Foundation
 import AmazonChimeSDK
 
 class FullScreenShareViewModel {
-    
+
     private let callManager: CallManager
     private let callStateStore: CallStateStore
-    
+
     var screenShareStatus: ScreenShareStatus {
         return self.callStateStore.screenShareStatus
     }
-    
+
     init(callManager: CallManager,
          callStateStore: CallStateStore) {
         self.callManager = callManager
         self.callStateStore = callStateStore
     }
-    
+
     func bindScreenShareView(videoView: DefaultVideoRenderView) {
         if screenShareStatus == .local {
             self.callManager.bindLocalScreenShareSink(videoSink: videoView)
@@ -33,7 +33,7 @@ class FullScreenShareViewModel {
             }
         }
     }
-    
+
     func unbindScreenShareView(videoView: DefaultVideoRenderView) {
         if screenShareStatus == .local {
             self.callManager.unbindLocalScreenShareSink(videoSink: videoView)

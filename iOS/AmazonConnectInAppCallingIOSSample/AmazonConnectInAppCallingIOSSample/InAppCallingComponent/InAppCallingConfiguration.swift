@@ -9,18 +9,18 @@ import Foundation
 import AmazonChimeSDK
 
 public class InAppCallingConfiguration {
-    
+
     let connectInstanceId: String
     let contactFlowId: String
     let displayName: String
     let attributes: [String: String]
-    
+
     let startWebrtcContactEndpoint: String
     let createParticipantConnectionEndpoint: String
     let sendMessageEndpoint: String
-    
+
     let isCallKitEnabled: Bool
-    
+
     public init(connectInstanceId: String,
                 contactFlowId: String,
                 displayName: String,
