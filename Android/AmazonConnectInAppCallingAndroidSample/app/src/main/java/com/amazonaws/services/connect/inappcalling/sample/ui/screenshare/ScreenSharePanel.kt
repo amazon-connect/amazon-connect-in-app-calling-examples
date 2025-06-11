@@ -73,7 +73,7 @@ internal class ScreenSharePanel(
     }
 
     private fun updateSenderTextView() {
-        viewModel.screenShareStatus?.value.let{
+        viewModel.screenShareStatus.value.let{
             when(it) {
                 ScreenShareStatus.LOCAL -> {
                     senderTextView.setText(R.string.call_sheet_screen_share_local_sender)

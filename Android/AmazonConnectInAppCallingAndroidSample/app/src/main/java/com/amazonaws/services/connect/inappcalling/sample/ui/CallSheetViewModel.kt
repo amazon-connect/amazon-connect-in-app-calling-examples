@@ -236,8 +236,8 @@ class CallSheetViewModel(
         _screenShareStatus.postValue(status)
     }
 
-    override fun onScreenShareTileStateChanged(tileStates: VideoTileState?) {
-        _screenShareTileState.postValue(tileStates)
+    override fun onScreenShareTileStateChanged(tileState: VideoTileState?) {
+        _screenShareTileState.postValue(tileState)
     }
 
     fun bindLocalScreenShareView(videoRenderView: VideoRenderView) {

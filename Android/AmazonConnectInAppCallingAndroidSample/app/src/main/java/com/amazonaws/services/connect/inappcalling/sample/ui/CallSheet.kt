@@ -279,7 +279,7 @@ class CallSheet : BaseBottomSheetFragment() {
     }
 
     private fun updateScreenSharePanel() {
-        viewModel.screenShareStatus?.value.let{
+        viewModel.screenShareStatus.value.let{
             when(it) {
                 ScreenShareStatus.LOCAL -> {
                     controlPanel.updateScreenShareButtonHighlight(true)
