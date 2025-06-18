@@ -9,10 +9,12 @@ import android.Manifest
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.content.ServiceConnection
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.os.IBinder
 import android.telecom.DisconnectCause
 import android.telecom.PhoneAccount
 import android.telecom.PhoneAccountHandle
@@ -56,6 +58,7 @@ import com.amazonaws.services.connect.inappcalling.sample.data.domain.screenshar
 import com.amazonaws.services.connect.inappcalling.sample.data.utils.ConnectionTokenProvider
 import com.amazonaws.services.connect.inappcalling.sample.data.utils.onSuccess
 import com.amazonaws.services.connect.inappcalling.sample.service.CallConnectionService
+import com.amazonaws.services.connect.inappcalling.sample.service.MicrophoneService
 
 class CallManager(
     private val config: CallConfiguration,
@@ -78,6 +81,16 @@ class CallManager(
     private var meetingSession: MeetingSession? = null
     private lateinit var cameraCaptureSource: CameraCaptureSource
     private lateinit var backgroundBlurVideoFrameProcessor: BackgroundBlurVideoFrameProcessor
+    private var isMicrophoneServiceBound = false
+    private var microphoneServiceConnection = object : ServiceConnection {
+        override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
+            isMicrophoneServiceBound = true
+        }
+
+        override fun onServiceDisconnected(name: ComponentName?) {
+            isMicrophoneServiceBound = false
+        }
+    }
 
     init {
         registerPhoneAccount()
@@ -103,6 +116,7 @@ class CallManager(
                 == PackageManager.PERMISSION_GRANTED) {
                 telecomManager.placeCall(Uri.parse("sip:dummy"), extras)
             }
+            startMicrophoneService()
 
             // Initialize call data
             callStateRepository.setLocalAttendeeId(attendeeId = response.connectionData.attendee.attendeeId)
@@ -188,6 +202,11 @@ class CallManager(
         // Disconnect telecom connection
         CallConnectionService.connection?.setDisconnected(DisconnectCause(DisconnectCause.LOCAL))
         CallConnectionService.connection?.destroy()
+        // Disconnect microphone service
+        if (isMicrophoneServiceBound) {
+            config.applicationContext.unbindService(microphoneServiceConnection)
+            isMicrophoneServiceBound = false
+        }
 
         callStateRepository.updateCallState(newState = CallState.NOT_STARTED)
     }
@@ -418,6 +437,10 @@ class CallManager(
         )
     }
 
+    override fun onDataMessageReceived(dataMessage: DataMessage) {
+        screenShareManager.handleDataMessage(dataMessage)
+    }
+
     private fun notifyCallerMuteStateChange(state: CallerMuteState) {
         callStateRepository.updateCallerMuteState(state)
     }
@@ -447,7 +470,7 @@ class CallManager(
 
 
     /**
-     * Connection Service integration
+     *  Service integration
      */
 
     private fun registerPhoneAccount() {
@@ -472,8 +495,21 @@ class CallManager(
         }
     }
 
-    override fun onDataMessageReceived(dataMessage: DataMessage) {
-        screenShareManager.handleDataMessage(dataMessage)
+    private fun startMicrophoneService() {
+        // Start microphone service
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            config.applicationContext.startForegroundService(
+                Intent(
+                    config.applicationContext,
+                    MicrophoneService::class.java
+                ).also { intent ->
+                    config.applicationContext.bindService(
+                        intent,
+                        microphoneServiceConnection,
+                        Context.BIND_AUTO_CREATE
+                    )
+                }
+            )
+        }
     }
-
 }

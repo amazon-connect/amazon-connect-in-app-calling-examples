@@ -9,11 +9,11 @@ import android.content.Context
 
 data class CallConfiguration(
     val applicationContext: Context,
-    val connectInstanceId: String = "",
-    val contactFlowId: String = "",
-    val startWebrtcEndpoint: String = "",
-    val createParticipantConnectionEndpoint: String = "",
-    val sendMessageEndpoint: String = "",
+    val connectInstanceId: String,
+    val contactFlowId: String,
+    val startWebrtcEndpoint: String,
+    val createParticipantConnectionEndpoint: String,
+    val sendMessageEndpoint: String,
     val displayName: String,
     val attributes: Map<String, String>
 )
