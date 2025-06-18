@@ -36,10 +36,10 @@ class ScreenShareManager(
     private val logger = ConsoleLogger()
     private var isBound: Boolean = false
 
-    /*
-     * Check if the data message is from topic `AMAZON_CONNECT_SCREEN_SHARING`,
-     * if yes, it will update ScreenShareCapabilityEnabled flag accordingly,
-     * if no, it will return immediately.
+    /**
+     * Handle data messages sent on the AMAZON_CONNECT_SCREEN_SHARING topic.
+     * STARTED -> enable screen share
+     * STOPPED -> stop screen share
      */
     fun handleDataMessage(dataMessage: DataMessage) {
         if(dataMessage.topic != AMAZON_CONNECT_SCREEN_SHARING_TOPIC) {
@@ -63,6 +63,9 @@ class ScreenShareManager(
         }
     }
 
+    /**
+     * Start screen share using Chime SDK screen capture.
+     */
     fun startScreenShare(resultCode: Int, data: Intent,
                          screenShareController: ContentShareController
     ) {
@@ -76,7 +79,6 @@ class ScreenShareManager(
                 val screenCaptureSourceObserver = object : CaptureSourceObserver {
                     override fun onCaptureStarted() {
                         videoSource?.let { screenShareController.startContentShare(this@ScreenShareManager) }
-                        // callStateRepository.updateScreenShareTileStates(null)
                         callStateRepository.updateScreenShareStatus(ScreenShareStatus.LOCAL)
                     }
 
@@ -84,6 +86,9 @@ class ScreenShareManager(
                         if(callStateRepository.getScreenShareStatus() != ScreenShareStatus.REMOTE) {
                             callStateRepository.updateScreenShareStatus(ScreenShareStatus.NONE)
                         }
+                        // When capturing gets turned off from system UI,
+                        // we want to stop sending to remote as well
+                        screenShareController.stopContentShare()
                     }
 
                     override fun onCaptureFailed(error: CaptureSourceError) {
@@ -124,7 +129,6 @@ class ScreenShareManager(
         screenCaptureSource?.stop()
         screenCaptureSource?.release()
 
-        // screenCaptureSource?.release()
         screenCaptureConnectionService?.let {
             if (isBound) context.unbindService(it)
         }
@@ -132,11 +136,11 @@ class ScreenShareManager(
     }
 
     fun addVideoSink(videoSink: VideoSink) {
-        screenCaptureSource?.let { it.addVideoSink(videoSink) }
+        screenCaptureSource?.addVideoSink(videoSink)
     }
 
     fun removeVideoSink(videoSink: VideoSink) {
-        screenCaptureSource?.let { it.removeVideoSink(videoSink) }
+        screenCaptureSource?.removeVideoSink(videoSink)
     }
 
     fun addObserver(observer: CaptureSourceObserver) = screenCaptureSource?.addCaptureSourceObserver(observer)
