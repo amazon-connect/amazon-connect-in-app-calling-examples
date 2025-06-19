@@ -1,36 +1,75 @@
-# Amazon Connect In-App Calling Sample - Android
+# Amazon Connect In-App Calling Sample – Android
 
-This sample Android app demonstrates how to interact with Amazon Connect APIs to start an in-app call
-with Amazon Connect and send DTMF.
+This sample Android app demonstrates how to interact with Amazon Connect APIs to start an **in-app voice/video call** and send **DTMF**. It also supports **screen sharing** via Amazon Chime SDK.
 
-This sample app works together with the serverless solution deployed
-by the `Amazon Connect In-App Calling API Sample`
-to deliver an in-app calling experience. Please make sure you follow the `README` and deploy the serverless demo first, and note down the output.
+This app works together with the serverless solution provided by the [`Amazon Connect In-App Calling API Sample`](https://github.com/amazon-connect/amazon-connect-in-app-calling-examples/tree/main/Backend/AmazonConnectNetraApiSample).  
+➡️ **Please deploy the backend first and take note of the endpoint outputs.**
 
-> NOTE: this sample is for demo purposes.
 
-## Setup
-1. `Amazon Connect In-App Calling API Sample` has been deployed.
-2. Git clone the repo
-3. Open the project from [Android Studio](https://developer.android.com/studio)
-4. Make sure Android SDK location has been properly configured by clicking *File* -> *Project Structure* -> *SDK Location*, or go to `<Project root path>/local.properties`, there should be `sdk.dir` property
-5. Connect a physical Android device, make sure developer mode is on by following [this guide](https://developer.android.com/studio/debug/dev-options)
-   1. Fill in required configurations in `CallConfiguration.kt`
-      ```kotlin
-      data class CallConfiguration(
-      // ...
-      val connectInstanceId: String = "", // your Amazon Connect instance Id
-      val contactFlowId: String = "", // your contact flow Id that you want to associated with the calls
-      val startWebrtcEndpoint: String = "", // the endpoint URL of startWebrtcContact API deployed by the serverless demo
-      val createParticipantConnectionEndpoint: String = "", // the endpoint URL of createParticipantConnection API deployed by the serverless demo
-      val sendMessageEndpoint: String = "", // the endpoint URL of sendMessage API deployed by the serverless demo
-      // ...
-      )
-      ```
-6. In Android Studio, choose your connected device, and target `app`, click run
+---
 
-### Key files and methods in the sample code
+## 📱 Preview
 
-**CallManager**: Contains methods to: 1) manage the call session, 2) send DTMF 3) audio / video controls (e.g., mute, unmute, start, stop video) 4) handle SDK meeting events (e.g., meeting started / ende, attendee joined, dropped)
+<img src="docs/screenshot.png" alt="App Screenshot" width="300" />
 
-**Call Sheet**: Main UI for hosting the call session
+---
+
+## 🚀 Setup
+
+1. **Deploy the Backend**  
+   Follow the [Amazon Connect In-App Calling API Sample](https://github.com/amazon-connect/amazon-connect-in-app-calling-examples/tree/main/Backend/AmazonConnectNetraApiSample) README to deploy the Lambda-based APIs via AWS CDK.
+
+2. **Clone this repo**
+
+   ```bash
+   git clone https://github.com/amazon-connect/amazon-connect-in-app-calling-examples.git
+   cd Android/AmazonConnectInAppCallingAndroidSample
+   ```
+
+3. **Configure Android SDK**
+   - Open in [Android Studio](https://developer.android.com/studio)
+   - Ensure Android SDK path is set:
+      - File → Project Structure → SDK Location
+      - Or edit local.properties:
+        ```properties
+        sdk.dir=/your/android/sdk/path
+        ```
+
+4. **Provide Required Configuration**  
+   Add the following entries in your local.properties file:
+    ```properties
+    connect.instanceId=your-connect-instance-id
+    connect.contactFlowId=your-contact-flow-id
+    endpoints.startWebRTC=https://your-start-webrtc-endpoint/
+    endpoints.createParticipant=https://your-create-participant-endpoint/
+    endpoints.sendMessage=https://your-send-message-endpoint/
+    ```
+   These values are used as default and can be changed in the app’s Configuration dialog at runtime.
+
+5. **Run the App**
+   - Connect a physical Android device
+   - Hit ▶️ Run in Android Studio and target the app
+
+6. **Start a Call**
+   - Enter your Display Name and City
+   - Tap Start Call to initiate
+   - Click **Config** button to update endpoints if needed
+
+## 🧩 Key Components
+
+| Component               | File / Class Name                      | Responsibility                                                               |
+|------------------------|----------------------------------------|-------------------------------------------------------------------------------|
+| Call Sheet             | `CallSheet.kt`                         | Main UI sheet that shows during an active call                                |
+| Call Manager           | `CallManager.kt`                       | Manages the call session, audio/video state, DTMF, and participants events    |
+| Call Connection  | `CallConnection.kt`         | Bridges the in-app call with Android Telecom. Manages call audio routing changes (e.g. Bluetooth, speaker), and handles system-level disconnects or conflicts with other ongoing calls. |
+| Screen Share Manager   | `ScreenShareManager.kt`                | Manages screen capture and sharing                                            |
+| Configuration Repository | `ConfigRepository.kt`                | Central source for retrieving call-related configuration used to start calls  |
+
+## ✅ Features
+- In-app audio/video calling with Amazon Connect
+- Dynamic contact attributes (e.g., name and city)
+- DTMF (dual-tone signaling)
+- Screen sharing
+- Video background blur
+- Voice focus
+

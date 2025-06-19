@@ -61,5 +61,13 @@
     <!-- Service -->
     <string name="screen_capture_notification_tile">Screen Sharing</string>
     <string name="screen_capture_notification_text">Your screen is being shared.</string>
+    <string name="microphone_notification_tile">Microphone in use</string>
+    <string name="microphone_notification_text">The microphone is being used.</string>
+    <string name="config">Config</string>
+    <string name="connect_instance_id_title">Connect Instance Id</string>
+    <string name="contact_flow_id_title">Contact Flow Id</string>
+    <string name="start_webrtc_endpoint_title">Start Webrtc Endpoint</string>
+    <string name="create_participant_connection_endpoint_title">Create Participant Connection Endpoint</string>
+    <string name="send_message_endpoint_title">Send Message Endpoint</string>
 
 </resources>
