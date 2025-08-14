@@ -1,0 +1,29 @@
+{
+  "name": "cdk-deployment",
+  "version": "1.0.0",
+  "description": "AWS CDK deployment for Amazon Connect Multi-User Web and Video Calling Sample",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "cdk": "cdk",
+    "deploy": "cdk deploy --require-approval never",
+    "synth": "cdk synth",
+    "install:layer": "cd lambda-layer/nodejs && npm install",
+    "predeploy": "npm run install:layer",
+    "clean": "rm -rf cdk.out lib/**/*.js lib/**/*.d.ts bin/**/*.js bin/**/*.d.ts",
+    "clean:layer": "rm -rf lambda-layer/nodejs/node_modules",
+    "clean:all": "npm run clean && npm run clean:layer"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT-0",
+  "dependencies": {
+    "@types/node": "^22.15.3",
+    "aws-cdk-lib": "^2.193.0",
+    "constructs": "^10.4.2",
+    "source-map-support": "^0.5.21",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}

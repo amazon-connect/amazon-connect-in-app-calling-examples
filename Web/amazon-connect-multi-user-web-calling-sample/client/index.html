@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!--
+  Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+  SPDX-License-Identifier: MIT-0
+-->
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="css/styles.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amazon Connect Multi-User Web and Video Calling Sample</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="join-view-container" id="join-view-container">
+      <h2 id="create-engagement-header">Create an Engagement</h2>
+      <h2 id="join-engagement-header">Join an Engagement</h2>
+      <div class="inline-form-group">
+        <label for="engagement-id" id="engagement-id-label"
+          >Engagement ID</label
+        >
+        <input
+          type="text"
+          id="engagement-id"
+          placeholder="Enter engagement ID"
+        />
+      </div>
+      <div class="inline-form-group">
+        <label for="display-name">Your Name</label>
+        <input
+          type="text"
+          id="display-name"
+          required
+          placeholder="Enter your name"
+        />
+      </div>
+      <div class="inline-form-group">
+        <label>Capabilities</label>
+        <div class="checkbox-group">
+          <div class="checkbox-item">
+            <input type="checkbox" id="video-capability" checked /> Video
+          </div>
+          <div class="checkbox-item">
+            <input type="checkbox" id="screenshare-capability" checked /> Screen
+            Share
+          </div>
+        </div>
+      </div>
+      <button id="create-engagement-button">
+        <i class="fas fa-plus-circle"></i> Create
+      </button>
+      <button id="join-engagement-button">
+        <i class="fas fa-sign-in-alt"></i> Join
+      </button>
+      <div id="banner"></div>
+      <div id="loading-icon" style="display: none">
+        <i class="fas fa-spinner fa-spin"></i>
+      </div>
+    </div>
+
+    <div class="session-view-container" id="session-view-container">
+      <div class="local-video-section">
+        <h3>Local Video</h3>
+        <div
+          class="video-container local-video-container"
+          id="local-video-container"
+        >
+          <video id="local-video" autoplay muted playsinline></video>
+          <div class="participant-name" id="local-participant-name">Me</div>
+        </div>
+      </div>
+
+      <div class="screen-share-section">
+        <h3>Screen Share</h3>
+        <div class="screen-share-container">
+          <video id="screen-share-viewer" playsinline></video>
+          <div class="participant-name" id="screen-sharer-name">
+            Screen Share
+          </div>
+        </div>
+      </div>
+      <h3>Videos from other participants</h3>
+      <div class="remote-videos-grid">
+        <div class="video-container">
+          <video id="remote-video-0" playsinline></video>
+          <div class="participant-name" id="participant-name-0"></div>
+        </div>
+        <div class="video-container">
+          <video id="remote-video-1" playsinline></video>
+          <div class="participant-name" id="participant-name-1"></div>
+        </div>
+        <div class="video-container">
+          <video id="remote-video-2" playsinline></video>
+          <div class="participant-name" id="participant-name-2"></div>
+        </div>
+        <div class="video-container">
+          <video id="remote-video-3" playsinline></video>
+          <div class="participant-name" id="participant-name-3"></div>
+        </div>
+        <div class="video-container">
+          <video id="remote-video-4" playsinline></video>
+          <div class="participant-name" id="participant-name-4"></div>
+        </div>
+      </div>
+      <audio id="remote-audio" autoplay></audio>
+      <div class="controls">
+        <button id="mute-button">
+          <i class="fas fa-microphone"></i>
+          <span>Mute</span>
+        </button>
+        <button id="video-button">
+          <i class="fas fa-video"></i>
+          <span>Start Video</span>
+        </button>
+        <button id="screen-share-button">
+          <i class="fas fa-desktop"></i>
+          <span>Start Share</span>
+        </button>
+        <button id="leave-button">
+          <i class="fas fa-phone-slash"></i>
+          <span>Leave</span>
+        </button>
+      </div>
+    </div>
+
+    <script type="module" src="dist/bundle.js"></script>
+  </body>
+</html>

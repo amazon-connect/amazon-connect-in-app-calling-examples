@@ -1,0 +1,25 @@
+{
+  "name": "amazon-connect-multi-user-web-and-video-calling-sample-client",
+  "version": "1.0.0",
+  "description": "Client for Amazon Connect Multi-User Web and Video Calling Sample",
+  "main": "index.js",
+  "type": "module",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "build": "node esbuild.mjs",
+    "dev": "node esbuild.mjs --watch",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT-0",
+  "dependencies": {
+    "amazon-chime-sdk-js": "^3.27.1"
+  },
+  "devDependencies": {
+    "esbuild": "^0.20.1",
+    "esbuild-plugins-node-modules-polyfill": "^1.7.0"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "name": "amazon-connect-multi-user-web-and-video-calling-sample",
+  "version": "1.0.0",
+  "description": "Amazon Connect Multi-User Web and Video Calling Sample",
+  "main": "server/index.js",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "start": "node server/index.js",
+    "server:dev": "nodemon server/index.js",
+    "client:dev": "npm run dev --prefix client",
+    "client:build": "npm run build --prefix client",
+    "client:clean": "npm run clean --prefix client",
+    "dev": "concurrently --kill-others-on-fail \"npm run server:dev\" \"npm run client:dev\"",
+    "install:all": "npm install && npm install --prefix client",
+    "clean:all": "npm run client:clean && rm -rf node_modules client/node_modules",
+    "postinstall": "echo \"Installation complete. Run 'npm run dev' to start development.\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT-0",
+  "dependencies": {
+    "@aws-sdk/client-connect": "latest",
+    "@aws-sdk/client-connectparticipant": "latest",
+    "@aws-sdk/client-dynamodb": "^3.777.0",
+    "@aws-sdk/lib-dynamodb": "^3.778.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.0.1",
+    "nodemon": "^2.0.22"
+  }
+}
