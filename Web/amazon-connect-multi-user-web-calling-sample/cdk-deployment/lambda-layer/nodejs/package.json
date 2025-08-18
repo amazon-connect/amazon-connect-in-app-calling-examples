@@ -7,8 +7,8 @@
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.777.0",
     "@aws-sdk/lib-dynamodb": "^3.778.0",
-    "@aws-sdk/client-connect": "latest",
-    "@aws-sdk/client-connectparticipant": "latest",
+    "@aws-sdk/client-connect": "^3.870.0",
+    "@aws-sdk/client-connectparticipant": "^3.870.0",
     "uuid": "^11.1.0"
   }
 }

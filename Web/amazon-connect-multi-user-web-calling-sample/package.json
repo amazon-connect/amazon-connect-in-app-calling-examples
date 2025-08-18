@@ -21,8 +21,8 @@
   "author": "",
   "license": "MIT-0",
   "dependencies": {
-    "@aws-sdk/client-connect": "latest",
-    "@aws-sdk/client-connectparticipant": "latest",
+    "@aws-sdk/client-connect": "^3.870.0",
+    "@aws-sdk/client-connectparticipant": "^3.870.0",
     "@aws-sdk/client-dynamodb": "^3.777.0",
     "@aws-sdk/lib-dynamodb": "^3.778.0",
     "cors": "^2.8.5",
