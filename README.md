@@ -1,34 +1,41 @@
 # Amazon Connect In-App Calling Examples
 
-Amazon Connect’s out of the box communication widget and agent workspace allow you to add in-app, web, and video calling capabilities to your website or mobile application with a few lines of code. This repository contains examples of: 1) how to integrate in-app calling into iOS and Android applications, 2) an example backend that works with these iOS and Android mobile samples, and 3) while web calling works out of the box with custom CCPs for voice call, we show to integrate video calling into an custom CCP.
+Amazon Connect's out of the box communication widget and agent workspace allow you to add in-app, web, and video calling capabilities to your website or mobile application with a few lines of code. This repository contains examples of: 1) how to create multi-user web and video calling experiences, 2) how to integrate in-app calling into iOS and Android applications, 3) an example backend that works with these iOS and Android mobile samples, and 4) while web calling works out of the box with custom CCPs for voice call, we show to integrate video calling into an custom CCP.
 
-**New to Amazon Connect and looking to onboard with in-app calling capabilities?** Refer to [“Set up in-app, web, and video calling capabilities”](https://docs.aws.amazon.com/connect/latest/adminguide/inapp-calling.html).
+**New to Amazon Connect and looking to onboard with in-app calling capabilities?** Refer to ["Set up in-app, web, and video calling capabilities"](https://docs.aws.amazon.com/connect/latest/adminguide/inapp-calling.html).
 
 
 ## Examples
 
-At the moment, there are 4 the examples in this repository:
+At the moment, there are 5 examples in this repository:
 
-1. **[iOS Customer Integration Example](https://github.com/amazon-connect/amazon-connect-in-app-calling-examples/tree/main/iOS/AmazonConnectInAppCallingIOSSample)**
+1. **[Multi-User Web Calling Sample](https://github.com/amazon-connect/amazon-connect-in-app-calling-examples/tree/main/Web/amazon-connect-multi-user-web-calling-sample)**
+   This example demonstrates how to create a multi-user web and video calling experience for end customers. It shows how to integrate Amazon Connect [StartWebRTCConnect](https://docs.aws.amazon.com/connect/latest/APIReference/API_StartWebRTCContact.html), [CreateParticipant](https://docs.aws.amazon.com/connect-participant/latest/APIReference/API_CreateParticipant.html) and [CreateParticipantConnection](https://docs.aws.amazon.com/connect-participant/latest/APIReference/API_CreateParticipantConnection.html) APIs and [Amazon Connect SDK for Javascript](https://github.com/aws/amazon-chime-sdk-js) to support up to 6 participants in a single call, with features like screen sharing, audio/video controls, and real-time communication. The sample includes both client-side and server-side components with AWS CDK deployment options.
+
+2. **[iOS Customer Integration Example](https://github.com/amazon-connect/amazon-connect-in-app-calling-examples/tree/main/iOS/AmazonConnectInAppCallingIOSSample)**
    This example demonstrates how to interact with Amazon Connect api for placing an inbound in-app, web or video call to a contact, and establishing the underlying audio/video call connection between customer and agent by utilizing [Amazon Chime SDK for iOS](https://github.com/aws/amazon-chime-sdk-ios).
 
-2. **[Android Customer Integration Example](https://github.com/amazon-connect/amazon-connect-in-app-calling-examples/tree/main/Android/AmazonConnectInAppCallingAndroidSample)**
+3. **[Android Customer Integration Example](https://github.com/amazon-connect/amazon-connect-in-app-calling-examples/tree/main/Android/AmazonConnectInAppCallingAndroidSample)**
    This example demonstrates how to interact with Amazon Connect api for placing an inbound in-app, web or video call to a contact, and establishing the underlying audio/video call connection between customer and agent by utilizing [Amazon Chime SDK for Android](https://github.com/aws/amazon-chime-sdk-android).
 
-3. **[CCP Web Calling Example](https://github.com/amazon-connect/amazon-connect-in-app-calling-examples/tree/main/Web/amazon-connect-ccp-web-calling-example)**
+4. **[CCP Web Calling Example](https://github.com/amazon-connect/amazon-connect-in-app-calling-examples/tree/main/Web/amazon-connect-ccp-web-calling-example)**
    This example demonstrates how to integrate video calling into your custom agent desktop by leveraging the capabilities of [Amazon Connect Streams](https://github.com/amazon-connect/amazon-connect-streams) and [Amazon Connect SDK for Javascript](https://github.com/aws/amazon-chime-sdk-js). It utilizes the pre-built CCP UI offered by [amazon-connect-streams](https://github.com/amazon-connect/amazon-connect-streams) as an engine, handling the agent and contact events, and integrating the WebRTC video calling using [amazon-chime-sdk-js](https://github.com/aws/amazon-chime-sdk-js).
 
-4. **[StartWebRTCContact Example](https://github.com/amazon-connect/amazon-connect-in-app-calling-examples/tree/main/Backend/AmazonConnectNetraApiSample)**
+5. **[StartWebRTCContact Example](https://github.com/amazon-connect/amazon-connect-in-app-calling-examples/tree/main/Backend/AmazonConnectNetraApiSample)**
    This example demonstrates how to invoke Amazon Connect [StartWebRTCConnect](https://docs.aws.amazon.com/connect/latest/APIReference/API_StartWebRTCContact.html) API from AWS Lambda, an Amazon API Gateway is also to integrate with the Lambda, in order to serve as the backend for the iOS/Android customer integration examples, for placing inbound in-app, web or video calls to a contact.
 
 ## Use Cases
 Below are the common use cases can be referenced using those examples:
 
-1. ``I want to enable in-app calling in my mobile applications, so that users can reach out to our customer support while staying in the app, and the app is able to send needed information(such as user info or current page) to customer support along the call.``
+1. ``I want to add up to four additional users to an ongoing web and video call, for a total of six participants: the agent, the first user, and four other participants. For example, to help close a mortgage transaction, you can have the agent and the customer, the customer's spouse, a translator, and even a supervisor (another agent) on the call to help resolve any issues quickly.``
+
+The Multi-User Web Calling Sample demonstrates how this can be achieved, supporting up to 6 participants with real-time audio, video, and screen sharing features.
+
+2. ``I want to enable in-app calling in my mobile applications, so that users can reach out to our customer support while staying in the app, and the app is able to send needed information(such as user info or current page) to customer support along the call.``
 
 The iOS/Android integration examples and StartWebRTCContact example are needed to achieve this use case: iOS/Android examples demonstrates the mobile application part including invoke StartWebRTCContact api(through StartWebRTC example), sending contact attributes, start audio/video call session, as well as sending DTMF; StartWebRTCContact example acts as a proxy API, relaying the StartWebRTCContact request from mobile applications to Amazon Connect.
 
-2. ``I have my web application for agents, I would like to enable video capablity on my agent application so that agents can send/receive videos while supporting customers.``
+3. ``I have my web application for agents, I would like to enable video capablity on my agent application so that agents can send/receive videos while supporting customers.``
 
 CCP Web Calling Example demonstrates how this can be achieved in 2 ways: embed the pre-built CPP UI or create custom UI based on amazon-connect-streams.
 

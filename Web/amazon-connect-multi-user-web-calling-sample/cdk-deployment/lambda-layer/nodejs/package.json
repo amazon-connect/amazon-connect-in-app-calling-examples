@@ -1,0 +1,14 @@
+{
+  "name": "amazon-connect-multi-user-web-calling-sample-lambda-layer",
+  "version": "1.0.0",
+  "description": "Shared dependencies for Lambda functions",
+  "main": "index.js",
+  "license": "MIT-0",
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.777.0",
+    "@aws-sdk/lib-dynamodb": "^3.778.0",
+    "@aws-sdk/client-connect": "^3.870.0",
+    "@aws-sdk/client-connectparticipant": "^3.870.0",
+    "uuid": "^11.1.0"
+  }
+}
