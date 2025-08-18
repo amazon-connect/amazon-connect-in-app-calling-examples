@@ -114,8 +114,12 @@ if ! aws cloudformation describe-stacks --stack-name "$STACK_NAME" &> /dev/null;
     print_message "warning" "Stack '$STACK_NAME' does not exist. Nothing to clean up."
     STACK_EXISTS=false
 else
-    print_message "success" "Stack '$STACK_NAME' exists and will be destroyed."
     STACK_EXISTS=true
+    read -p "Do you want to proceed with destroying the stack $STACK_NAME? (y/N): " confirm_destroy
+    if [[ "$confirm_destroy" != "y" && "$confirm_destroy" != "Y" ]]; then
+        print_message "info" "Stack destruction cancelled by user."
+        exit 0
+    fi
 fi
 
 #=============================================================================

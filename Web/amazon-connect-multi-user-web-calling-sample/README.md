@@ -105,27 +105,13 @@ The application uses a modern, event-driven architecture with the following key 
 
 ## Deployment Options
 
-### Option 1: AWS Deployment
-
-For deployment to AWS using CDK, refer to the [CDK Deployment README](./cdk-deployment/README.md). This approach provides:
-
-- Scalable serverless architecture with Lambda functions
-- CloudFront distribution for global content delivery
-- DynamoDB for persistent data storage with TTL (24 hours)
-- API Gateway for REST API endpoints
-- Automated deployment and cleanup scripts
-
-### Option 2: Local Development
-
-For local development and testing, follow the instructions below.
-
-## Local Development Setup
-
 ### Prerequisites
 
 - Node.js (v22 or higher)
 - npm (v10 or higher)
 - AWS CLI configured with appropriate credentials
+- AWS CDK CLI latest version, install via `npm install -g aws-cdk@latest` if not
+
 
 ### Node.js Version Management
 
@@ -141,6 +127,22 @@ nvm install 22
 # Use Node.js v22
 nvm use 22
 ```
+
+### Option 1: AWS Deployment
+
+For deployment to AWS using CDK, refer to the [CDK Deployment README](./cdk-deployment/README.md). This approach provides:
+
+- Scalable serverless architecture with Lambda functions
+- CloudFront distribution for global content delivery
+- DynamoDB for persistent data storage with TTL (24 hours)
+- API Gateway for REST API endpoints
+- Automated deployment and cleanup scripts
+
+### Option 2: Local Development
+
+For local development and testing, follow the instructions below.
+
+## Local Development Setup
 
 ### Step 1: Install Dependencies
 
