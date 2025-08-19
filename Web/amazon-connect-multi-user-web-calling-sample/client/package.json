@@ -19,7 +19,7 @@
     "amazon-chime-sdk-js": "^3.27.1"
   },
   "devDependencies": {
-    "esbuild": "^0.20.1",
+    "esbuild": "^0.25.9",
     "esbuild-plugins-node-modules-polyfill": "^1.7.0"
   }
 }
